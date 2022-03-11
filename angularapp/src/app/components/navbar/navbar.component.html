@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" routerLink="/">Abacus Academy</a>
+        <a class="navbar-brand" routerLink="/">Tarrif Manager</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto align-items-center">
                 <li class="dropdown">
-                    <a *ngIf="loginService.isLoggedIn()=='user'||loginService.isLoggedIn()=='manager'"
-                        class="nav-link mx-2 active"><i class="fas fa-heart pe-2"></i>Add Expense</a>
+                    <a routerLink="/expenses" *ngIf="loginService.isLoggedIn()=='user'||loginService.isLoggedIn()=='manager'"
+                        class="nav-link mx-2 active fas fa-heart pe-2">Add Expense</a>
                 </li>
                 <li class="dropdown">
                     <a *ngIf="loginService.isLoggedIn()==''" class="nav-link mx-2 active"><i
