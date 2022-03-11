@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/">Abacus Academy</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="dropdown">
+                    <a *ngIf="loginService.isLoggedIn()=='user'||loginService.isLoggedIn()=='manager'"
+                        class="nav-link mx-2 active"><i class="fas fa-heart pe-2"></i>Add Expense</a>
+                </li>
+                <li class="dropdown">
+                    <a *ngIf="loginService.isLoggedIn()==''" class="nav-link mx-2 active"><i
+                            class="fas fa-heart pe-2"></i>Register</a>
+                </li>
+                <li class="active">
+                    <a *ngIf="loginService.isLoggedIn()==''" routerLink="/" class="btn btn-light btn-rounded">Sign
+                        in</a>
+                </li>
+                <li class="active">
+                    <a (click)="Logout()" *ngIf="loginService.isLoggedIn()!=''"
+                        class="btn btn-light btn-rounded">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

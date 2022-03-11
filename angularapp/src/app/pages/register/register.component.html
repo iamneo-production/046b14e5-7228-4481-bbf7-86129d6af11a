@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1 class=" text-center my-3">Sign Up here</h1>
+      <!-- {{user | json}} -->
+      <form (ngSubmit)="formSubmit()">
+        <div class="form-floating mb-3">
+          <input [(ngModel)]="user.email" name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Email address</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input [(ngModel)]="user.username" name="username"  type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Username</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input [(ngModel)]="user.mobileNumber" name="mobileNumber"  type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Mobile Number</label>
+        </div>
+        
+        <div class="form-floating mb-3">
+          <input [(ngModel)]="user.password" name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">Password</label>
+        </div>
+        
+        <div class="form-floating mb-3">
+          <input [(ngModel)]="pass" name="pass"  type="password" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Confirm Password</label>
+        </div>
+         <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Type</label>
+          </div>
+          <select class="custom-select" id="inputGroupSelect01">
+            <!-- <option selected>Choose...</option> -->
+            <option selected value="1">User</option>
+            <option value="2">Admin</option>
+          </select>
+        </div>
+        <div style="margin: auto;display: block;width: fit-content;" class="form-floating mb-3">
+          <button style="margin: 10px;" type="submit" class="btn btn-primary btnn">Submit</button>
+          <button style="margin: 10px;" (click)="clear()" type="button" class="btn btn-danger">Clear</button>
+      </div>
+      <div style="margin: auto;display: block;width: fit-content;" class="form-floating mb-3">
+        <span style="font-weight:400; margin: 10px;">Already a User?</span>
+        <a style="margin: 10px;" class="h6" routerLink="/">Login</a>
+    </div>
+      </form>
+    </div>
+  </div>
+</div>
