@@ -1,8 +1,16 @@
 .profile-img{
-    display: block;
-    margin: auto;
-     width: 180px;
-     height: 160px;
+    display: block; 
+     margin:auto auto 40px auto;
+     max-width: 180px;
+    max-height: 160px;
      border: .5px solid black;
      border-radius: 50%;
+}
+.table-h{
+    width: 100%;
+}
+.table-h tr td{
+    padding: 10px 20px;
+    border: .5px solid rgb(241, 233, 233);
+    border-radius: 50%;
 }

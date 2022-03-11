@@ -10,6 +10,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserhomeComponent } from './pages/userhome/userhome.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { UserexpensesComponent } from './components/userexpenses/userexpenses.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     NavbarComponent,
     UserhomeComponent,
     SidebarComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserexpensesComponent
   ],
   imports: [
     BrowserModule,
