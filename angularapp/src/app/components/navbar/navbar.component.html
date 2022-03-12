@@ -1,25 +1,25 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-        <a class="navbar-brand" routerLink="/">Tarrif Manager</a>
+        <a class="navbar-brand" style="font-size: 30px;" routerLink="/">Tarrif Manager</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto align-items-center">
                 <li class="dropdown">
-                    <a routerLink="/expenses" *ngIf="loginService.isLoggedIn()=='user'||loginService.isLoggedIn()=='manager'"
+                    <a routerLink="/expenses" style="font-size: 20px;" *ngIf="loginService.isLoggedIn()=='user'||loginService.isLoggedIn()=='manager'"
                         class="nav-link mx-2 active fas fa-heart pe-2">Add Expense</a>
                 </li>
                 <li class="dropdown">
-                    <a *ngIf="loginService.isLoggedIn()==''" class="nav-link mx-2 active"><i
-                            class="fas fa-heart pe-2"></i>Register</a>
+                    <a *ngIf="loginService.isLoggedIn()==''" routerLink="/signup" style="font-size: 20px;" class="nav-link mx-2 active"><i
+                            class="fas fa-heart pe-2 text-muted" ></i>Register</a>
                 </li>
                 <li class="active">
-                    <a *ngIf="loginService.isLoggedIn()==''" routerLink="/" class="btn btn-light btn-rounded">Sign
+                    <a *ngIf="loginService.isLoggedIn()==''" routerLink="/" style="font-size: 20px;" class="btn btn-secondary btn-rounded">Sign
                         in</a>
                 </li>
                 <li class="active">
                     <a (click)="Logout()" *ngIf="loginService.isLoggedIn()!=''"
-                        class="btn btn-light btn-rounded">Logout</a>
+                    style="font-size: 20px;" class="btn btn-primary btn-rounded" routerLink="">Logout</a>
                 </li>
             </ul>
         </div>
     </div>
-</nav>
+</nav> 

@@ -11,6 +11,7 @@ import { UserhomeComponent } from './pages/userhome/userhome.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserexpensesComponent } from './components/userexpenses/userexpenses.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { UserexpensesComponent } from './components/userexpenses/userexpenses.co
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
