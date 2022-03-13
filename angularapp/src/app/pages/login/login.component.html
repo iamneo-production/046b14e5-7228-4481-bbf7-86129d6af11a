@@ -1,27 +1,25 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h1 class=" text-center my-3">Login</h1>
-            <form (ngSubmit)="validate()">
-                <div class="form-floating mb-3">
-                    <input name="email" [(ngModel)]="login.email" type="email" class="form-control form-control-sm"
-                        id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input name="password" [(ngModel)]="login.password" type="password"
-                        class="form-control form-control-sm" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                </div>
-                <div style="margin: auto;display: block;width: fit-content;" class="form-floating mb-3">
-                    <button style="margin: 10px;" type="submit" class="btn btn-primary btnn">Submit</button>
-                    <button style="margin: 10px;" (click)="clear()" type="button" class="btn btn-danger">Clear</button>
-                </div>
-                <div style="margin: auto;display: block;width: fit-content;" class="form-floating mb-3">
-                    <span style="font-weight:400; margin: 10px;"> New user?</span>
-                    <a style="margin: 10px;" class="h6" routerLink="/signup1">SignUp</a>
-                </div>
-            </form>
+<div class="bootstrap-wrapper">
+    <div class="container " >
+        <div class="row" style="padding:60px; margin-top: 60px;">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="text-center">Login Here</h1>
+                <form (ngSubmit)="validate()">
+                    <mat-form-field class="full-w" appearance="outline">
+                        <mat-label>Username</mat-label>
+                        <input name="email" [(ngModel)]="login.email" type="email" matInput placeholder="Enter Email">
+                        <mat-icon matSuffix>email</mat-icon>
+                    </mat-form-field>
+                    <mat-form-field class="full-w" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input name="password" [(ngModel)]="login.password" type="password" matInput placeholder="Enter Password">
+                        <mat-icon matSuffix>key</mat-icon>
+                    </mat-form-field>
+                    <div class="container text-center">
+                        <button type="submit" mat-raised-button color="primary">Login</button>
+                        <button style="margin-left:20px" (click)="clear()" mat-raised-button color="warn">Clear</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
