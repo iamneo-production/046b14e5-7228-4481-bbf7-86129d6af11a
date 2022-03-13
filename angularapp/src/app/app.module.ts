@@ -10,11 +10,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserhomeComponent } from './pages/userhome/userhome.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { UserexpensesComponent } from './components/userexpenses/userexpenses.component';
+import { UserexpensesComponent } from './components/user-comp/userexpenses/userexpenses.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
+import { AddExpenseComponent } from './components/user-comp/add-expense/add-expense.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import {MatListModule} from '@angular/material/list';
     UserhomeComponent,
     SidebarComponent,
     ProfileComponent,
-    UserexpensesComponent
+    UserexpensesComponent,
+    AddExpenseComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,9 @@ import {MatListModule} from '@angular/material/list';
     BrowserAnimationsModule,
     MatIconModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

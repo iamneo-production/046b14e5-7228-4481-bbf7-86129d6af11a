@@ -1,6 +1,7 @@
 .profile-img{
     display: block; 
-     margin:auto auto 40px auto;
+     margin:auto;
+     height: 200px;
      max-width: 180px;
     max-height: 160px;
      border: .5px solid black;

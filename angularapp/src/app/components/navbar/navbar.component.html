@@ -1,25 +1,15 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container">
-        <a class="navbar-brand" style="font-size: 30px;" routerLink="/">Tarrif Manager</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto align-items-center">
-                <li class="dropdown">
-                    <a routerLink="/expenses" style="font-size: 20px;" *ngIf="loginService.isLoggedIn()=='user'||loginService.isLoggedIn()=='manager'"
-                        class="nav-link mx-2 active fas fa-heart pe-2">Add Expense</a>
-                </li>
-                <li class="dropdown">
-                    <a *ngIf="loginService.isLoggedIn()==''" routerLink="/signup" style="font-size: 20px;" class="nav-link mx-2 active"><i
-                            class="fas fa-heart pe-2 text-muted" ></i>Register</a>
-                </li>
-                <li class="active">
-                    <a *ngIf="loginService.isLoggedIn()==''" routerLink="/" style="font-size: 20px;" class="btn btn-secondary btn-rounded">Sign
-                        in</a>
-                </li>
-                <li class="active">
-                    <a (click)="Logout()" *ngIf="loginService.isLoggedIn()!=''"
-                    style="font-size: 20px;" class="btn btn-primary btn-rounded" routerLink="">Logout</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav> 
+<p>
+    <mat-toolbar color="primary">
+      <button mat-icon-button  aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a routerLink="/">My App</a>
+      <span class="example-spacer"></span>
+      <button routerLink="/signup" mat-mini-fab aria-label="Example icon-button with heart icon">
+        <mat-icon>person_add</mat-icon>
+      </button>
+      <button mat-icon-button aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar>
+  </p>
