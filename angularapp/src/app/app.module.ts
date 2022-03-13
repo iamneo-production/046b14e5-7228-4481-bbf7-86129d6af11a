@@ -18,6 +18,8 @@ import {MatListModule} from '@angular/material/list';
 import { AddExpenseComponent } from './components/user-comp/add-expense/add-expense.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import {MatButtonModule} from '@angular/material/button';
     MatCardModule,
     MatListModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
