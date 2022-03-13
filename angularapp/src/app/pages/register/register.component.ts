@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -39,7 +39,22 @@ export class RegisterComponent implements OnInit {
       });
       return;
     }
-    localStorage.setItem('user',JSON.stringify(this.user));
+    else
+    {
+      Swal.fire({
+        title: 'Account Created',
+        text: "Registration Successfull!",
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Go to Login!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['login']);
+        }
+      })
+    }
   }
   clear()
   {

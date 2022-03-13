@@ -25,16 +25,11 @@
             <input required name="password" [(ngModel)]="user.password" type="password" matInput placeholder="Enter Password">
             <mat-icon matSuffix>key</mat-icon>
           </mat-form-field>
-          <mat-form-field *ngIf="pass_match==true" class="full-w" appearance="outline">
+          <mat-form-field  class="full-w" appearance="outline">
             <mat-label>Confirm Password</mat-label>
             <input required name="pass" [(ngModel)]="pass" type="password" matInput placeholder="Confirm Password">
-            <mat-icon matSuffix>done_all</mat-icon>
-          </mat-form-field>
-          <mat-form-field *ngIf="pass_match==false" class="full-w" appearance="outline">
-            <mat-label>Confirm Password</mat-label>
-            <input required  name="pass" [(ngModel)]="pass" type="password" matInput placeholder="Confirm Password">
-            <mat-icon matSuffix>error</mat-icon>
-            <mat-error *ngIf="pass_match==false">Check Password</mat-error>
+            <mat-icon  *ngIf="pass_match==true" matSuffix>done_all</mat-icon>
+            <mat-icon  *ngIf="pass_match==false" matSuffix>error</mat-icon>
           </mat-form-field>
           <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
             <button type="submit" mat-raised-button color="primary">Register</button>
