@@ -1,41 +1,51 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <h1 class=" text-center my-3">Sign Up here</h1>
-      <!-- {{user | json}} -->
-      <form (ngSubmit)="formSubmit()">
-        <div class="form-floating mb-3">
-          <input [(ngModel)]="user.email" name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Email address</label>
-        </div>
-
-        <div class="form-floating mb-3">
-          <input [(ngModel)]="user.username" name="username"  type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Username</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input [(ngModel)]="user.mobileNumber" name="mobileNumber"  type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Mobile Number</label>
-        </div>
-        
-        <div class="form-floating mb-3">
-          <input [(ngModel)]="user.password" name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-          <label for="floatingPassword">Password</label>
-        </div>
-        
-        <div class="form-floating mb-3">
-          <input [(ngModel)]="pass" name="pass"  type="password" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Confirm Password</label>
-        </div>
-        <div style="margin: auto;display: block;width: fit-content;" class="form-floating mb-3">
-          <button style="margin: 10px;" type="submit" class="btn btn-primary btnn">Submit</button>
-          <button style="margin: 10px;" (click)="clear()" type="button" class="btn btn-danger">Clear</button>
+<div class="bootstrap-wrapper">
+  <div class="container ">
+    <div class="row" style=" margin-top: 60px;">
+      <div class="col-md-6 offset-md-3">
+        <h1 class="text-center">Sign Up Here</h1>
+        <form (ngSubmit)="formSubmit()">
+          <mat-form-field class="full-w" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input required name="email" [(ngModel)]="user.email" type="email" matInput placeholder="Enter Email">
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+          <mat-form-field  class="full-w" appearance="outline">
+            <mat-label>Username</mat-label>
+            <input  required name="username" [(ngModel)]="user.username" type="email" matInput placeholder="Enter Username">
+            <mat-icon matSuffix>badge</mat-icon>
+            <!-- <mat-hint>Must Be Unique</mat-hint> -->
+          </mat-form-field>
+          <mat-form-field class="full-w" appearance="outline">
+            <mat-label>mobile Number</mat-label>
+            <input required name="mobilenumber" [(ngModel)]="user.mobilenumber" type="number" matInput placeholder="Enter Phone Number">
+            <mat-icon matSuffix>phone</mat-icon>
+          </mat-form-field>
+          <mat-form-field class="full-w" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input required name="password" [(ngModel)]="user.password" type="password" matInput placeholder="Enter Password">
+            <mat-icon matSuffix>key</mat-icon>
+          </mat-form-field>
+          <mat-form-field *ngIf="pass_match==true" class="full-w" appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input required name="pass" [(ngModel)]="pass" type="password" matInput placeholder="Confirm Password">
+            <mat-icon matSuffix>done_all</mat-icon>
+          </mat-form-field>
+          <mat-form-field *ngIf="pass_match==false" class="full-w" appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input required  name="pass" [(ngModel)]="pass" type="password" matInput placeholder="Confirm Password">
+            <mat-icon matSuffix>error</mat-icon>
+            <mat-error *ngIf="pass_match==false">Check Password</mat-error>
+          </mat-form-field>
+          <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
+            <button type="submit" mat-raised-button color="primary">Register</button>
+            <button style="margin-left:20px" (click)="clear()" mat-raised-button color="warn">Clear</button>
+          </div>
+          <div class="container text-center" style="margin-top: 20px; font-size: 17px;">
+            <span>Already have an Account?</span>
+            <a routerLink="/login" style="padding-left: 20px;">Login Here</a>
+          </div>
+        </form>
       </div>
-      <div style="margin: auto;display: block;width: fit-content;" class="form-floating mb-3">
-        <span style="font-weight:400; margin: 10px;">Already a User?</span>
-        <a style="margin: 10px;" class="h6" routerLink="/">Login</a>
-    </div>
-      </form>
     </div>
   </div>
 </div>

@@ -1,23 +1,27 @@
 <div class="bootstrap-wrapper">
     <div class="container " >
-        <div class="row" style="padding:60px; margin-top: 60px;">
+        <div class="row" style="padding:60px;">
             <div class="col-md-6 offset-md-3">
-                <h1 class="text-center">Login Here</h1>
+                <h1 class="text-center" style="margin-bottom: 20px;">Login Here</h1>
                 <form (ngSubmit)="validate()">
                     <mat-form-field class="full-w" appearance="outline">
                         <mat-label>Username</mat-label>
-                        <input name="email" [(ngModel)]="login.email" type="email" matInput placeholder="Enter Email">
+                        <input required name="email" [(ngModel)]="login.email" type="email" matInput placeholder="Enter Email">
                         <mat-icon matSuffix>email</mat-icon>
                     </mat-form-field>
                     <mat-form-field class="full-w" appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input name="password" [(ngModel)]="login.password" type="password" matInput placeholder="Enter Password">
+                        <input required name="password" [(ngModel)]="login.password" type="password" matInput placeholder="Enter Password">
                         <mat-icon matSuffix>key</mat-icon>
                     </mat-form-field>
-                    <div class="container text-center">
+                    <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
                         <button type="submit" mat-raised-button color="primary">Login</button>
                         <button style="margin-left:20px" (click)="clear()" mat-raised-button color="warn">Clear</button>
                     </div>
+                    <div class="container text-center" style="margin-top: 20px; font-size: 17px;">
+                        <span>New User?</span>
+                        <a routerLink="/signup" style="padding-left: 20px;">Sign up Here</a>
+                      </div>
                 </form>
             </div>
         </div>

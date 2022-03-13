@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -7,13 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(public snack:MatSnackBar,public router:Router) { }
+  pass_match=true
   pass=''
   public user={
     username:'',
     password:'',
     email:'',
-    mobileNumber:'',
+    mobilenumber:'',
     userRole:'',
   }
   ngOnInit(): void {
@@ -23,12 +26,17 @@ export class RegisterComponent implements OnInit {
   {
     if(this.user.username==''|| this.user.username==null || this.user.email==''|| this.user.email==null)
     {
-      alert('Username or Email cannot be empty');
+      this.snack.open("Mandatory fields cannot be empty","ok",{
+        duration:3000,
+      });
       return; 
     }
     else if(this.user.password!=this.pass)
     {
-      alert('Passwords dont match');
+      this.pass_match=false;
+      this.snack.open("Passwords Don't Match!","ok",{
+        duration:3000,
+      });
       return;
     }
     localStorage.setItem('user',JSON.stringify(this.user));
@@ -38,8 +46,9 @@ export class RegisterComponent implements OnInit {
     this.user.email="";
     this.user.password="";
     this.user.email="";
-    this.user.mobileNumber="";
+    this.user.mobilenumber="";
     this.pass="";
-    this.user.username=""
+    this.user.username="";
+    this.pass_match=true;
   }
 }
