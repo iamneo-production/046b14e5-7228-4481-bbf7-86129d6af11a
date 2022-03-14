@@ -1,29 +1,98 @@
-<div class="bootstrap-wrapper">
-    <div class="container " >
+<!-- <div class="bootstrap-wrapper">
+    <div class="container ">
         <div class="row" style="padding:60px;">
-            <div class="col-md-6 offset-md-3">
-                <h1 class="text-center" style="margin-bottom: 20px;">Login Here</h1>
+            <div class="col-md-4 offset-md-4">
+                <mat-card>
+                <h1 style="margin-bottom: 60px;">Sign into your account</h1>
                 <form (ngSubmit)="validate()">
                     <mat-form-field class="full-w" appearance="outline">
-                        <mat-label>Username</mat-label>
-                        <input required name="email" [(ngModel)]="login.email" type="email" matInput placeholder="Enter Email">
+                        <mat-label>Email</mat-label>
+                        <input required name="email" [(ngModel)]="login.email" type="email" matInput
+                            placeholder="Enter Email">
                         <mat-icon matSuffix>email</mat-icon>
                     </mat-form-field>
                     <mat-form-field class="full-w" appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input required name="password" [(ngModel)]="login.password" type="password" matInput placeholder="Enter Password">
+                        <input required name="password" [(ngModel)]="login.password" type="password" matInput
+                            placeholder="Enter Password">
                         <mat-icon matSuffix>key</mat-icon>
                     </mat-form-field>
                     <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
-                        <button type="submit" mat-raised-button color="primary">Login</button>
-                        <button style="margin-left:20px" (click)="clear()" mat-raised-button color="warn">Clear</button>
+                        <button class="full-w" type="submit" mat-raised-button color="primary">Sign in</button>
                     </div>
-                    <div class="container text-center" style="margin-top: 20px; font-size: 17px;">
-                        <span>New User?</span>
-                        <a routerLink="/signup" style="padding-left: 20px;">Sign up Here</a>
-                      </div>
                 </form>
+                <div class="container text-center" style="margin-top: 20px; font-size: 17px;">
+                    <span>New User?</span>
+                    <a routerLink="/signup" style="padding-left: 20px;">Sign up Here</a>
+                </div>
+            </mat-card>
             </div>
         </div>
     </div>
+</div> -->
+
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuO-DSqmIjKR2_ft2HsHLM48kl5eW4Ae-HjXxqd_ZIw7Zno3bMm7PEwAs_FzZ4MJycIcE&usqp=CAU"
+                    class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <div class="container text-center" style="font-size: 27px; margin-bottom: 20px;">
+                    <mat-icon>calculate</mat-icon>
+                    Tariff Manager
+                </div>
+
+                <mat-card>
+                    <!-- <div class="container">
+                        <img src="https://cdn2.iconfinder.com/data/icons/business-vol-2-22/100/round-solid-business-set8-05-512.png" class="text-center" style="width:100px;height:40px" alt="">
+                    </div> -->
+                    <h2 style="margin-bottom: 20px; color: rgb(73, 73, 250);" class="text-center">Sign into your account</h2>
+                <form (ngSubmit)="validate()">
+                    
+                    <mat-form-field class="full-w" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input required name="email" [(ngModel)]="login.email" type="email" matInput
+                            placeholder="Enter Email">
+                        <mat-icon matSuffix>email</mat-icon>
+                    </mat-form-field>
+                    <mat-form-field class="full-w" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input required name="password" [(ngModel)]="login.password" type="password" matInput
+                            placeholder="Enter Password">
+                        <mat-icon matSuffix>key</mat-icon>
+                    </mat-form-field>
+                    <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
+                        <button class="full-w" type="submit" mat-raised-button color="primary">Sign in</button>
+                    </div>
+                </form>
+                <div class="container text-center" style="margin-top: 20px; font-size: 17px;">
+                    <span>New User?</span>
+                    <a routerLink="/signup" style="padding-left: 20px;">Sign up Here</a>
+                </div>
+            </mat-card>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- <div class="form-outline mb-4">
+    <input type="email" id="form3Example3" class="form-control form-control-lg"
+        placeholder="Enter a valid email address" />
+    <label class="form-label" for="form3Example3">Email address</label>
 </div>
+
+<div class="form-outline mb-3">
+    <input type="password" id="form3Example4" class="form-control form-control-lg" placeholder="Enter password" />
+    <label class="form-label" for="form3Example4">Password</label>
+</div>
+
+<div class="text-center text-lg-start mt-4 pt-2">
+    <button type="button" class="btn btn-primary btn-lg"
+        style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+    <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!" class="link-danger">Register</a></p>
+</div> -->
