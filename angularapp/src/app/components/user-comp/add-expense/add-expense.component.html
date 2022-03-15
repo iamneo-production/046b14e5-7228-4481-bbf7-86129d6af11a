@@ -1,1 +1,34 @@
-<p>add-expense works!</p>
+<mat-card>
+    <h1 class="text-center mt-2">Add Expenses</h1>
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="row" style=" margin-top: 60px;">
+                <div class="col-md-6 offset-md-3">
+                    <form (ngSubmit)="submit()">
+                        <mat-form-field class="w100" appearance="outline">
+                            <mat-label>Price</mat-label>
+                            <input required name="price" [(ngModel)]="expense.price" type="number" matInput
+                                placeholder="Enter price">
+                            <mat-icon matSuffix>currency_rupee</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field class="w100" appearance="outline">
+                            <mat-label>Description</mat-label>
+                            <input name="desc" [(ngModel)]="expense.desc" type="text" matInput
+                                placeholder="Enter Description">
+                            <mat-icon matSuffix>description</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field class="w100" appearance="outline">
+                            <mat-label>Coupon Code</mat-label>
+                            <input required name="coupon" [(ngModel)]="expense.coupon" type="text" matInput
+                                placeholder="Enter Coupon code">
+                            <mat-icon matSuffix>discount</mat-icon>
+                        </mat-form-field>
+                        <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
+                            <button class="full-w" type="submit" mat-raised-button color="primary">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
