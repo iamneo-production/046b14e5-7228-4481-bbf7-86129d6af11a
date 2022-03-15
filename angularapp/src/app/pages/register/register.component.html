@@ -6,8 +6,8 @@
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuO-DSqmIjKR2_ft2HsHLM48kl5eW4Ae-HjXxqd_ZIw7Zno3bMm7PEwAs_FzZ4MJycIcE&usqp=CAU"
           class="img-fluid" alt="Sample image">
       </div>
-      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <div class="container text-center mar-top" style="font-size: 27px; margin-bottom: 20px;">
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mar-top">
+        <div class="container text-center" style="font-size: 27px; margin-bottom: 20px;">
           <mat-icon>calculate</mat-icon>
           <button mat-button style="font-size: 27px;">Tariff Manager</button>
         </div>
@@ -45,9 +45,8 @@
               <mat-icon *ngIf="pass_match==false" matSuffix>error</mat-icon>
             </mat-form-field>
             <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
-              <button type="submit" mat-raised-button color="primary">Register</button>
-              <button style="margin-left:20px" (click)="clear()" mat-raised-button color="warn">Clear</button>
-            </div>
+              <button class="full-w" type="submit" mat-raised-button color="primary">Register</button>
+          </div>
           </form>
           <div class="container text-center" style="margin-top: 20px; font-size: 17px;">
             <span>Already have an Account?</span>
