@@ -32,7 +32,7 @@ export class UserexpensesComponent implements OnInit {
       price: 200,
       desc: 'S-mart',
       coupon: 'coupoun for S-mart Shopping',
-      status: 'PENDING'
+      status: 'DECLINED'
     },
     {
       price: 200,
