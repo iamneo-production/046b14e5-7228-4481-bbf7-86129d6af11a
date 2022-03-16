@@ -1,0 +1,18 @@
+<mat-card >
+    <h1>My Expenses</h1>
+    <mat-list>
+        <mat-list-item class="card" *ngFor="let e of expenses">
+            <div mat-line>Total price: {{e.price}}</div>
+            <div mat-line>Description :{{e.desc}}</div>
+            <div mat-line>Coupon Code :{{e.coupon}}</div>
+            <div mat-line>Status:{{e.status}}</div>
+            <mat-divider></mat-divider>
+            <button mat-raised-button color="primary" style="margin: 10px;">
+                View
+            </button>
+            <button mat-mini-fab color="warn" style="margin: 10px;">
+                <mat-icon>delete</mat-icon>
+            </button> 
+        </mat-list-item>
+    </mat-list>
+</mat-card>
