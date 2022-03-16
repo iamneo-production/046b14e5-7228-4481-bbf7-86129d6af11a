@@ -13,16 +13,13 @@ export class AddExpenseComponent implements OnInit {
   expense = {
     price: null,
     desc: '',
-    coupon: ''
+    date:null,
+    id:''
   }
   ngOnInit(): void {
   }
   submit() {
-    if ((this.expense.coupon == '' || this.expense.coupon == null )&&(this.expense.price <= 0 || this.expense.price == null))
-      this.snack.open('Price or Coupon Code Cannot be Empty!!', 'Ok');
-    else if (this.expense.coupon == '' || this.expense.coupon == null)
-      this.snack.open('Coupon Code Cannot be Empty!!', 'Ok');
-    else if (this.expense.price == -1 || this.expense.price == null)
-      this.snack.open('Price Cannot be Empty!!', 'Ok');
+    if (this.expense.date == '' || this.expense.date == null ||this.expense.price <= 0 || this.expense.price == null)
+      this.snack.open('Price or Date Cannot be Empty!!', 'Ok');
   }
 }
