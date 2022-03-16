@@ -24,6 +24,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { ViewExpenseComponent } from './components/user-comp/view-expense/view-expense.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
     SidebarComponent,
     ProfileComponent,
     UserexpensesComponent,
-    AddExpenseComponent
+    AddExpenseComponent,
+    ViewExpenseComponent
   ],
   imports: [
     BrowserModule,
