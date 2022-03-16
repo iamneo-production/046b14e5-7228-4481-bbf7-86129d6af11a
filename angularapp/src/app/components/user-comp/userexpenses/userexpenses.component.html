@@ -13,7 +13,7 @@
                         <button mat-raised-button color="primary" style="margin: 10px;">
                             View
                         </button>
-                        <button mat-mini-fab color="warn" style="margin: 10px;">
+                        <button (click)="remove(e.id)"  mat-mini-fab color="warn" style="margin: 10px;">
                             <mat-icon>delete</mat-icon>
                         </button>
                     </mat-list-item>
@@ -39,7 +39,7 @@
                         <button mat-raised-button color="primary" style="margin: 10px;">
                             View
                         </button>
-                        <button mat-mini-fab color="warn" style="margin: 10px;">
+                        <button (click)="remove(e.id)" mat-mini-fab color="warn" style="margin: 10px;">
                             <mat-icon>delete</mat-icon>
                         </button>
                     </mat-list-item>
@@ -65,7 +65,7 @@
                         <button mat-raised-button color="primary" style="margin: 10px;">
                             View
                         </button>
-                        <button mat-mini-fab color="warn" style="margin: 10px;">
+                        <button (click)="remove(e.id)"  mat-mini-fab color="warn" style="margin: 10px;">
                             <mat-icon>delete</mat-icon>
                         </button>
                     </mat-list-item>
@@ -75,7 +75,7 @@
     </mat-tab>
     <mat-tab>
         <ng-template mat-tab-label>
-            <mat-icon style="margin-right: 10px;">thumb_down_alt</mat-icon>
+            <mat-icon style="margin-right: 10px;">error_outline</mat-icon>
             Declined
           </ng-template>
         <mat-card class="scrollable-content">
@@ -91,7 +91,7 @@
                         <button mat-raised-button color="primary" style="margin: 10px;">
                             View
                         </button>
-                        <button mat-mini-fab color="warn" style="margin: 10px;">
+                        <button (click)="remove(e.id)"  mat-mini-fab color="warn" style="margin: 10px;">
                             <mat-icon>delete</mat-icon>
                         </button>
                     </mat-list-item>
