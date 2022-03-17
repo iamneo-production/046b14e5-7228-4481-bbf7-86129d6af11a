@@ -10,12 +10,12 @@ import java.util.List;
 @Service
 public class ExpenseService {
     
-    private final ExpenseRepository expenseRepository;
     @Autowired
-    public ExpenseService(ExpenseRepository expenseRepository)
-    {
-        this.expenseRepository=expenseRepository;
-    }
+    private ExpenseRepository expenseRepository;
+    // public ExpenseService(ExpenseRepository expenseRepository)
+    // {
+    //     this.expenseRepository=expenseRepository;
+    // }
 
     public List<ExpenseModel> findAll(){
         return this.expenseRepository.findAll();
@@ -23,7 +23,7 @@ public class ExpenseService {
     public ExpenseModel findById(String id)
     {
         // return this.expenseRepository.findExpenseById(id).orElseThrow(new ExpenseNotFoundException("Expense with id "+id+" was not found"));
-        return this.expenseRepository.findExpenseByExpenseId(id).get();
+        return this.expenseRepository.findExpenseByExpenseId(id);
     }
     public void deleteExpense(String id)
     {

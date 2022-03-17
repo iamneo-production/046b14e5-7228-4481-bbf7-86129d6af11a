@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService {
     
-    private final LoginRepository loginRepository;
     @Autowired
-    public LoginService(LoginRepository loginRepository)
-    {
-        this.loginRepository=loginRepository;
-    }
+    private LoginRepository loginRepository;
+    // public LoginService(LoginRepository loginRepository)
+    // {
+    //     this.loginRepository=loginRepository;
+    // }
     public Boolean check(LoginModel login)
     {
         LoginModel local=this.loginRepository.findByEmail(login.getEmail());

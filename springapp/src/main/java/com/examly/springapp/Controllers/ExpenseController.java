@@ -4,39 +4,48 @@ import com.examly.springapp.Models.ExpenseModel;
 import com.examly.springapp.Services.ExpenseService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 public class ExpenseController {
     @Autowired
     private ExpenseService expenseService;
     @GetMapping("/expense")
-    public List<ExpenseModel> getExpese()
+    public ResponseEntity<List<ExpenseModel>> getExpese()
     {
-        return this.expenseService.findAll();
+         List<ExpenseModel> list= this.expenseService.findAll();
+         return new ResponseEntity<>(list,HttpStatus.OK);
     }
     
     @GetMapping("/expenses/{id}")
-    public ExpenseModel expenseEditData(@PathVariable String id) throws Exception
+    public ResponseEntity<ExpenseModel> expenseEditData(@PathVariable String id) throws Exception
     {
-        return this.expenseService.findById(id);
+         ExpenseModel expense= this.expenseService.findById(id);
+         return new ResponseEntity<>(expense,HttpStatus.OK);
     }
 
     @PostMapping("/expense")
-    public String expenseSave(@RequestBody ExpenseModel expense)
+    public ResponseEntity<String> expenseSave(@RequestBody ExpenseModel expense)
     {
-       return this.expenseService.addExpense(expense);
+        String result= this.expenseService.addExpense(expense);
+        return new ResponseEntity<>(result,HttpStatus.CREATED);
     }
 
     @PutMapping("/expense/{id}")
-    public String expenseEditSave(@RequestBody ExpenseModel expense)
+    public ResponseEntity<String> expenseEditSave(@RequestBody ExpenseModel expense)
     {
-        return this.expenseService.updateExpense(expense);
+         String result=this.expenseService.updateExpense(expense);
+         return new ResponseEntity<>(result,HttpStatus.OK);
     }
 }

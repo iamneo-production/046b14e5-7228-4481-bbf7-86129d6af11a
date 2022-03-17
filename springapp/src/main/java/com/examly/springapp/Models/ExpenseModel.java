@@ -1,6 +1,6 @@
 package com.examly.springapp.Models;
 import java.sql.Blob;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.*;
 @Entity
 @Table(name = "Expense")
