@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import {  Router } from '@angular/router';
+import { EmployeeService } from 'src/app/services/Employee/employee.service';
 import { LoginService } from 'src/app/services/login/login.service';
 import Swal from 'sweetalert2';
 @Component({
@@ -14,54 +15,53 @@ export class LoginComponent implements OnInit {
     email: '',
     password: '',
   }
-  constructor(private router: Router,public loginService:LoginService,public snack:MatSnackBar) { }
+  constructor(private router: Router, public loginService: LoginService, public snack: MatSnackBar,private empService:EmployeeService) { }
 
   ngOnInit(): void {
   }
   validate() {
     console.log('Login button clicked');
     if (this.login.email.trim() == null || this.login.password.trim() == null || this.login.email.trim() == '' || this.login.password.trim() == '') {
-      this.snack.open("Email or Password cannot be empty","ok",{
-        duration:3000,
+      this.snack.open("Email or Password cannot be empty", "ok", {
+        duration: 3000,
       })
       return;
     }
-    if (this.login.email == 'user' && this.login.password == 'user')
-      {
-      //  Swal.fire('sucess','Login Sucessfull','success');
-      Swal.fire({
-        title: 'Welcome',
-        text: "Login Success!",
-        icon: 'success',
-        showCancelButton: false,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'OK'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this.router.navigate(['expenses']);
-        }
-      })
-      this.loginService.setRole('user');
-      
-      }
-      else if(this.login.email == 'manager' && this.login.password == 'manager')
-      {
-        Swal.fire('sucess','Login Sucessfull','success');
-        this.loginService.setRole('manager');
-      }
-      else if(this.login.email == 'admin' && this.login.password == 'admin')
-      {
-        Swal.fire('Welcome','Login Sucessfull','success');
-        this.loginService.setRole('admin');
-      }
-      else
-      {
-        this.snack.open("INVALID CREDENTIALS!!!!   Try Again","ok",{
-          duration:3000,
+    this.loginService.login(this.login).subscribe(
+      (data: boolean) => {
+        Swal.fire({
+          title: 'Welcome',
+          text: "Login Success!",
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.router.navigate(['expenses']);
+          }
         });
+        this.empService.setEmployee(this.login.email);
+        this.loginService.setStatus(true);
+        this.route();
+      },
+      (error) => {
+        this.snack.open("Invalid Credentials","OK");
         this.clear();
       }
+    );
+
+  }
+  route()
+  {
+    let role=localStorage.getItem('role');
+    if(role=="Employee")
+    this.router.navigate(['expenses']);
+    else if(role=="Manager")
+    this.router.navigate(['manager']);
+    else if(role=="Admin")
+    this.router.navigate(['admin']);
   }
   clear() {
     this.login.email = '';

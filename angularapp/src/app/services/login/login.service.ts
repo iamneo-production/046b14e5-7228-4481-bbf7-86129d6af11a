@@ -1,19 +1,27 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import baseUrl from '../url';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-
-  constructor() { }
-  role = '';
-  public setRole(role: string) {
-    this.role = role;
+  constructor(public http:HttpClient) { }
+  public login(login:any)
+  {
+    return this.http.post(`${baseUrl}/login`,login);
   }
-  public isLoggedIn() {
-    return this.role;
+  public setStatus(s:any)
+  {
+    localStorage.setItem('login',s);
   }
-  public logout() {
-    this.role = '';
+  public isLoggedIn()
+  {
+    return localStorage.getItem('login');
+ 
+  }
+  public logout()
+  {
+    localStorage.clear();
   }
 }

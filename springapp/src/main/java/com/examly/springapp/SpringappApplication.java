@@ -1,8 +1,4 @@
 package com.examly.springapp;
-
-import com.examly.springapp.Models.UserModel;
-import com.examly.springapp.Services.SignupService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -12,8 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableAutoConfiguration
 public class SpringappApplication implements CommandLineRunner {
 
-	@Autowired
-	private SignupService signupService;
 	public static void main(String[] args) {
 		SpringApplication.run(SpringappApplication.class, args);
 	}
