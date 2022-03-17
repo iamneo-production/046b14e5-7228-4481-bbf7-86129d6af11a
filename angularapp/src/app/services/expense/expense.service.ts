@@ -6,5 +6,19 @@ import { Injectable } from '@angular/core';
 export class ExpenseService {
 
   constructor() { }
-  
+  expense={
+    price: null,
+    id:'',
+    desc: '',
+    coupon: '',
+    status: ''
+  }
+  setContent(exp:any)
+  {
+    this.expense=exp;
+  }
+  getContent()
+  {
+    return this.expense;
+  }
 }

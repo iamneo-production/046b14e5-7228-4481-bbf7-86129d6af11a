@@ -18,8 +18,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ProfileComponent } from './component/profile/profile.component';
 import { SidebarComponent } from './component/sidebar/sidebar.component';
+import {MatTabsModule} from '@angular/material/tabs';
 import { AddExpenseComponent } from './component/manager-comp/add-expense/add-expense.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { UserexpensesComponent } from './component/manager-comp/userexpenses/userexpenses.component';
+import { ViewExpenseComponent } from './component/manager-comp/view-expense/view-expense.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +34,7 @@ import { UserexpensesComponent } from './component/manager-comp/userexpenses/use
     SidebarComponent,
     AddExpenseComponent,
     UserexpensesComponent,
+    ViewExpenseComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,11 @@ import { UserexpensesComponent } from './component/manager-comp/userexpenses/use
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
