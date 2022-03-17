@@ -4,14 +4,13 @@ import { ExpenseService } from 'src/app/services/expense/expense.service';
 import { ViewExpenseComponent } from '../view-expense/view-expense.component';
 import { MatCard } from '@angular/material/card';
 @Component({
-  selector: 'app-userexpenses',
-  templateUrl: './userexpenses.component.html',
-  styleUrls: ['./userexpenses.component.css']
+  selector: 'app-approve-expense',
+  templateUrl: './approve-expense.component.html',
+  styleUrls: ['./approve-expense.component.css']
 })
-export class UserexpensesComponent implements OnInit {
+export class ApproveExpenseComponent implements OnInit {
 
   constructor(public dialog:MatDialog,public expenseService:ExpenseService) { }
-
   expenses = [
     {
       price: 100,
@@ -83,6 +82,9 @@ export class UserexpensesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
-  } 
+  }
+  
+   
+
 
 }

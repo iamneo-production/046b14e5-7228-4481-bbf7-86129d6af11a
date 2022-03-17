@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddExpenseComponent } from './component/manager-comp/add-expense/add-expense.component';
+import { ApproveExpenseComponent } from './component/manager-comp/approve-expense/approve-expense.component';
 import { UserexpensesComponent } from './component/manager-comp/userexpenses/userexpenses.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { LoginComponent } from './pages/login/login.component';
 import {ManagerhomeComponent} from './pages/managerhome/managerhome.component';
+
 const routes: Routes = [
   {
     path:'',
@@ -29,11 +31,11 @@ const routes: Routes = [
       },
       {
         path:'add',
-        component:AddExpenseComponent
+        component:AddExpenseComponent,
       },
       {
         path:'approve',
-        component:AddExpenseComponent
+        component:ApproveExpenseComponent
       }
     ]
   }

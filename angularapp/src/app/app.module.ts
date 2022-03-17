@@ -24,6 +24,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { UserexpensesComponent } from './component/manager-comp/userexpenses/userexpenses.component';
 import { ViewExpenseComponent } from './component/manager-comp/view-expense/view-expense.component';
+import { ApproveExpenseComponent } from './component/manager-comp/approve-expense/approve-expense.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { ViewExpenseComponent } from './component/manager-comp/view-expense/view
     AddExpenseComponent,
     UserexpensesComponent,
     ViewExpenseComponent,
+    ApproveExpenseComponent,
   ],
   imports: [
     BrowserModule,
