@@ -14,10 +14,14 @@ public class LoginModel {
     public LoginModel()
     {}
     
-    public LoginModel(String email, String password) {
+    
+    public LoginModel(String email, String password, String role) {
         this.email = email;
         this.password = password;
+        this.role = role;
     }
+
+
     public String getRole() {
         return role;
     }

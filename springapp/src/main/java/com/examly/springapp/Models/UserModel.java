@@ -15,7 +15,7 @@ public class UserModel {
     private String email;
     private String mobileNumber;
     private String role;
-    private Boolean active;
+    private Boolean active=true;
     
     public UserModel() {
     }

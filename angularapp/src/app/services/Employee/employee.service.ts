@@ -7,13 +7,14 @@ import baseUrl from '../url';
 })
 export class EmployeeService {
 
-  employee:any;
   role:any;
   constructor(public http:HttpClient) { }
   public setEmployee(email:String)
   {
-    this.employee=this.http.post(`${baseUrl}/login/{email}`,email);
-    localStorage.setItem("employee",JSON.stringify(this.employee));
+
+    console.log(this.http.get(`${baseUrl}/login/{${email}}`));
+    
+    // localStorage.setItem('employee',JSON.stringify(this.http.get(`${baseUrl}/login/{${email}}`)));
   }
   public setRole()
   {
@@ -22,6 +23,6 @@ export class EmployeeService {
   }
   public getEmployee()
   {
-    return JSON.parse(localStorage.getItem("employee"));
+    return JSON.parse(localStorage.getItem('employee'));
   }
 }

@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         this.snack.open("Invalid Credentials","OK");
-        this.clear();
+        // this.clear();
       }
     );
 

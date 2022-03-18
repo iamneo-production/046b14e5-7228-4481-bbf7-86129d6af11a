@@ -22,4 +22,8 @@ public class LoginService {
         return true;
         return false;
     }
+    public void add(LoginModel login)
+    {
+        this.loginRepository.save(login);
+    }
 }

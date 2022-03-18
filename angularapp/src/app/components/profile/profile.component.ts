@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from 'src/app/services/Employee/employee.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  user:any;
+  constructor(public empService:EmployeeService ) { 
+    this.user=this.empService.getEmployee();
+    this.disp();
+  }
 
   ngOnInit(): void {
   }
-
+  
+  disp()
+  {
+    console.log(this.user);
+    
+  }
 }
