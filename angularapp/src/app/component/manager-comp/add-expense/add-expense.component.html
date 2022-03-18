@@ -1,5 +1,5 @@
 <mat-card>
-    <h1 class="text-center mt-2">Add Expenses</h1>
+    <h1 class="text-center mt-2">Add Expense</h1>
     <mat-card-content>
         <div class="bootstrap-wrapper">
             <div class="row" style=" margin-top: 60px;">
@@ -12,16 +12,22 @@
                             <mat-icon matSuffix>currency_rupee</mat-icon>
                         </mat-form-field>
                         <mat-form-field class="w100" appearance="outline">
+                            <mat-label>Employee Id</mat-label>
+                            <input required name="id" [(ngModel)]="expense.id" type="text" matInput
+                                placeholder="Enter Employee Id">
+                            <mat-icon matSuffix>perm_identity</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field class="w100" appearance="outline">
                             <mat-label>Description</mat-label>
                             <input name="desc" [(ngModel)]="expense.desc" type="text" matInput
                                 placeholder="Enter Description">
                             <mat-icon matSuffix>description</mat-icon>
                         </mat-form-field>
                         <mat-form-field class="w100" appearance="outline">
-                            <mat-label>Coupon Code</mat-label>
-                            <input required name="coupon" [(ngModel)]="expense.coupon" type="text" matInput
-                                placeholder="Enter Coupon code">
-                            <mat-icon matSuffix>discount</mat-icon>
+                            <mat-label>Date</mat-label>
+                            <input required matInput [matDatepicker]="picker2">
+                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2 color="primary"></mat-datepicker>
                         </mat-form-field>
                         <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
                             <button class="full-w" type="submit" mat-raised-button color="primary">Add</button>
