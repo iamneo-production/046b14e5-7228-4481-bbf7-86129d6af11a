@@ -8,7 +8,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AddExpenseComponent implements OnInit {
 
-  t_date=new Date();
   constructor(private snack: MatSnackBar) { }
 
   expense = {
@@ -20,10 +19,5 @@ export class AddExpenseComponent implements OnInit {
   ngOnInit(): void {
   }
   submit() {
-    if (this.t_date == null ||this.expense.price <= 0 || this.expense.price == null)
-      this.snack.open('Price or Date Cannot be Empty!!', 'Ok');
-      this.expense.date=this.t_date.toLocaleDateString();
-      console.log(this.expense);
   }
-  
 }
