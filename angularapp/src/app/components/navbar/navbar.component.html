@@ -1,0 +1,13 @@
+<p>
+  <mat-toolbar color="primary">
+    <mat-icon style="margin-left: 20px; margin-right: 0px;">calculate</mat-icon>
+    <button routerLink="/" style="font-size: 21px;" mat-flat-button color="primary">Tariff Manager</button>
+    <span class="example-spacer"></span>
+    <button *ngIf="loginService.isLoggedIn()==''" routerLink="/signup" mat-mini-fab>
+      <mat-icon>person_add</mat-icon>
+    </button>
+    <button (click)="Logout()" *ngIf="loginService.isLoggedIn()!=''" routerLink="/" mat-mini-fab>
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+</p>
