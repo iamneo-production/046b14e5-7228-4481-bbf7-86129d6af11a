@@ -10,12 +10,12 @@ import { ExpenseService } from 'src/app/services/expense/expense.service';
 })
 export class ViewExpenseComponent implements OnInit {
 
-  date="";
+  // date="";
   constructor(public dialog:MatDialog,public expenseService:ExpenseService) { }
 expense:Expense;
   ngOnInit(): void {
     this.expense=this.expenseService.getContent();
-    this.date=this.expense.datedOn.toDateString();
+    // this.date=(this.expense.datedOn.getUTCFullYear()) + "/" + (this.expense.datedOn.getMonth() + 1)+ "/" + (this.expense.datedOn.getUTCDate());
   }
   close()
   {

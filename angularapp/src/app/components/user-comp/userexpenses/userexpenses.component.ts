@@ -17,7 +17,15 @@ export class UserexpensesComponent implements OnInit {
 
   constructor(public dialog:MatDialog,public expenseService:ExpenseService,private empService:EmployeeService,private snack:MatSnackBar) { }
   expenses:Expense[];
-  emp:Employee;
+  emp={
+    id:null,
+    active:null,
+    email:null,
+    mobileNumber:null,
+    password:null,
+    role:null,
+    username:null,
+  };
   ngOnInit(): void {
     this.setEmployee();
     this.setExpenses();
@@ -35,7 +43,6 @@ export class UserexpensesComponent implements OnInit {
     this.expenseService.getExpense(this.emp.id).subscribe(
       (data:Expense[])=>{
         this.expenses=data;
-        console.log(this.expenses);   
       },
       (error)=>{
         this.snack.open("Something Went Wrong","OK");
