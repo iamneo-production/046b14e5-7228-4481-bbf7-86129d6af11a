@@ -1,28 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import baseUrl from '../url';
+import { Employee } from './Employee';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
 
-  role:any;
+  email:string;
+  role:string;
   constructor(public http:HttpClient) { }
-  public setEmployee(email:String)
+  public setEmployee()
   {
-
-    console.log(this.http.get(`${baseUrl}/login/{${email}}`));
-    
-    // localStorage.setItem('employee',JSON.stringify(this.http.get(`${baseUrl}/login/{${email}}`)));
+    this.http.get<Employee>(`${baseUrl}/login/${this.email}`).subscribe(
+      (data:any)=>{
+        localStorage.setItem("employee",JSON.stringify(data));
+      }
+    );
   }
-  public setRole()
+  public setEmail(email:string)
   {
-    this.role=JSON.parse(localStorage.getItem('employee'))["role"];
-    localStorage.setItem('role',this.role);
-  }
-  public getEmployee()
-  {
-    return JSON.parse(localStorage.getItem('employee'));
+    this.email=email;
   }
 }

@@ -12,18 +12,13 @@ public class ExpenseService {
     
     @Autowired
     private ExpenseRepository expenseRepository;
-    // public ExpenseService(ExpenseRepository expenseRepository)
-    // {
-    //     this.expenseRepository=expenseRepository;
-    // }
-
     public List<ExpenseModel> findAll(){
         return this.expenseRepository.findAll();
     }
-    public ExpenseModel findById(String id)
+    public ExpenseModel[] findById(int id)
     {
         // return this.expenseRepository.findExpenseById(id).orElseThrow(new ExpenseNotFoundException("Expense with id "+id+" was not found"));
-        return this.expenseRepository.findExpenseByExpenseId(id);
+        return this.expenseRepository.findAllExpenseByEmpId(id);
     }
     public void deleteExpense(String id)
     {

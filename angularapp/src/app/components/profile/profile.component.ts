@@ -1,4 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Employee } from 'src/app/services/Employee/Employee';
 import { EmployeeService } from 'src/app/services/Employee/employee.service';
 
 @Component({
@@ -8,18 +11,19 @@ import { EmployeeService } from 'src/app/services/Employee/employee.service';
 })
 export class ProfileComponent implements OnInit {
 
-  user:any;
-  constructor(public empService:EmployeeService ) { 
-    this.user=this.empService.getEmployee();
-    this.disp();
+  emp: Employee;
+  status: string;
+  constructor(public empService: EmployeeService, private snack: MatSnackBar) {
   }
 
   ngOnInit(): void {
+    this.setEmployee();
   }
-  
-  disp()
-  {
-    console.log(this.user);
-    
+  setEmployee() {
+    this.emp=JSON.parse(localStorage.getItem("employee"));
+    if (this.emp.active == true)
+          this.status = "ACTIVE";
+        else
+          this.status = "INACTIVE";
   }
 }

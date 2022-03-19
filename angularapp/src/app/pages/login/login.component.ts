@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {  Router } from '@angular/router';
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, public loginService: LoginService, public snack: MatSnackBar,private empService:EmployeeService) { }
 
   ngOnInit(): void {
+    localStorage.clear();
   }
   validate() {
     console.log('Login button clicked');
@@ -29,6 +31,8 @@ export class LoginComponent implements OnInit {
     }
     this.loginService.login(this.login).subscribe(
       (data: boolean) => {
+        if(data==true)
+        {
         Swal.fire({
           title: 'Welcome',
           text: "Login Success!",
@@ -42,13 +46,18 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['expenses']);
           }
         });
-        this.empService.setEmployee(this.login.email);
+        this.empService.setEmail(this.login.email);
+        this.empService.setEmployee();
         this.loginService.setStatus(true);
         this.route();
+        }
+        else
+        {
+          this.snack.open("Invalid Credentials","OK");
+        }
       },
-      (error) => {
-        this.snack.open("Invalid Credentials","OK");
-        // this.clear();
+      (error:HttpErrorResponse) => {
+        this.snack.open("User Does Not exist","OK");
       }
     );
 
@@ -57,7 +66,7 @@ export class LoginComponent implements OnInit {
   {
     let role=localStorage.getItem('role');
     if(role=="Employee")
-    this.router.navigate(['expenses']);
+      this.router.navigate(['expenses']);
     else if(role=="Manager")
     this.router.navigate(['manager']);
     else if(role=="Admin")

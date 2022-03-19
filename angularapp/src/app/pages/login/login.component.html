@@ -13,7 +13,7 @@
                 <mat-card>
                     <h2 style="margin-bottom: 20px; color: rgb(73, 73, 250);" class="text-center">Sign into your account
                     </h2>
-                    <form (ngSubmit)="validate()">
+                    <form #loginForm="ngForm" (ngSubmit)="validate()">
 
                         <mat-form-field class="full-w" appearance="outline">
                             <mat-label>Email</mat-label>
@@ -28,7 +28,7 @@
                             <mat-icon matSuffix>key</mat-icon>
                         </mat-form-field>
                         <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
-                            <button class="full-w" type="submit" mat-raised-button color="primary">Sign in</button>
+                            <button [disabled]="loginForm.invalid" class="full-w" type="submit" mat-raised-button color="primary">Sign in</button>
                         </div>
                     </form>
                     <div class="container text-center" style="margin-top: 20px; font-size: 17px;">

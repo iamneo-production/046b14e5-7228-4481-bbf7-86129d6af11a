@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import baseUrl from '../url';
 
 @Injectable({
@@ -9,8 +10,8 @@ export class SignupService {
 
   constructor(private http:HttpClient) { }
 
-  public saveUser(user:any)
+  public saveUser(emp:any): Observable<Boolean>
   {
-    return this.http.post(`${baseUrl}/signup`,user);
+    return this.http.post<Boolean>(`${baseUrl}/signup`,emp);
   }
 }

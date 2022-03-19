@@ -58,7 +58,15 @@ import { ViewExpenseComponent } from './components/user-comp/view-expense/view-e
     MatNativeDateModule,
     MatRippleModule
   ],
-  providers: [],
+  providers: [LoginComponent,
+    RegisterComponent,
+    NavbarComponent,
+    UserhomeComponent,
+    SidebarComponent,
+    ProfileComponent,
+    UserexpensesComponent,
+    AddExpenseComponent,
+    ViewExpenseComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Employee } from 'src/app/services/Employee/Employee';
 import { SignupService } from 'src/app/services/signup/signup.service';
 import Swal from 'sweetalert2';
 @Component({
@@ -10,31 +11,36 @@ import Swal from 'sweetalert2';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(public snack:MatSnackBar,public router:Router,private signupService:SignupService) { }
-  pass_match=true
-  pass=''
-  public user={
+  constructor(public snack:MatSnackBar,public router:Router,private signupService:SignupService){}
+  emp={
     username:'',
     password:'',
     email:'',
     mobileNumber:'',
-    role:'Employee',
-  }
+    role:'employee'
+  };
+  pass:'';
+  pass_match=true;
   ngOnInit(): void {
   }
 
   formSubmit()
   {
-    if(this.user.username==''|| this.user.username==null || this.user.email==''|| this.user.email==null)
+    if(this.emp.username==''|| this.emp.username==null || this.emp.email==''|| this.emp.email==null)
     {
       this.snack.open("Mandatory fields cannot be empty","ok",{
         duration:3000,
       });
       return; 
     }
+    if(this.emp.password!=this.pass)
+    {
+      this.pass_match=false;
+      this.snack.open("Passwords Don't Match","OK");
+    }
 
-    this.signupService.saveUser(this.user).subscribe(
-      (data:any)=>{
+    this.signupService.saveUser(this.emp).subscribe(
+      (data:boolean)=>{
         if(data==true)
         {
           Swal.fire({
@@ -62,12 +68,11 @@ export class RegisterComponent implements OnInit {
   }
   clear()
   {
-    this.user.email="";
-    this.user.password="";
-    this.user.email="";
-    this.user.mobileNumber="";
+    this.emp.email="";
+    this.emp.password="";
+    this.emp.email="";
+    this.emp.mobileNumber="";
     this.pass="";
-    this.user.username="";
-    this.pass_match=true;
+    this.emp.username="";
   }
 }

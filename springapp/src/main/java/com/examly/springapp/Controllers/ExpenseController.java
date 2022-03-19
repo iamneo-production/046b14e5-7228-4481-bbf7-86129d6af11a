@@ -28,10 +28,10 @@ public class ExpenseController {
          return new ResponseEntity<>(list,HttpStatus.OK);
     }
     
-    @GetMapping("/expenses/{id}")
-    public ResponseEntity<ExpenseModel> expenseEditData(@PathVariable String id) throws Exception
+    @GetMapping("/expense/{id}")
+    public ResponseEntity<ExpenseModel[]> expenseEditData(@PathVariable int id) throws Exception
     {
-         ExpenseModel expense= this.expenseService.findById(id);
+         ExpenseModel[] expense= this.expenseService.findById(id);
          return new ResponseEntity<>(expense,HttpStatus.OK);
     }
 

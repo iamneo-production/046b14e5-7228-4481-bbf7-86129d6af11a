@@ -1,4 +1,8 @@
 package com.examly.springapp;
+import com.examly.springapp.Models.UserModel;
+import com.examly.springapp.Services.EmployeeService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -8,6 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableAutoConfiguration
 public class SpringappApplication implements CommandLineRunner {
 
+	@Autowired
+	private EmployeeService employeeService;
 	public static void main(String[] args) {
 		SpringApplication.run(SpringappApplication.class, args);
 	}
@@ -24,6 +30,8 @@ public class SpringappApplication implements CommandLineRunner {
 		// userModel.setRole("Emp");
 		// userModel.setUsername("user1");
 		// System.out.println(this.signupService.addUser(userModel));
+		// UserModel user=this.employeeService.getEmployee("user3");
+		// System.out.print(user.getMobileNumber());
 
 	}
 

@@ -1,5 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Employee } from 'src/app/services/Employee/Employee';
+import { EmployeeService } from 'src/app/services/Employee/employee.service';
+import { Expense } from 'src/app/services/expense/Expense';
 import { ExpenseService } from 'src/app/services/expense/expense.service';
 import { ViewExpenseComponent } from '../view-expense/view-expense.component';
 
@@ -10,72 +15,13 @@ import { ViewExpenseComponent } from '../view-expense/view-expense.component';
 })
 export class UserexpensesComponent implements OnInit {
 
-  constructor(public dialog:MatDialog,public expenseService:ExpenseService) { }
-
-  expenses = [
-    {
-      price: 100,
-      id:'E-001',
-      desc: 'V-mart',
-      status: 'APPROVED'
-    },
-    {
-      price: 200,
-      id:'E-002',
-      desc: 'S-mart',
-      status: 'PENDING'
-    },
-    {
-      price: 1100,
-      id:'E-003',
-      desc: 'L-mart',
-      status: 'APPROVED'
-    },
-    {
-      price: 200,
-      id:'E-004',
-      desc: 'S-mart',
-      status: 'DECLINED'
-    },
-    {
-      price: 200,
-      id:'E-005',
-      desc: 'S-mart',
-      status: 'APPROVED'
-    },
-    {
-      price: 200,
-      id:'E-006',
-      desc: 'S-mart',
-      status: 'PENDING'
-    },
-    {
-      price: 200,
-      id:'E-007',
-      desc: 'S-mart',
-      status: 'APPROVED'
-    },
-    {
-      price: 200,
-      id:'E-008',
-      desc: 'S-mart',
-      status: 'PENDING'
-    },
-    {
-      price: 200,
-      id:'E-009',
-      desc: 'S-mart',
-      status: 'PENDING'
-    }
-  ]
+  constructor(public dialog:MatDialog,public expenseService:ExpenseService,private empService:EmployeeService,private snack:MatSnackBar) { }
+  expenses:Expense[];
+  emp:Employee;
   ngOnInit(): void {
+    this.setEmployee();
+    this.setExpenses();
   }
-  remove(key:string) {
-    console.log('remove');
-    this.expenses.forEach((value,index)=>{
-        if(value.id==key) this.expenses.splice(index,1);
-    });
-}
   view(exp:any)
   {
     this.expenseService.setContent(exp);
@@ -84,5 +30,21 @@ export class UserexpensesComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   } 
+  setExpenses()
+  {
+    this.expenseService.getExpense(this.emp.id).subscribe(
+      (data:Expense[])=>{
+        this.expenses=data;
+        console.log(this.expenses);   
+      },
+      (error)=>{
+        this.snack.open("Something Went Wrong","OK");
+      }
+    );
+  }
+  setEmployee()
+  {
+    this.emp=JSON.parse(localStorage.getItem("employee"));
+  }
 
 }

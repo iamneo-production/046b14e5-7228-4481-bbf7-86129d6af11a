@@ -7,19 +7,19 @@
                     <form (ngSubmit)="submit()">
                         <mat-form-field class="w100" appearance="outline">
                             <mat-label>Price</mat-label>
-                            <input required name="price" [(ngModel)]="expense.price" type="number" matInput
+                            <input required name="billCost" [(ngModel)]="expense.billCost" type="number" matInput
                                 placeholder="Enter price">
                             <mat-icon matSuffix>currency_rupee</mat-icon>
                         </mat-form-field>
                         <mat-form-field class="w100" appearance="outline">
-                            <mat-label>Employee Id</mat-label>
-                            <input required name="id" [(ngModel)]="expense.id" type="text" matInput
-                                placeholder="Enter Employee Id">
-                            <mat-icon matSuffix>perm_identity</mat-icon>
+                            <mat-label>Bill Number</mat-label>
+                            <input required name="billNumber" [(ngModel)]="expense.billNumber" type="number" matInput
+                                placeholder="Enter Bill Number">
+                            <mat-icon matSuffix>tag</mat-icon>
                         </mat-form-field>
                         <mat-form-field class="w100" appearance="outline">
                             <mat-label>Description</mat-label>
-                            <input name="desc" [(ngModel)]="expense.desc" type="text" matInput
+                            <input name="remark" [(ngModel)]="expense.remark" type="text" matInput
                                 placeholder="Enter Description">
                             <mat-icon matSuffix>description</mat-icon>
                         </mat-form-field>

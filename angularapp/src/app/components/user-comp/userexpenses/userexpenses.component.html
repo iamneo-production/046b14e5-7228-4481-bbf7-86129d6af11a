@@ -5,15 +5,12 @@
             <mat-card-content>
                 <mat-list>
                     <mat-list-item class="card" *ngFor="let e of expenses">
-                        <div mat-line>Total price: {{e.price}}</div>
-                        <div mat-line>Description :{{e.desc}}</div>
+                        <div mat-line>Total price: {{e.billCost}}</div>
+                        <div mat-line>Bill Number :{{e.billNumber}}</div>
                         <div mat-line>Status:{{e.status}}</div>
                         <mat-divider></mat-divider>
                         <button mat-raised-button color="primary" (click)="view(e)" style="margin: 10px;">
                             View
-                        </button>
-                        <button (click)="remove(e.id)"  mat-mini-fab color="warn" style="margin: 10px;">
-                            <mat-icon>delete</mat-icon>
                         </button>
                     </mat-list-item>
                 </mat-list>
@@ -29,16 +26,13 @@
             <h1 style="margin-left: 20px;">Approved Expenses</h1>
             <mat-card-content>
                 <mat-list *ngFor="let e of expenses">
-                    <mat-list-item class="card-x" *ngIf="e.status=='APPROVED'">
-                        <div mat-line>Total price: {{e.price}}</div>
-                        <div mat-line>Description :{{e.desc}}</div>
+                    <mat-list-item class="card-x" *ngIf="e.status=='approved'">
+                        <div mat-line>Total price: {{e.billCost}}</div>
+                        <div mat-line>Bill Number :{{e.billNumber}}</div>
                         <div mat-line>Status:{{e.status}}</div>
                         <mat-divider></mat-divider>
                         <button mat-raised-button color="primary" (click)="view(e)" style="margin: 10px;">
                             View
-                        </button>
-                        <button (click)="remove(e.id)" mat-mini-fab color="warn" style="margin: 10px;">
-                            <mat-icon>delete</mat-icon>
                         </button>
                     </mat-list-item>
                 </mat-list>
@@ -54,16 +48,13 @@
             <h1 style="margin-left: 20px;">Pending Expenses</h1>
             <mat-card-content>
                 <mat-list *ngFor="let e of expenses">
-                    <mat-list-item class="card-x" *ngIf="e.status=='PENDING'">
-                        <div mat-line>Total price: {{e.price}}</div>
-                        <div mat-line>Description :{{e.desc}}</div>
+                    <mat-list-item class="card-x" *ngIf="e.status=='pending'">
+                        <div mat-line>Total price: {{e.billCost}}</div>
+                        <div mat-line>Bill Number :{{e.billNumber}}</div>
                         <div mat-line>Status:{{e.status}}</div>
                         <mat-divider></mat-divider>
                         <button mat-raised-button color="primary" (click)="view(e)" style="margin: 10px;">
                             View
-                        </button>
-                        <button (click)="remove(e.id)"  mat-mini-fab color="warn" style="margin: 10px;">
-                            <mat-icon>delete</mat-icon>
                         </button>
                     </mat-list-item>
                 </mat-list>
@@ -79,17 +70,13 @@
             <h1 style="margin-left: 20px;">Declined Expenses</h1>
             <mat-card-content>
                 <mat-list *ngFor="let e of expenses">
-                    <mat-list-item class="card-x" *ngIf="e.status=='DECLINED'">
-                        <div mat-line>Total price: {{e.price}}</div>
-                        <div mat-line>Description :{{e.desc}}</div>
-                        <div mat-line>Coupon Code :{{e.coupon}}</div>
+                    <mat-list-item class="card-x" *ngIf="e.status=='declined'">
+                        <div mat-line>Total price: {{e.billCost}}</div>
+                        <div mat-line>Bill Number :{{e.billNumber}}</div>
                         <div mat-line>Status:{{e.status}}</div>
                         <mat-divider></mat-divider>
                         <button mat-raised-button color="primary" (click)="view(e)" style="margin: 10px;">
                             View
-                        </button>
-                        <button (click)="remove(e.id)"  mat-mini-fab color="warn" style="margin: 10px;">
-                            <mat-icon>delete</mat-icon>
                         </button>
                     </mat-list-item>
                 </mat-list>
