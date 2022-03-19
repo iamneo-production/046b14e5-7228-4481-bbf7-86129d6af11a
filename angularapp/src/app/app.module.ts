@@ -25,6 +25,7 @@ import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { UserexpensesComponent } from './component/manager-comp/userexpenses/userexpenses.component';
 import { ViewExpenseComponent } from './component/manager-comp/view-expense/view-expense.component';
 import { ApproveExpenseComponent } from './component/manager-comp/approve-expense/approve-expense.component';
+import { RegisterComponent } from './pages/register/register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { ApproveExpenseComponent } from './component/manager-comp/approve-expens
     UserexpensesComponent,
     ViewExpenseComponent,
     ApproveExpenseComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

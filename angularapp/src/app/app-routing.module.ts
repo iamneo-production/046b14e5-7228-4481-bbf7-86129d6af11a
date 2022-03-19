@@ -6,7 +6,7 @@ import { UserexpensesComponent } from './component/manager-comp/userexpenses/use
 import { ProfileComponent } from './component/profile/profile.component';
 import { LoginComponent } from './pages/login/login.component';
 import {ManagerhomeComponent} from './pages/managerhome/managerhome.component';
-
+import { RegisterComponent } from './pages/register/register/register.component';
 const routes: Routes = [
   {
     path:'',
@@ -16,6 +16,10 @@ const routes: Routes = [
   {
     path:'login',
     component:LoginComponent,
+  },
+  {
+    path:'signup',
+    component:RegisterComponent,
   },
   {
     path:'expenses',
