@@ -15,6 +15,20 @@ public class UserModel {
     private Boolean active=true;
 
     
+    public UserModel() {
+    }
+
+    public UserModel(int id, String username, String password, String email, String mobileNumber, String role,
+        Boolean active) {
+    this.id = id;
+    this.username = username;
+    this.password = password;
+    this.email = email;
+    this.mobileNumber = mobileNumber;
+    this.role = role;
+    this.active = active;
+}
+    
     public int getId() {
         return id;
     }
