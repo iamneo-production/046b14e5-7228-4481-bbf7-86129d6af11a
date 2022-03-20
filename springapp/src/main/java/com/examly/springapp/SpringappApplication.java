@@ -1,5 +1,4 @@
 package com.examly.springapp;
-import com.examly.springapp.Models.UserModel;
 import com.examly.springapp.Services.EmployeeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableAutoConfiguration
 public class SpringappApplication implements CommandLineRunner {
 
-	@Autowired
-	private EmployeeService employeeService;
+	// @Autowired
+	// private EmployeeService employeeService;
 	public static void main(String[] args) {
 		SpringApplication.run(SpringappApplication.class, args);
 	}
