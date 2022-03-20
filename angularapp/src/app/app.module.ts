@@ -28,6 +28,7 @@ import { ViewExpenseComponent } from './components/user-comp/view-expense/view-e
 import { AdminComponent } from './components/user-comp/admin/admin.component';
 import { ViewemployeeComponent } from './components/user-comp/viewemployee/viewemployee.component';
 import { ManagerApproveComponent } from './components/user-comp/manager-approve/manager-approve.component';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,11 @@ import { ManagerApproveComponent } from './components/user-comp/manager-approve/
     MatTabsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatRippleModule
+    MatRippleModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground:true
+    })
   ],
   providers: [
     LoginComponent,

@@ -9,7 +9,6 @@ public class ExpenseModel {
 
     @Id
     private String expenseId;
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int billNumber;
     private Blob billImage;
     private int billCost;
