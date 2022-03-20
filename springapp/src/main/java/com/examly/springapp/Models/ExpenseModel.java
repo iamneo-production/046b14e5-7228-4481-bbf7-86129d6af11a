@@ -3,7 +3,6 @@ package com.examly.springapp.Models;
 import java.sql.Blob;
 import java.util.Date;
 import javax.persistence.*;
-
 @Entity
 @Table(name = "Expense")
 public class ExpenseModel {
@@ -22,9 +21,10 @@ public class ExpenseModel {
     @JoinColumn(name = "id")
     private UserModel claimedBy;
 
+
+    
     public ExpenseModel() {
     }
-
     public ExpenseModel(String expenseId, int billNumber, Blob billImage, int billCost, Date datedOn, int empId,
             String remark, String status, UserModel claimedBy) {
         this.expenseId = expenseId;
@@ -37,77 +37,60 @@ public class ExpenseModel {
         this.status = status;
         this.claimedBy = claimedBy;
     }
-
-    public int getEmpId() {
-        return empId;
+    public String getExpenseId() {
+        return expenseId;
     }
-
-    public void setEmpId(int empId) {
-        this.empId = empId;
+    public void setExpenseId(String expenseId) {
+        this.expenseId = expenseId;
     }
-
-    public int getBillCost() {
-        return billCost;
-    }
-
-    public void setBillCost(int billCost) {
-        this.billCost = billCost;
-    }
-
     public int getBillNumber() {
         return billNumber;
     }
-
+    public void setBillNumber(int billNumber) {
+        this.billNumber = billNumber;
+    }
+    public Blob getBillImage() {
+        return billImage;
+    }
+    public void setBillImage(Blob billImage) {
+        this.billImage = billImage;
+    }
+    public int getBillCost() {
+        return billCost;
+    }
+    public void setBillCost(int billCost) {
+        this.billCost = billCost;
+    }
+    public Date getDatedOn() {
+        return datedOn;
+    }
+    public void setDatedOn(Date datedOn) {
+        this.datedOn = datedOn;
+    }
+    public int getEmpId() {
+        return empId;
+    }
+    public void setEmpId(int empId) {
+        this.empId = empId;
+    }
+    public String getRemark() {
+        return remark;
+    }
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+    public String getStatus() {
+        return status;
+    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
     public UserModel getClaimedBy() {
         return claimedBy;
     }
-
     public void setClaimedBy(UserModel claimedBy) {
         this.claimedBy = claimedBy;
     }
 
-    public void setBillNumber(int billNumber) {
-        this.billNumber = billNumber;
-    }
-
-    public String getExpenseId() {
-        return expenseId;
-    }
-
-    public void setExpenseId(String expenseId) {
-        this.expenseId = expenseId;
-    }
-
-    public Blob getBillImage() {
-        return billImage;
-    }
-
-    public void setBillImage(Blob billImage) {
-        this.billImage = billImage;
-    }
-
-    public Date getDatedOn() {
-        return datedOn;
-    }
-
-    public void setDatedOn(Date datedOn) {
-        this.datedOn = datedOn;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
+    
 }

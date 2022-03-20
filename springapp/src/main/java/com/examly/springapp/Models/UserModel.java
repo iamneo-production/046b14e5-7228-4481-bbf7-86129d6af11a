@@ -8,26 +8,13 @@ public class UserModel {
     private int id;
     private String username;
     private String password;
+    @Column(unique = true)
     private String email;
     private String mobileNumber;
     private String role;
     private Boolean active=true;
-    
-    public UserModel() {
-    }
-    
-    public UserModel(int id, String username, String password, String email, String mobileNumber, String role,
-            Boolean active) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.mobileNumber = mobileNumber;
-        this.role = role;
-        this.active = active;
-    }
 
-
+    
     public int getId() {
         return id;
     }
@@ -70,5 +57,6 @@ public class UserModel {
     public void setActive(Boolean active) {
         this.active = active;
     }
-
+    
+    
 }
