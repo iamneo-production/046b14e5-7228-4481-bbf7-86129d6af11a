@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AddExpenseComponent } from './components/user-comp/add-expense/add-expense.component';
 import { AdminComponent } from './components/user-comp/admin/admin.component';
+import { ManagerApproveComponent } from './components/user-comp/manager-approve/manager-approve.component';
 import { UserexpensesComponent } from './components/user-comp/userexpenses/userexpenses.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -56,6 +57,30 @@ const routes: Routes = [
      
     ]
   },
+  {
+    path:'manager',
+    component:UserhomeComponent,
+
+    children:[
+      {
+        path:'',
+        component:UserexpensesComponent
+      },
+      {
+        path:'profile',
+        component:ProfileComponent
+      },
+      {
+        path:'add',
+        component:AddExpenseComponent
+      },
+      {
+        path:'approve',
+        component:ManagerApproveComponent
+      },
+     
+    ]
+  }
 ];
 
 @NgModule({
