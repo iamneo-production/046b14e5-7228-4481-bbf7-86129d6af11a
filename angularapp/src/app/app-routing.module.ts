@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { AddExpenseComponent } from './components/user-comp/add-expense/add-expense.component';
+import { AdminComponent } from './components/user-comp/admin/admin.component';
+import { UserexpensesComponent } from './components/user-comp/userexpenses/userexpenses.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { UserhomeComponent } from './pages/userhome/userhome.component';
+
 const routes: Routes = [
   {
     path:'',
@@ -11,18 +16,46 @@ const routes: Routes = [
   },
   {
     path:'login',
-    component:LoginComponent
-
+    component:LoginComponent,
   },
   {
-    path:'admin',
-    component:AdminComponent
+    path:'signup',
+    component:RegisterComponent,
   },
-
   {
-    path:'profile',
-    component:ProfileComponent,
-  }
+   path:'admin',
+   component:UserhomeComponent,
+   children:[
+     {
+       path:'',
+       component:AdminComponent,
+     },
+     {
+      path:'profile',
+      component:ProfileComponent
+    },
+   ]
+  },
+  {
+    path:'expenses',
+    component:UserhomeComponent,
+
+    children:[
+      {
+        path:'',
+        component:UserexpensesComponent
+      },
+      {
+        path:'profile',
+        component:ProfileComponent
+      },
+      {
+        path:'add',
+        component:AddExpenseComponent
+      },
+     
+    ]
+  },
 ];
 
 @NgModule({

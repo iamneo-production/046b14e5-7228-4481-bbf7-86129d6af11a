@@ -1,11 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatTabsModule} from '@angular/material/tabs';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { UserhomeComponent } from './pages/userhome/userhome.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { UserexpensesComponent } from './components/user-comp/userexpenses/userexpenses.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddExpenseComponent } from './components/user-comp/add-expense/add-expense.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
@@ -14,29 +21,33 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { FormsModule } from '@angular/forms';
-import { AdminComponent } from './admin/admin.component';
-import { ProfileComponent } from './profile/profile.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-
-
-
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { ViewExpenseComponent } from './components/user-comp/view-expense/view-expense.component';
+import { AdminComponent } from './components/user-comp/admin/admin.component';
+import { ViewemployeeComponent } from './components/user-comp/viewemployee/viewemployee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     LoginComponent,
-    AdminComponent,
-    ProfileComponent,
+    RegisterComponent,
+    NavbarComponent,
+    UserhomeComponent,
     SidebarComponent,
-
-  
-    
+    ProfileComponent,
+    UserexpensesComponent,
+    AddExpenseComponent,
+    ViewExpenseComponent,
+    AdminComponent,
+    ViewemployeeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatIconModule,
     MatCardModule,
@@ -46,12 +57,23 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
-    FormsModule,
     MatTabsModule,
-   
-
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRippleModule
   ],
-  providers: [],
+  providers: [
+    LoginComponent,
+    RegisterComponent,
+    NavbarComponent,
+    UserhomeComponent,
+    SidebarComponent,
+    ProfileComponent,
+    UserexpensesComponent,
+    AddExpenseComponent,
+    ViewExpenseComponent,
+    AdminComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
