@@ -34,6 +34,7 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
 import { DeleteEmployeeComponent } from './components/delete-employee/delete-employee.component';
 import { DashboardComponent } from './components/user-comp/dashboard/dashboard.component';
+import { CardsComponent } from './components/cards/cards.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { DashboardComponent } from './components/user-comp/dashboard/dashboard.c
     ManagerApproveComponent,
     EditEmployeeComponent,
     DeleteEmployeeComponent,
-    DashboardComponent
+    DashboardComponent,
+    CardsComponent
   ],
   imports: [
     BrowserModule,
