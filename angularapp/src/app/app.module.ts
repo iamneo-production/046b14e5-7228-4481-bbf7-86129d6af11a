@@ -28,9 +28,12 @@ import { ViewExpenseComponent } from './components/user-comp/view-expense/view-e
 import { AdminComponent } from './components/user-comp/admin/admin.component';
 import { ViewemployeeComponent } from './components/user-comp/viewemployee/viewemployee.component';
 import { ManagerApproveComponent } from './components/user-comp/manager-approve/manager-approve.component';
-import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import {MatSelectModule} from '@angular/material/select';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
+import { DeleteEmployeeComponent } from './components/delete-employee/delete-employee.component';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +49,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ViewExpenseComponent,
     AdminComponent,
     ViewemployeeComponent,
-    ManagerApproveComponent
+    ManagerApproveComponent,
+    EditEmployeeComponent,
+    DeleteEmployeeComponent
   ],
   imports: [
     BrowserModule,

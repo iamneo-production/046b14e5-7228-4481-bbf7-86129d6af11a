@@ -11,7 +11,7 @@
       </mat-form-field>
     <mat-form-field appearance="legacy">
       <mat-label>Search</mat-label>
-      <input type="text" name="searchVal" (input)="Search()" [(ngModel)]="searchVal" matInput placeholder="search">
+      <input id="searchBox" type="text" name="searchVal" (input)="Search()" [(ngModel)]="searchVal" matInput placeholder="search">
     </mat-form-field>
     <button mat-raised-button (click)="reset()" style="margin-left: 20px;"color="accent">
       Clear
@@ -27,11 +27,11 @@
             <button mat-raised-button color="primary" (click)="view(e)" style="margin: 10px;">
               View
             </button>
-            <button mat-mini-fab color="primary" style="margin: 10px">
+            <button (click)="edit(e)" mat-mini-fab color="#D9DDD8" style="margin: 10px">
               <mat-icon>edit</mat-icon>
             </button>
 
-            <button mat-mini-fab color="warn" style="margin: 10px;">
+            <button (click)="delete(e)" mat-mini-fab color="warn" style="margin: 10px;">
               <mat-icon>delete</mat-icon>
             </button>
           </mat-list-item>
@@ -78,8 +78,8 @@
                   <mat-icon *ngIf="pass_match==false" matSuffix>error</mat-icon>
                 </mat-form-field>
                 <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
-                  <button [disabled]="signupForm.invalid" class="full-w" type="submit" mat-raised-button
-                    color="primary">Register</button>
+                  <button id="addButton" [disabled]="signupForm.invalid" class="full-w" type="submit" mat-raised-button
+                    color="primary">Update</button>
                 </div>
               </form>
             </div>

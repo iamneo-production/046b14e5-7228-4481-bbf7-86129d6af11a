@@ -10,30 +10,30 @@
                     <mat-icon>calculate</mat-icon>
                     <button mat-button routerLink="/login" style="font-size: 27px;">Tariff Manager</button>
                 </div>
-                <mat-card>
+                <mat-card id="loginBox">
                     <h2 style="margin-bottom: 20px; color: rgb(73, 73, 250);" class="text-center">Sign into your account
                     </h2>
                     <form #loginForm="ngForm" (ngSubmit)="validate()">
 
                         <mat-form-field class="full-w" appearance="outline">
                             <mat-label>Email</mat-label>
-                            <input required name="email" [(ngModel)]="login.email" type="email" matInput
+                            <input id="email" required name="email" [(ngModel)]="login.email" type="email" matInput
                                 placeholder="Enter Email">
                             <mat-icon matSuffix>email</mat-icon>
                         </mat-form-field>
                         <mat-form-field class="full-w" appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input required name="password" [(ngModel)]="login.password" type="password" matInput
+                            <input id="password" required name="password" [(ngModel)]="login.password" type="password" matInput
                                 placeholder="Enter Password">
                             <mat-icon matSuffix>key</mat-icon>
                         </mat-form-field>
                         <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
-                            <button [disabled]="loginForm.invalid" class="full-w" type="submit" mat-raised-button color="primary">Sign in</button>
+                            <button [disabled]="loginForm.invalid" id="loginButton" class="full-w" type="submit" mat-raised-button color="primary">Sign in</button>
                         </div>
                     </form>
                     <div class="container text-center" style="margin-top: 20px; font-size: 17px;">
                         <span>New User?</span>
-                        <a routerLink="/signup" style="padding-left: 20px;">Sign up Here</a>
+                        <a id="signupLink" routerLink="/signup" style="padding-left: 20px;">Sign up Here</a>
                     </div>
                 </mat-card>
             </div>
