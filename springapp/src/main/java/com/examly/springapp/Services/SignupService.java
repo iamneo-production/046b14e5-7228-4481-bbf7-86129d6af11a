@@ -15,7 +15,7 @@ public class SignupService {
     
     public Boolean addUser(UserModel user)
     {
-        UserModel local=this.userRepository.findEmployeeById(user.getId());
+        UserModel local=this.userRepository.findEmployeeByEmail(user.getEmail());
         if(local!=null)
         {
             return false; 

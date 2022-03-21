@@ -44,5 +44,4 @@ export class ExpenseService {
   {
     return this.expense;
   }
-  
 }

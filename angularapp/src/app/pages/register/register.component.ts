@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Employee } from 'src/app/services/Employee/Employee';
 import { SignupService } from 'src/app/services/signup/signup.service';
 import Swal from 'sweetalert2';
 @Component({
@@ -17,7 +16,7 @@ export class RegisterComponent implements OnInit {
     password:'',
     email:'',
     mobileNumber:'',
-    role:'employee'
+    role:'admin'
   };
   pass:'';
   pass_match=true;
@@ -55,14 +54,29 @@ export class RegisterComponent implements OnInit {
             if (result.isConfirmed) {
               this.router.navigate(['login']);
             }
-          })
+          });
         }
         else
         {
-          this.snack.open("Passwords Don't Match!","ok",{
-            duration:3000,
+          Swal.fire({
+            title: 'Email  is already linked with an Account!!',
+            text: "Please try logging in",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Go to Login!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['login']);
+            }
           });
         }
+      },
+      (error)=>{
+        this.snack.open("Something Went Wrong","ok",{
+          duration:3000,
+        });
       }
     )
   }
