@@ -68,7 +68,7 @@ const routes: Routes = [
     children:[
       {
         path:'',
-        component:UserexpensesComponent
+        component:ManagerApproveComponent
       },
       {
         path:'profile',
