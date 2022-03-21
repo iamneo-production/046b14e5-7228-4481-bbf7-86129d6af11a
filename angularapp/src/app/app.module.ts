@@ -28,6 +28,7 @@ import { ViewExpenseComponent } from './components/user-comp/view-expense/view-e
 import { AdminComponent } from './components/user-comp/admin/admin.component';
 import { ViewemployeeComponent } from './components/user-comp/viewemployee/viewemployee.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { ViewemployeeComponent } from './components/user-comp/viewemployee/viewe
     AddExpenseComponent,
     ViewExpenseComponent,
     AdminComponent,
-    ViewemployeeComponent
+    ViewemployeeComponent,
+
   ],
   imports: [
     BrowserModule,
