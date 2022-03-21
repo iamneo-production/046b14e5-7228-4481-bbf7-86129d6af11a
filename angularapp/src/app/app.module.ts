@@ -29,6 +29,8 @@ import { AdminComponent } from './components/user-comp/admin/admin.component';
 import { ViewemployeeComponent } from './components/user-comp/viewemployee/viewemployee.component';
 import { ManagerApproveComponent } from './components/user-comp/manager-approve/manager-approve.component';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
+import {MatSelectModule} from '@angular/material/select';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
     NgxUiLoaderModule,
     NgxUiLoaderHttpModule.forRoot({
       showForeground:true
-    })
+    }),
+    MatSelectModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     LoginComponent,

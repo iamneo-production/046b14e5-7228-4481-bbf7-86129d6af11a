@@ -19,7 +19,6 @@ export class AddExpenseComponent implements OnInit {
     datedOn: null,
     empId: null,
     remark: null,
-    status: null,
     claimedBy: null
   }
   constructor(private snack: MatSnackBar, public expenseSevice: ExpenseService) { }

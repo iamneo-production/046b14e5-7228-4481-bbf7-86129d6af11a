@@ -1,12 +1,28 @@
 <ngx-ui-loader text="Loading"></ngx-ui-loader>
 <mat-tab-group mat-align-tabs="center" style="height: max-content;">
   <mat-tab style="color:blue" label="View All">
+    <p  class="search">
+      <mat-form-field style="margin-right:20px;">
+        <mat-label>Search By</mat-label>
+        <mat-select [(value)]="search">
+          <mat-option value="Name" >Name</mat-option>
+          <mat-option value="Email">Email</mat-option>
+        </mat-select>
+      </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Search</mat-label>
+      <input type="text" name="searchVal" (input)="Search()" [(ngModel)]="searchVal" matInput placeholder="search">
+    </mat-form-field>
+    <button mat-raised-button (click)="reset()" style="margin-left: 20px;"color="accent">
+      Clear
+    </button>
+  </p>
     <mat-card class="scrollable-content">
       <mat-card-content>
         <mat-list *ngFor="let e of employee">
           <mat-list-item style="padding-left:30px;border:1px solid grey">
             <div mat-line>Name:&nbsp;{{e.username}}</div>
-            <div mat-line>e-mail:&nbsp;{{e.email}}</div>
+            <div mat-line>E-mail:&nbsp;{{e.email}}</div>
             <mat-divider></mat-divider>
             <button mat-raised-button color="primary" (click)="view(e)" style="margin: 10px;">
               View
