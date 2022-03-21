@@ -1,11 +1,4 @@
-<!-- <app-navbar></app-navbar>
-<div class="bootstrap-wrapper">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-2">
-        <app-sidebar></app-sidebar>
-      </div> -->
-<!-- <div class="col-md-10"> -->
+<ngx-ui-loader text="Loading"></ngx-ui-loader>
 <mat-tab-group mat-align-tabs="center" style="height: max-content;">
   <mat-tab style="color:blue" label="View All">
     <mat-card class="scrollable-content">
@@ -17,7 +10,7 @@
             <mat-divider></mat-divider>
             <button mat-raised-button color="primary" (click)="view(e)" style="margin: 10px;">
               View
-          </button>
+            </button>
             <button mat-mini-fab color="primary" style="margin: 10px">
               <mat-icon>edit</mat-icon>
             </button>
@@ -25,11 +18,8 @@
             <button mat-mini-fab color="warn" style="margin: 10px;">
               <mat-icon>delete</mat-icon>
             </button>
-
           </mat-list-item>
         </mat-list>
-
-
       </mat-card-content>
     </mat-card>
   </mat-tab>
@@ -40,31 +30,31 @@
           <div class="row" style=" margin-top: 60px;">
             <div class="col-md-6 offset-md-3">
               <form #signupForm="ngForm" (ngSubmit)="formSubmit()">
-                <mat-form-field  class="full-w" appearance="outline">
+                <mat-form-field class="w100" appearance="outline">
                   <mat-label>Email</mat-label>
                   <input required name="email" [(ngModel)]="emp.email" type="email" matInput placeholder="Enter Email">
                   <mat-icon matSuffix>email</mat-icon>
                 </mat-form-field>
-                <mat-form-field class="full-w" appearance="outline">
+                <mat-form-field class="w100" appearance="outline">
                   <mat-label>Username</mat-label>
                   <input required name="username" [(ngModel)]="emp.username" type="email" matInput
                     placeholder="Enter Username">
                   <mat-icon matSuffix>badge</mat-icon>
                   <!-- <mat-hint>Must Be Unique</mat-hint> -->
                 </mat-form-field>
-                <mat-form-field class="full-w" appearance="outline">
+                <mat-form-field class="w100" appearance="outline">
                   <mat-label>mobile Number</mat-label>
                   <input required name="mobileNumber" [(ngModel)]="emp.mobileNumber" type="number" matInput
                     placeholder="Enter Phone Number">
                   <mat-icon matSuffix>phone</mat-icon>
                 </mat-form-field>
-                <mat-form-field class="full-w" appearance="outline">
+                <mat-form-field class="w100" appearance="outline">
                   <mat-label>Password</mat-label>
                   <input required name="password" [(ngModel)]="emp.password" type="password" matInput
                     placeholder="Enter Password">
                   <mat-icon matSuffix>key</mat-icon>
                 </mat-form-field>
-                <mat-form-field class="full-w" appearance="outline">
+                <mat-form-field class="w100" appearance="outline">
                   <mat-label>Confirm Password</mat-label>
                   <input required name="pass" [(ngModel)]="pass" type="password" matInput
                     placeholder="Confirm Password">
@@ -83,7 +73,3 @@
     </mat-card>
   </mat-tab>
 </mat-tab-group>
-<!-- </div>
-    </div>
-  </div>
-</div> -->

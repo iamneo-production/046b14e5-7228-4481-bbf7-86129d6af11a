@@ -27,6 +27,8 @@ import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { ViewExpenseComponent } from './components/user-comp/view-expense/view-expense.component';
 import { AdminComponent } from './components/user-comp/admin/admin.component';
 import { ViewemployeeComponent } from './components/user-comp/viewemployee/viewemployee.component';
+import { ManagerApproveComponent } from './components/user-comp/manager-approve/manager-approve.component';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 
 @NgModule({
@@ -43,7 +45,7 @@ import { ViewemployeeComponent } from './components/user-comp/viewemployee/viewe
     ViewExpenseComponent,
     AdminComponent,
     ViewemployeeComponent,
-
+    ManagerApproveComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,11 @@ import { ViewemployeeComponent } from './components/user-comp/viewemployee/viewe
     MatTabsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatRippleModule
+    MatRippleModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground:true
+    })
   ],
   providers: [
     LoginComponent,

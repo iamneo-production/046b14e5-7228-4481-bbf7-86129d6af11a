@@ -57,30 +57,30 @@ const routes: Routes = [
      
     ]
   },
-  // {
-  //   path:'manager',
-  //   component:UserhomeComponent,
+  {
+    path:'manager',
+    component:UserhomeComponent,
 
-  //   children:[
-  //     {
-  //       path:'',
-  //       component:UserexpensesComponent
-  //     },
-  //     {
-  //       path:'profile',
-  //       component:ProfileComponent
-  //     },
-  //     {
-  //       path:'add',
-  //       component:AddExpenseComponent
-  //     },
-  //     {
-  //       path:'approve',
-  //       component:ManagerApproveComponent
-  //     }
+    children:[
+      {
+        path:'',
+        component:UserexpensesComponent
+      },
+      {
+        path:'profile',
+        component:ProfileComponent
+      },
+      {
+        path:'add',
+        component:AddExpenseComponent
+      },
+      {
+        path:'approve',
+        component:ManagerApproveComponent
+      },
      
-  //   ]
-  // },
+    ]
+  }
 ];
 
 @NgModule({

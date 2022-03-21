@@ -1,17 +1,28 @@
 <ngx-ui-loader text="Loading"></ngx-ui-loader>
 <mat-tab-group mat-align-tabs="center" style="height: max-content;">
-    <mat-tab label="All Expenses">
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon style="margin-right: 10px;">running_with_errors</mat-icon>
+            Pending
+          </ng-template>
         <mat-card class="scrollable-content">
-            <h1 style="margin-left: 20px;">My Expenses</h1>
+            <h1 style="margin-left: 20px;">Pending Expenses</h1>
             <mat-card-content>
-                <mat-list>
-                    <mat-list-item class="card" *ngFor="let e of expenses">
+                <mat-list *ngFor="let e of expenses">
+                    <mat-list-item class="card-x" *ngIf="e.status=='pending'">
                         <div mat-line>Total price: {{e.billCost}}</div>
-                        <div mat-line>Bill Number :{{e.billNumber}}</div>
+                        <div mat-line>Description :{{e.remark}}</div>
                         <div mat-line>Status:{{e.status}}</div>
                         <mat-divider></mat-divider>
                         <button mat-raised-button color="primary" (click)="view(e)" style="margin: 10px;">
                             View
+                        </button>
+                        <button  mat-mini-fab color="green" style="margin: 10px;">
+                            <mat-icon>check_circle</mat-icon>
+                        </button>
+                        <button   mat-mini-fab color="red" style="margin: 10px;">
+                            <mat-icon>error_outline</mat-icon>
                         </button>
                     </mat-list-item>
                 </mat-list>
@@ -29,29 +40,7 @@
                 <mat-list *ngFor="let e of expenses">
                     <mat-list-item class="card-x" *ngIf="e.status=='approved'">
                         <div mat-line>Total price: {{e.billCost}}</div>
-                        <div mat-line>Bill Number :{{e.billNumber}}</div>
-                        <div mat-line>Status:{{e.status}}</div>
-                        <mat-divider></mat-divider>
-                        <button mat-raised-button color="primary" (click)="view(e)" style="margin: 10px;">
-                            View
-                        </button>
-                    </mat-list-item>
-                </mat-list>
-            </mat-card-content>
-        </mat-card>
-    </mat-tab>
-    <mat-tab>
-        <ng-template mat-tab-label>
-            <mat-icon style="margin-right: 10px;">running_with_errors</mat-icon>
-            Pending
-          </ng-template>
-        <mat-card class="scrollable-content">
-            <h1 style="margin-left: 20px;">Pending Expenses</h1>
-            <mat-card-content>
-                <mat-list *ngFor="let e of expenses">
-                    <mat-list-item class="card-x" *ngIf="e.status=='pending'">
-                        <div mat-line>Total price: {{e.billCost}}</div>
-                        <div mat-line>Bill Number :{{e.billNumber}}</div>
+                        <div mat-line>Description :{{e.remark}}</div>
                         <div mat-line>Status:{{e.status}}</div>
                         <mat-divider></mat-divider>
                         <button mat-raised-button color="primary" (click)="view(e)" style="margin: 10px;">
@@ -73,7 +62,7 @@
                 <mat-list *ngFor="let e of expenses">
                     <mat-list-item class="card-x" *ngIf="e.status=='declined'">
                         <div mat-line>Total price: {{e.billCost}}</div>
-                        <div mat-line>Bill Number :{{e.billNumber}}</div>
+                        <div mat-line>Description :{{e.remark}}</div>
                         <div mat-line>Status:{{e.status}}</div>
                         <mat-divider></mat-divider>
                         <button mat-raised-button color="primary" (click)="view(e)" style="margin: 10px;">
