@@ -29,6 +29,8 @@ import { AdminComponent } from './components/user-comp/admin/admin.component';
 import { ViewemployeeComponent } from './components/user-comp/viewemployee/viewemployee.component';
 import { ManagerApproveComponent } from './components/user-comp/manager-approve/manager-approve.component';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
+import { DeleteEmployeeComponent } from './components/delete-employee/delete-employee.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
     ViewExpenseComponent,
     AdminComponent,
     ViewemployeeComponent,
-    ManagerApproveComponent
+    ManagerApproveComponent,
+    EditEmployeeComponent,
+    DeleteEmployeeComponent
   ],
   imports: [
     BrowserModule,

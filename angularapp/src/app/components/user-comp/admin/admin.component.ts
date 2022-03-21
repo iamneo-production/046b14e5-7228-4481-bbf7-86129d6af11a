@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EmployeeService } from 'src/app/services/Employee/employee.service';
+import { DeleteEmployeeComponent } from '../../delete-employee/delete-employee.component';
+import { EditEmployeeComponent } from '../../edit-employee/edit-employee.component';
 import { ViewemployeeComponent } from '../viewemployee/viewemployee.component';
 
 @Component({
@@ -91,10 +93,27 @@ export class AdminComponent implements OnInit {
     }
     this.snack.open("user added","ok");
   }
+
   view(empl:any)
   {
     this.employeeService.setView(empl);
     const dialogRef = this.dialog.open(ViewemployeeComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  } 
+   edit(empl:any)
+  {
+    this.employeeService.setView(empl);
+    const dialogRef = this.dialog.open(EditEmployeeComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  } 
+  delete(empl:any)
+  {
+    this.employeeService.setView(empl);
+    const dialogRef = this.dialog.open(DeleteEmployeeComponent);
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
