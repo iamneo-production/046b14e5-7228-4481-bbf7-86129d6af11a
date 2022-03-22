@@ -6,6 +6,9 @@ import { AdminComponent } from './components/user-comp/admin/admin.component';
 import { DashboardComponent } from './components/user-comp/dashboard/dashboard.component';
 import { ManagerApproveComponent } from './components/user-comp/manager-approve/manager-approve.component';
 import { UserexpensesComponent } from './components/user-comp/userexpenses/userexpenses.component';
+import { AdminGuard } from './guard/admin.guard';
+import { EmployeeGuard } from './guard/employee.guard';
+import { ManagerGuard } from './guard/manager.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { UserhomeComponent } from './pages/userhome/userhome.component';
@@ -27,6 +30,7 @@ const routes: Routes = [
   {
    path:'admin',
    component:UserhomeComponent,
+   canActivate:[AdminGuard],
    children:[
      {
        path:'',
@@ -39,17 +43,21 @@ const routes: Routes = [
    ]
   },
   {
-    path:'expenses',
+    path:'employee',
     component:UserhomeComponent,
-
+    canActivate:[EmployeeGuard],
     children:[
       {
         path:'',
-        component:UserexpensesComponent
+        component:DashboardComponent
       },
       {
         path:'profile',
         component:ProfileComponent
+      },
+      {
+        path:'expenses',
+        component:UserexpensesComponent
       },
       {
         path:'add',
@@ -58,21 +66,25 @@ const routes: Routes = [
       {
         path:'dashboard',
         component:DashboardComponent
-      },
+      }
     ]
   },
   {
     path:'manager',
     component:UserhomeComponent,
-
+    canActivate:[ManagerGuard],
     children:[
       {
         path:'',
-        component:ManagerApproveComponent
+        component:DashboardComponent
       },
       {
         path:'profile',
         component:ProfileComponent
+      },
+      {
+        path:'expenses',
+        component:UserexpensesComponent
       },
       {
         path:'add',

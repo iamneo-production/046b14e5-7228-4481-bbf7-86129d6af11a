@@ -1,8 +1,12 @@
-<ngx-ui-loader text="Loading"></ngx-ui-loader>
 <mat-tab-group mat-align-tabs="center" style="height: max-content;">
     <mat-tab label="All Expenses">
         <mat-card class="scrollable-content">
-            <h1 style="margin-left: 20px;">My Expenses</h1>
+            <div style="display: flex; justify-items:left ;">
+            <h1>My Expenses</h1>
+            <button  style="margin-left: 20px;" (click)="ngOnInit()" mat-icon-button>
+                <mat-icon>sync</mat-icon>
+              </button>
+            </div>
             <mat-card-content>
                 <mat-list>
                     <mat-list-item class="card" *ngFor="let e of expenses">
@@ -24,7 +28,13 @@
             Approved
           </ng-template>
         <mat-card class="scrollable-content">
-            <h1 style="margin-left: 20px;">Approved Expenses</h1>
+            <div style="display: flex; justify-items:left ;">
+                <h1>Approved Expenses</h1>
+                <button  style="margin-left: 20px;" (click)="ngOnInit()" mat-icon-button>
+                    <mat-icon>sync</mat-icon>
+                  </button>
+                </div>
+            <h1 style="margin-left: 20px;"></h1>
             <mat-card-content>
                 <mat-list *ngFor="let e of expenses">
                     <mat-list-item class="card-x" *ngIf="e.status=='approved'">
@@ -46,7 +56,12 @@
             Pending
           </ng-template>
         <mat-card class="scrollable-content">
-            <h1 style="margin-left: 20px;">Pending Expenses</h1>
+            <div style="display: flex; justify-items:left ;">
+                <h1>Pending Expenses</h1>
+                <button  style="margin-left: 20px;" (click)="ngOnInit()" mat-icon-button>
+                    <mat-icon>sync</mat-icon>
+                  </button>
+                </div>
             <mat-card-content>
                 <mat-list *ngFor="let e of expenses">
                     <mat-list-item class="card-x" *ngIf="e.status=='pending'">
@@ -68,7 +83,12 @@
             Declined
           </ng-template>
         <mat-card class="scrollable-content">
-            <h1 style="margin-left: 20px;">Declined Expenses</h1>
+            <div style="display: flex; justify-items:left ;">
+                <h1>Declined Expenses</h1>
+                <button  style="margin-left: 20px;" (click)="ngOnInit()" mat-icon-button>
+                    <mat-icon>sync</mat-icon>
+                  </button>
+                </div>
             <mat-card-content>
                 <mat-list *ngFor="let e of expenses">
                     <mat-list-item class="card-x" *ngIf="e.status=='declined'">
