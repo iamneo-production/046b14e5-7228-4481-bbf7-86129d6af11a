@@ -48,4 +48,9 @@ public class ExpenseController {
          String result=this.expenseService.updateExpense(expense);
          return new ResponseEntity<>(result,HttpStatus.OK);
     }
+    @GetMapping("/expense/curr-month/{id}")
+    public ResponseEntity<Long> currentMonthExpense(@PathVariable int id)
+    {
+         return new ResponseEntity<>(this.expenseService.getCurrentExpense(id),HttpStatus.OK);
+    } 
 }

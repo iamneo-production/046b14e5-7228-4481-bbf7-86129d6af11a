@@ -1,14 +1,14 @@
 <mat-card style="box-shadow:4px 4px 4px rgb(226, 223, 223)">
   <mat-action-list>
     <div mat-subheader>Menu</div>
-    <button *ngIf="role=='employee'" id="homeButton" routerLink="/expenses/dashboard" mat-list-item><mat-icon mat-list-icon>home</mat-icon>Home</button>
-    <button *ngIf="role=='employee'" id="viewExpensesButton" routerLink="/expenses" mat-list-item><mat-icon mat-list-icon>view_list</mat-icon>View Expenses</button>
-    <button *ngIf="role=='employee'" id="addExpenseButton" routerLink="/expenses/add" mat-list-item><mat-icon mat-list-icon>add_circle</mat-icon>Add Expense</button>
-    <button *ngIf="role=='employee'" routerLink="/expenses/profile" mat-list-item><mat-icon mat-list-icon>account_circle</mat-icon>Profile</button>
+    <button *ngIf="role=='employee'" id="homeButton" routerLink="/employee/dashboard" mat-list-item><mat-icon mat-list-icon>home</mat-icon>Home</button>
+    <button *ngIf="role=='employee'" id="viewExpensesButton" routerLink="/employee/expenses" mat-list-item><mat-icon mat-list-icon>view_list</mat-icon>View Expenses</button>
+    <button *ngIf="role=='employee'" id="addExpenseButton" routerLink="/employee/add" mat-list-item><mat-icon mat-list-icon>add_circle</mat-icon>Add Expense</button>
+    <button *ngIf="role=='employee'" routerLink="/employee/profile" mat-list-item><mat-icon mat-list-icon>account_circle</mat-icon>Profile</button>
     <button *ngIf="role=='admin'" id="homeButton" routerLink="/admin" mat-list-item><mat-icon mat-list-icon>home</mat-icon>Home</button>
     <button *ngIf="role=='admin'" routerLink="/admin/profile" mat-list-item><mat-icon mat-list-icon>account_circle</mat-icon>Profile</button>
     <button *ngIf="role=='manager'" id="homeButton" routerLink="/manager/dashboard" mat-list-item><mat-icon mat-list-icon>home</mat-icon>Home</button>
-    <button *ngIf="role=='manager'" id="viewExpensesButton" routerLink="/manager" mat-list-item><mat-icon mat-list-icon>view_list</mat-icon>View Expenses</button>
+    <button *ngIf="role=='manager'" id="viewExpensesButton" routerLink="/manager/expenses" mat-list-item><mat-icon mat-list-icon>view_list</mat-icon>View Expenses</button>
     <button *ngIf="role=='manager'" id="addExpenseButton" routerLink="/manager/add" mat-list-item><mat-icon mat-list-icon>add_circle</mat-icon>Add Expense</button>
     <button *ngIf="role=='manager'" routerLink="/manager/approve" mat-list-item><mat-icon mat-list-icon>check_circle</mat-icon>Approve</button>
     <button *ngIf="role=='manager'" routerLink="/manager/profile" mat-list-item><mat-icon mat-list-icon>account_circle</mat-icon>Profile</button>

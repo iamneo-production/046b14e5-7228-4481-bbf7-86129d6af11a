@@ -2,7 +2,7 @@
 <div mat-dialog-content>
     <div class="bootstrap-wrapper">
         <div class="row" style=" margin-top: 30px;">
-          <div class="col-md-12 offset-md-0">
+          <div class="col-md-14 offset-md-0">
             <form #signupForm="ngForm" (ngSubmit)="formSubmit()">
               <mat-form-field class="w100" appearance="outline">
                 <mat-label>Email</mat-label>
@@ -30,13 +30,13 @@
               </mat-form-field>
               <mat-form-field class="w100" appearance="outline">
                 <mat-label>Password</mat-label>
-                <input id="enterPassword" required name="password" [(ngModel)]="emp.password" type="password" matInput
+                <input id="enterPassword" required name="password" [(ngModel)]="emp.password" type="text" matInput
                   placeholder="Enter Password">
                 <mat-icon matSuffix>key</mat-icon>
               </mat-form-field>
               <mat-form-field class="w100" appearance="outline">
                 <mat-label>Confirm Password</mat-label>
-                <input required name="pass" [(ngModel)]="pass" type="password" matInput
+                <input required name="pass" [(ngModel)]="pass" type="text" matInput
                   placeholder="Confirm Password">
                 <mat-icon *ngIf="pass_match==true" matSuffix>done_all</mat-icon>
                 <mat-icon *ngIf="pass_match==false" matSuffix>error</mat-icon>

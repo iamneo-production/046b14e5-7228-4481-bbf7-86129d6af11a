@@ -8,6 +8,7 @@ import baseUrl from '../url';
   providedIn: 'root'
 })
 export class LoginService {
+  status=false;
   constructor(public http:HttpClient) { }
   emp={
     id:null,
@@ -22,18 +23,18 @@ export class LoginService {
   {
     return this.http.post<Boolean>(`${baseUrl}/login`,login);
   }
-  public setStatus(s:any)
+  public setStatus(s:boolean)
   {
-    localStorage.setItem('login',s);
+    this.status=s;
   }
   public isLoggedIn()
   {
-    return localStorage.getItem('login');
- 
+    this.status;
   }
   public logout()
   {
     localStorage.clear();
+    this.status=false;
   }
   public setRole(){
     this.emp=JSON.parse(localStorage.getItem("employee"));
