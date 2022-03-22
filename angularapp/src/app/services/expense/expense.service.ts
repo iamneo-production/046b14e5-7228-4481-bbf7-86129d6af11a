@@ -44,4 +44,8 @@ export class ExpenseService {
   {
     return this.expense;
   }
+  public setLimit(id :number):Observable<number>
+  {
+     return this.http.get<number>(`${baseUrl}/expense/curr-month/${id}`);
+  }
 }
