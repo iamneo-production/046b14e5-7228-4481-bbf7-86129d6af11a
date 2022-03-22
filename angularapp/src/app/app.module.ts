@@ -36,6 +36,7 @@ import { DeleteEmployeeComponent } from './components/delete-employee/delete-emp
 import { EmployeeDashboardComponent } from './components/user-comp/dashboards/employee-dashboard/employee-dashboard/employee-dashboard.component';
 import { ManagerDashboardComponent } from './components/user-comp/dashboards/manager-dashboard/manager-dashboard/manager-dashboard.component';
 import { ManagerExpenseComponent } from './components/user-comp/manager-expense/manager-expense.component';
+import { UploadFilesComponent } from './components/upload-files/upload-files.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { ManagerExpenseComponent } from './components/user-comp/manager-expense/
     DeleteEmployeeComponent,
     EmployeeDashboardComponent,
     ManagerDashboardComponent,
-    ManagerExpenseComponent
+    ManagerExpenseComponent,
+    UploadFilesComponent
   ],
   imports: [
     BrowserModule,
