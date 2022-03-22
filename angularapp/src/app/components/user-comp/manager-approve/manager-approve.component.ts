@@ -34,29 +34,7 @@ export class ManagerApproveComponent implements OnInit {
       billCost: 2020,
       datedOn: this.date,
       remark: "Travel Expense",
-      status: "pending",
-      billImage: null,
-      claimedBy: null
-    },
-    {
-      expenseId: "001",
-      billNumber: 90,
-      empId: 1,
-      billCost: 2020,
-      datedOn: this.date,
-      remark: "Travel Expense",
-      status: "pending",
-      billImage: null,
-      claimedBy: null
-    },
-    {
-      expenseId: "001",
-      billNumber: 90,
-      empId: 1,
-      billCost: 2020,
-      datedOn: this.date,
-      remark: "Travel Expense",
-      status: "declined",
+      status: "approved",
       billImage: null,
       claimedBy: null
     },
@@ -71,7 +49,73 @@ export class ManagerApproveComponent implements OnInit {
       billImage: null,
       claimedBy: null
     },
-
+    {
+      expenseId: "001",
+      billNumber: 90,
+      empId: 1,
+      billCost: 2020,
+      datedOn: this.date,
+      remark: "Travel Expense",
+      status: "approved",
+      billImage: null,
+      claimedBy: null
+    },
+    {
+      expenseId: "001",
+      billNumber: 90,
+      empId: 1,
+      billCost: 2020,
+      datedOn: this.date,
+      remark: "Travel Expense",
+      status: "approved",
+      billImage: null,
+      claimedBy: null
+    },
+    {
+      expenseId: "001",
+      billNumber: 90,
+      empId: 1,
+      billCost: 2020,
+      datedOn: this.date,
+      remark: "Travel Expense",
+      status: "approved",
+      billImage: null,
+      claimedBy: null
+    },
+    {
+      expenseId: "001",
+      billNumber: 90,
+      empId: 1,
+      billCost: 2020,
+      datedOn: this.date,
+      remark: "Travel Expense",
+      status: "approved",
+      billImage: null,
+      claimedBy: null
+    },
+    {
+      expenseId: "001",
+      billNumber: 90,
+      empId: 1,
+      billCost: 2020,
+      datedOn: this.date,
+      remark: "Travel Expense",
+      status: "approved",
+      billImage: null,
+      claimedBy: null
+    },
+    {
+      expenseId: "001",
+      billNumber: 90,
+      empId: 1,
+      billCost: 2020,
+      datedOn: this.date,
+      remark: "Travel Expense",
+      status: "approved",
+      billImage: null,
+      claimedBy: null
+    },
+    
   ];
   view(exp:any)
   {
