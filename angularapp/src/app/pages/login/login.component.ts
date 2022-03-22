@@ -45,18 +45,21 @@ export class LoginComponent implements OnInit {
             confirmButtonText: 'OK'
           }).then((result) => {
             if (result.isConfirmed) {
-
               this.route();
             }
           });
 
         }
         else {
-          this.snack.open("Invalid Credentials", "OK");
+          this.snack.open("Invalid Credentials", "OK",{
+            duration:3000,
+          });
         }
       },
       (error: HttpErrorResponse) => {
-        this.snack.open("User Does Not exist", "OK");
+        this.snack.open("User Does Not exist", "OK",{
+          duration:3000,
+        });
       }
     );
 

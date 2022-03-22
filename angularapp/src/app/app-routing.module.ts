@@ -30,7 +30,6 @@ const routes: Routes = [
   {
    path:'admin',
    component:UserhomeComponent,
-   canActivate:[AdminGuard],
    children:[
      {
        path:'',
@@ -40,12 +39,12 @@ const routes: Routes = [
       path:'profile',
       component:ProfileComponent
     },
-   ]
+   ],
+   canActivate:[AdminGuard],
   },
   {
     path:'employee',
     component:UserhomeComponent,
-    canActivate:[EmployeeGuard],
     children:[
       {
         path:'',
@@ -67,12 +66,12 @@ const routes: Routes = [
         path:'dashboard',
         component:DashboardComponent
       }
-    ]
+    ],
+    canActivate:[EmployeeGuard]
   },
   {
     path:'manager',
     component:UserhomeComponent,
-    canActivate:[ManagerGuard],
     children:[
       {
         path:'',
@@ -98,7 +97,8 @@ const routes: Routes = [
         path:'dashboard',
         component:DashboardComponent
       }
-    ]
+    ],
+    canActivate:[ManagerGuard]
   }
 ];
 

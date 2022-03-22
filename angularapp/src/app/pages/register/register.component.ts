@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
     password:'',
     email:'',
     mobileNumber:'',
-    role:'admin'
+    role:'employee'
   };
   pass:'';
   pass_match=true;
@@ -35,7 +35,9 @@ export class RegisterComponent implements OnInit {
     if(this.emp.password!=this.pass)
     {
       this.pass_match=false;
-      this.snack.open("Passwords Don't Match","OK");
+      this.snack.open("Passwords Don't Match","OK",{
+        duration:3000,
+      });
     }
 
     this.signupService.saveUser(this.emp).subscribe(

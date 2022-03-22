@@ -36,7 +36,6 @@ import { DeleteEmployeeComponent } from './components/delete-employee/delete-emp
 import { DashboardComponent } from './components/user-comp/dashboard/dashboard.component';
 import { CardsComponent } from './components/cards/cards.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,7 +79,7 @@ import { CardsComponent } from './components/cards/cards.component';
       showForeground:true
     }),
     MatSelectModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
   ],
   providers: [
     LoginComponent,
