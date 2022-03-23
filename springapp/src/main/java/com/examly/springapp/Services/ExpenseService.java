@@ -17,7 +17,6 @@ public class ExpenseService {
     }
     public ExpenseModel[] findById(int id)
     {
-        // return this.expenseRepository.findExpenseById(id).orElseThrow(new ExpenseNotFoundException("Expense with id "+id+" was not found"));
         return this.expenseRepository.findAllExpenseByEmpId(id);
     }
     public void deleteExpense(String id)
@@ -33,5 +32,9 @@ public class ExpenseService {
     {
         this.expenseRepository.save(expense);
         return "Expense Added";
+    }
+    public Long getCurrentExpense(int id)
+    {
+        return this.expenseRepository.findCurrentMonthExpenses(id);
     }
 }

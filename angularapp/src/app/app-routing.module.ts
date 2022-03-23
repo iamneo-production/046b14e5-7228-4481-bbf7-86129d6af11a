@@ -3,9 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AddExpenseComponent } from './components/user-comp/add-expense/add-expense.component';
 import { AdminComponent } from './components/user-comp/admin/admin.component';
-import { DashboardComponent } from './components/user-comp/dashboard/dashboard.component';
+import { EmployeeDashboardComponent } from './components/user-comp/dashboards/employee-dashboard/employee-dashboard/employee-dashboard.component';
+import { ManagerDashboardComponent } from './components/user-comp/dashboards/manager-dashboard/manager-dashboard/manager-dashboard.component';
 import { ManagerApproveComponent } from './components/user-comp/manager-approve/manager-approve.component';
+import { ManagerExpenseComponent } from './components/user-comp/manager-expense/manager-expense.component';
 import { UserexpensesComponent } from './components/user-comp/userexpenses/userexpenses.component';
+import { AdminGuard } from './guard/admin.guard';
+import { EmployeeGuard } from './guard/employee.guard';
+import { ManagerGuard } from './guard/manager.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { UserhomeComponent } from './pages/userhome/userhome.component';
@@ -36,43 +41,51 @@ const routes: Routes = [
       path:'profile',
       component:ProfileComponent
     },
-   ]
+   ],
+   canActivate:[AdminGuard],
   },
   {
-    path:'expenses',
+    path:'employee',
     component:UserhomeComponent,
-
     children:[
       {
         path:'',
-        component:UserexpensesComponent
+        component:EmployeeDashboardComponent
       },
       {
         path:'profile',
         component:ProfileComponent
       },
       {
+        path:'expenses',
+        component:UserexpensesComponent
+      },
+      {
         path:'add',
-        component:AddExpenseComponent
+        component:AddExpenseComponent,
       },
       {
         path:'dashboard',
-        component:DashboardComponent
-      },
-    ]
+        component:EmployeeDashboardComponent
+      }
+    ],
+    canActivate:[EmployeeGuard]
   },
   {
     path:'manager',
     component:UserhomeComponent,
-
     children:[
       {
         path:'',
-        component:ManagerApproveComponent
+        component:ManagerDashboardComponent
       },
       {
         path:'profile',
         component:ProfileComponent
+      },
+      {
+        path:'view',
+        component:ManagerExpenseComponent
       },
       {
         path:'add',
@@ -84,9 +97,10 @@ const routes: Routes = [
       },
       {
         path:'dashboard',
-        component:DashboardComponent
+        component:ManagerDashboardComponent
       }
-    ]
+    ],
+    canActivate:[ManagerGuard]
   }
 ];
 

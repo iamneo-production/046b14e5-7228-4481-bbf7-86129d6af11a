@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AdminService } from 'src/app/services/admin/admin.service';
+import { AdminComponent } from '../user-comp/admin/admin.component';
 
 @Component({
   selector: 'app-edit-employee',
@@ -19,7 +21,7 @@ export class EditEmployeeComponent implements OnInit {
   };
   pass='';
   pass_match=true;
-  constructor(public dialog:MatDialog,private snack:MatSnackBar) { }
+  constructor(public dialog:MatDialog,private snack:MatSnackBar,private adminService:AdminService,private adminComp:AdminComponent) { }
 
   ngOnInit(): void {
     this.setEmployee();
@@ -46,6 +48,17 @@ export class EditEmployeeComponent implements OnInit {
     this.pass_match=false;
     this.snack.open("Passwords Don't Match","OK");
   }
-  this.snack.open("Updated Successfully !! ", "ok");
+  this.adminService.updateEmployees(this.emp).subscribe(
+    (data)=>{
+      console.log(data);
+      
+    },
+  (error)=>{
+    this.snack.open("Updated Successfully","OK",{
+      duration:3000
+    });
+    this.adminComp.ngOnInit();
+  }
+  )
  }
 }

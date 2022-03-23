@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 import { Employee } from '../Employee/Employee';
 import baseUrl from '../url';
 
@@ -9,13 +10,13 @@ import baseUrl from '../url';
 })
 export class AdminService {
   emp:Employee;
-  empList:Employee[];
   constructor(private http:HttpClient,private snack:MatSnackBar) { }
   public getAllEmployees(){
     this.http.get<Employee[]>(`${baseUrl}/admin`).subscribe(
-      (data:any)=>{
-        this.empList=data;
-        localStorage.setItem("employeeList",JSON.stringify(this.emp));
+      (data:Employee[])=>{
+        console.log(data[0]);
+        
+        localStorage.setItem("employeeList",JSON.stringify(data));
       }
     )
   }
@@ -27,23 +28,15 @@ export class AdminService {
       }
     )
   }
-  public addEmployees(emp:Employee){
-    this.http.post(`${baseUrl}/admin`,emp).subscribe(
-      (data:any)=>{
-        console.log(data);
-        
-      },
-      (error)=>
-      {
-        this.snack.open("something went wrong","ok");
-      }
-    );
+
+  public addEmployees(emp:Employee):Observable<string>{
+    return this.http.post<string>(`${baseUrl}/admin`,emp);
   }
-  public updateEmployees(emp:Employee){
-    this.http.put<String>(`${baseUrl}/admin`,emp);
+  public updateEmployees(emp:Employee):Observable<string>{
+    return this.http.put<string>(`${baseUrl}/admin`,emp);
   }
-  public deleteEmployees(id:number){
-    this.http.delete<String>(`${baseUrl}/admin/${id}`);
+  public deleteEmployees(id:number):Observable<string>{
+    return this.http.delete<string>(`${baseUrl}/admin/${id}`);
   }
 }
 
