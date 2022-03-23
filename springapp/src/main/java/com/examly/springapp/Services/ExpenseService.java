@@ -32,7 +32,7 @@ public class ExpenseService {
     public String updateExpense(ExpenseModel expense)
     {
         this.expenseRepository.save(expense);
-        return "Expense Updated";
+        return "Updated";
     }
     public String addExpense(ExpenseModel expense)
     {

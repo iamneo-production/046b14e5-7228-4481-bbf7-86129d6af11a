@@ -25,8 +25,6 @@ public class SignupController {
     {
         LoginModel login = new LoginModel(user.getEmail(),user.getPassword(),user.getRole());
         this.loginService.add(login);
-       return new ResponseEntity<>(this.signupService.addUser(user),HttpStatus.OK);
-
-
+       return new ResponseEntity<Boolean>(this.signupService.addUser(user),HttpStatus.OK);
     }
 }

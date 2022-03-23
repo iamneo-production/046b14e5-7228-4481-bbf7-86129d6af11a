@@ -25,7 +25,7 @@ public class LoginController {
     @PostMapping("/login")
     public ResponseEntity<Boolean> checkUser(@RequestBody LoginModel login)
     {
-        return new ResponseEntity<>(this.loginService.check(login),HttpStatus.OK);
+        return new ResponseEntity<Boolean>(this.loginService.check(login),HttpStatus.OK);
     }
 
     @GetMapping("/login/{email}")

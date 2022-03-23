@@ -19,7 +19,7 @@ public class LoginService {
     {
         LoginModel local=this.loginRepository.findByEmail(login.getEmail());
         if(local.getPassword().equals(login.getPassword()))
-        return true;
+            return true;
         return false;
     }
     public void add(LoginModel login)

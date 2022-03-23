@@ -10,6 +10,7 @@ public class ExpenseModel {
     private String expenseId;
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int billNumber;
+    @Lob
     private Blob billImage;
     private Date datedOn;
     private String remark;

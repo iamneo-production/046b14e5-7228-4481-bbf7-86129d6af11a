@@ -1,6 +1,5 @@
 package com.examly.springapp.Repository;
 
-
 import com.examly.springapp.Models.ExpenseModel;
 
 import org.springframework.data.jpa.repository.JpaRepository;
