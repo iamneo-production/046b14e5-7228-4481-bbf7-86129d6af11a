@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AdminService } from 'src/app/services/admin/admin.service';
 import { EmployeeService } from 'src/app/services/Employee/employee.service';
 import { LoginService } from 'src/app/services/login/login.service';
 import Swal from 'sweetalert2';
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
     email: '',
     password: '',
   }
-  constructor(private router: Router, public loginService: LoginService, public snack: MatSnackBar, private empService: EmployeeService) { }
+  constructor(private router: Router, public loginService: LoginService, public snack: MatSnackBar, private empService: EmployeeService,private adminService:AdminService) { }
 
   ngOnInit(): void {
     localStorage.clear();
@@ -72,7 +73,10 @@ export class LoginComponent implements OnInit {
     else if (role == "manager")
       this.router.navigate(['manager']);
     else if (role == "admin")
+    {
+      this.adminService.getAllEmployees();
       this.router.navigate(['admin']);
+    }
   }
   clear() {
     this.login.email = '';

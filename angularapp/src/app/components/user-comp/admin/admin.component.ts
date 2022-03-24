@@ -31,7 +31,6 @@ export class AdminComponent implements OnInit {
   empl:Employee[]=[];
   constructor(private adminService:AdminService, public router:Router, private snack:MatSnackBar,private employeeService:EmployeeService,public dialog:MatDialog) { }
   ngOnInit(): void {
-    this.adminService.getAllEmployees();
     this.setEmployees();
   }
   formSubmit(){
@@ -82,7 +81,7 @@ export class AdminComponent implements OnInit {
   } 
   delete(empl:any)
   {
-    this.employeeService.setView(empl);
+    this.
     const dialogRef = this.dialog.open(DeleteEmployeeComponent);
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -90,7 +89,6 @@ export class AdminComponent implements OnInit {
   } 
   Search()
   {
-    this.ngOnInit();
     if(this.search=="Name")
     {
       this.empl=this.empl.filter(res=>{
@@ -110,6 +108,16 @@ export class AdminComponent implements OnInit {
     this.ngOnInit();
   }
   setEmployees(){
-    this.empl=JSON.parse(localStorage.getItem("employeeList"));
+    this.adminService.getAllEmployees().subscribe(
+      (data:Employee[])=>{
+        this.empl=data;
+      },
+      (error)=>{
+        console.log(error);
+        this.snack.open("Something Went wrong! Try Later","OK",{
+          duration:3000
+        })
+      }
+    );
   }
 }
