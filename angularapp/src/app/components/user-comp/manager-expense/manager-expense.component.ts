@@ -65,7 +65,25 @@ export class ManagerExpenseComponent implements OnInit {
       id:'E-009',
       desc: 'S-mart',
       status: 'PENDING'
-    }
+    },
+    {
+        price: 200,
+        id:'E-007',
+        desc: 'S-mart',
+        status: 'APPROVED'
+      },
+      {
+        price: 200,
+        id:'E-008',
+        desc: 'S-mart',
+        status: 'PENDING'
+      },
+      {
+        price: 200,
+        id:'E-009',
+        desc: 'S-mart',
+        status: 'PENDING'
+      }
   ]
   ngOnInit(): void {
   }

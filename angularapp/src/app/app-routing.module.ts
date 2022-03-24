@@ -77,7 +77,7 @@ const routes: Routes = [
     children:[
       {
         path:'',
-        component:ManagerDashboardComponent
+        component:EmployeeDashboardComponent
       },
       {
         path:'profile',
@@ -85,7 +85,7 @@ const routes: Routes = [
       },
       {
         path:'view',
-        component:ManagerExpenseComponent
+        component:UserexpensesComponent
       },
       {
         path:'add',
@@ -97,7 +97,7 @@ const routes: Routes = [
       },
       {
         path:'dashboard',
-        component:ManagerDashboardComponent
+        component:EmployeeDashboardComponent
       }
     ],
     canActivate:[ManagerGuard]

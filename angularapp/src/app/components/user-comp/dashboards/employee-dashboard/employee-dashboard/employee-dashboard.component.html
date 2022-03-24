@@ -1,10 +1,18 @@
 <mat-card id="tariffHomeBody">
   <mat-card-content>
+    <div style="display: flex; justify-items:left ;">
+      <h1>My Expenses</h1>
+      <button  style="margin-left: 20px;" (click)="setDetails()" mat-icon-button>
+          <mat-icon>sync</mat-icon>
+        </button>
+      </div>
+      
 <h1 style="margin-left: 20px;" class="text-center mt-2">DASHBOARD</h1>
 <div class="grid-container">
-  <button class="empbutton-grid" id="grid1" routerLink="/expenses/dashboard/employee/totalexp"><div class="grid-item"><h1 style="margin-left: 20px;">Total Expense<br><br>4300</h1></div></button>
-  <button class="empbutton-grid" id="grid2"><div class="grid-item" routerLink="/expenses/dashboard/employee/pendingexp"><h1 style="margin-left: 20px;" >Pending Expense<br><br>1300</h1></div></button>
-  <button class="empbutton-grid" id="grid3"><div class="grid-item" routerLink="/expenses/dashboard/employee/approvedexp"><h1 style="margin-left: 20px;" >Approved Expense<br><br>3000</h1></div></button>
+  <button class="empbutton-grid" id="grid1" routerLink="/employee/expenses"><div class="grid-item"><h1 style="margin-left: 20px;">Total Expense<br><br>{{total}}</h1></div></button>
+  <button class="empbutton-grid" id="grid2"><div class="grid-item" routerLink="/employee/expenses"><h1 style="margin-left: 20px;" >Pending Expense<br><br>{{pending}}</h1></div></button>
+  <button class="empbutton-grid" id="grid3"><div class="grid-item" routerLink="/employee/expenses"><h1 style="margin-left: 20px;" >Approved Expense<br><br>{{approved}}</h1></div></button>
+  <div class="empbutton-grid" *ngIf="role=='manager'" id="grid3"><div class="grid-item" ><h1 style="margin-left: 20px;" >Total Employees<br><br>{{totalemp}}</h1></div></div>
 </div>
 </mat-card-content>
 </mat-card>
