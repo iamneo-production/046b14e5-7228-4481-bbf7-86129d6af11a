@@ -1,3 +1,4 @@
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,107 +16,101 @@ import { ViewemployeeComponent } from '../viewemployee/viewemployee.component';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  pass='';
-  pass_match=true;
-  search="Name";
-  searchVal="";
-  emp={
-    id:null,
-    active:null,
-    email:null,
-    mobileNumber:null,
-    password:null,
-    role:null,
-    username:null,
+  pass = '';
+  pass_match = true;
+  search = "Name";
+  searchVal = "";
+  emp = {
+    id: null,
+    active: true,
+    email: null,
+    mobileNumber: null,
+    password: null,
+    role: 'employee',
+    username: null,
   };
-  empl:Employee[]=[];
-  constructor(private adminService:AdminService, public router:Router, private snack:MatSnackBar,private employeeService:EmployeeService,public dialog:MatDialog) { }
+  empList: Employee[] = [];
+  empl: Employee[] = [];
+  constructor(private adminService: AdminService, public router: Router, private snack: MatSnackBar, private employeeService: EmployeeService, public dialog: MatDialog) { }
   ngOnInit(): void {
     this.setEmployees();
   }
-  formSubmit(){
-    if(this.emp.username==''|| this.emp.username==null || this.emp.email==''|| this.emp.email==null)
-    {
-      this.snack.open("Mandatory fields cannot be empty","ok",{
-        duration:3000,
+  formSubmit() {
+    if (this.emp.username == '' || this.emp.username == null || this.emp.email == '' || this.emp.email == null) {
+      this.snack.open("Mandatory fields cannot be empty", "ok", {
+        duration: 3000,
       });
-      return; 
+      return;
     }
-    if(this.emp.password!=this.pass)
-    {
-      this.pass_match=false;
-      this.snack.open("Passwords Don't Match","OK");
+    if (this.emp.password != this.pass) {
+      this.pass_match = false;
+      this.snack.open("Passwords Don't Match", "OK");
     }
-    this.adminService.addEmployees(this.emp).subscribe(
-      (data:any)=>{
-        console.log(data);
-        
-      },
-      (error)=>
-      {
-        console.log(error);
-        
-        this.snack.open("Added Successfully","ok",{
-          duration:3000
-          
-        });
-      }
-    );
+    else {
+      this.adminService.addEmployees(this.emp).subscribe(
+        (data: any) => {
+          console.log(data);
+        },
+        (error:HttpErrorResponse) => {
+          console.log(error.message);
+
+          this.snack.open("Added Successfully", "ok", {
+            duration: 3000
+
+          });
+        }
+      );
+    }
   }
 
-  view(empl:any)
-  {
+  view(empl: any) {
     this.employeeService.setView(empl);
     const dialogRef = this.dialog.open(ViewemployeeComponent);
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
-  } 
-   edit(empl:any)
-  {
+  }
+  edit(empl: any) {
     this.employeeService.setView(empl);
     const dialogRef = this.dialog.open(EditEmployeeComponent);
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
-  } 
-  delete(empl:any)
-  {
-    this.
+  }
+  delete(empl: any) {
+    this.employeeService.setView(empl);
     const dialogRef = this.dialog.open(DeleteEmployeeComponent);
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
-  } 
-  Search()
-  {
-    if(this.search=="Name")
-    {
-      this.empl=this.empl.filter(res=>{
+  }
+  Search() {
+    this.empl = this.empList;
+    if (this.search == "Name") {
+      this.empl = this.empl.filter(res => {
         return res.username.toLocaleLowerCase().match(this.searchVal.toLocaleLowerCase());
       });
     }
-    if(this.search=="Email")
-    {
-      this.empl=this.empl.filter(res=>{
+    if (this.search == "Email") {
+      this.empl = this.empl.filter(res => {
         return res.email.toLocaleLowerCase().match(this.searchVal.toLocaleLowerCase());
       });
     }
   }
-  reset()
-  {
-    this.searchVal="";
-    this.ngOnInit();
+  reset() {
+    this.searchVal = "";
+    this.empl=this.empList;
   }
-  setEmployees(){
+  setEmployees() {
     this.adminService.getAllEmployees().subscribe(
-      (data:Employee[])=>{
-        this.empl=data;
+      (data: Employee[]) => {
+        this.empl = data;
+        this.empList = this.empl;
       },
-      (error)=>{
+      (error) => {
         console.log(error);
-        this.snack.open("Something Went wrong! Try Later","OK",{
-          duration:3000
+        this.snack.open("Something Went wrong! Try Later", "OK", {
+          duration: 3000
         })
       }
     );

@@ -24,9 +24,10 @@ export class EditEmployeeComponent implements OnInit {
   constructor(public dialog:MatDialog,private snack:MatSnackBar,private adminService:AdminService) { }
 
   ngOnInit(): void {
+    this.setEmployee();
   }
-  setEmployee(emp:Employee) {
-    this.emp = emp;
+  setEmployee(){
+    this.emp=JSON.parse(localStorage.getItem("emp"));
   }
   close()
   {

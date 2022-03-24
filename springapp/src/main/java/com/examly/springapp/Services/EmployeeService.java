@@ -14,13 +14,11 @@ public class EmployeeService {
     private UserRepository userRepository;
     public UserModel getEmployee(String email)
     {
-        // System.out.println(this.userRepository.findEmployeeByEmail(email).getUsername());
-        // System.out.println("Heeelo");
         return this.userRepository.findEmployeeByEmail(email);
     }
     public List<UserModel> getAllEmployees()
     {
-        return this.userRepository.findAll();
+        return this.userRepository.getEmployeeList();
     }
     public String updateEmployee(UserModel user){
        this.userRepository.save(user);

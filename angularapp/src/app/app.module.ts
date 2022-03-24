@@ -96,7 +96,15 @@ import { UploadFilesComponent } from './components/upload-files/upload-files.com
     UserexpensesComponent,
     AddExpenseComponent,
     ViewExpenseComponent,
-    AdminComponent
+    AdminComponent,
+    ViewemployeeComponent,
+    ManagerApproveComponent,
+    EditEmployeeComponent,
+    DeleteEmployeeComponent,
+    EmployeeDashboardComponent,
+    ManagerDashboardComponent,
+    ManagerExpenseComponent,
+    UploadFilesComponent
   ],
   bootstrap: [AppComponent]
 })

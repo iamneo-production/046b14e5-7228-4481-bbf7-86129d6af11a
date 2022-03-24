@@ -1,6 +1,6 @@
 <mat-tab-group mat-align-tabs="center" style="height: max-content;">
   <mat-tab style="color:blue" label="View All">
-    <div style="display: flex; justify-items:left ;">
+    <div style="display: flex; justify-items:left ; margin-top: 10px;">
       <mat-form-field style="margin-right:20px;">
         <mat-label>Search By</mat-label>
         <mat-select [(value)]="search">
@@ -12,7 +12,7 @@
       <mat-label>Search</mat-label>
       <input id="searchBox" type="text" name="searchVal" (input)="Search()" [(ngModel)]="searchVal" matInput placeholder="search">
     </mat-form-field>
-    <button mat-raised-button (click)="reset()" color="accent">
+    <button mat-raised-button style="height: fit-content; margin-left: 10px;" (click)="reset()" color="accent">
       Clear
     </button>
     <button  style="margin-left: 20px;" (click)="setEmployees()" mat-icon-button>
