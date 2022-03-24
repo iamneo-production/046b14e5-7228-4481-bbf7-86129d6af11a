@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from 'src/app/services/admin/admin.service';
-import { AdminComponent } from '../user-comp/admin/admin.component';
+import { Employee } from 'src/app/services/Employee/Employee';
 
 @Component({
   selector: 'app-edit-employee',
@@ -21,15 +21,13 @@ export class EditEmployeeComponent implements OnInit {
   };
   pass='';
   pass_match=true;
-  constructor(public dialog:MatDialog,private snack:MatSnackBar,private adminService:AdminService,private adminComp:AdminComponent) { }
+  constructor(public dialog:MatDialog,private snack:MatSnackBar,private adminService:AdminService) { }
 
   ngOnInit(): void {
     this.setEmployee();
   }
   setEmployee(){
     this.emp=JSON.parse(localStorage.getItem("emp"));
-    console.log(this.emp);
-    
   }
   close()
   {
@@ -57,7 +55,7 @@ export class EditEmployeeComponent implements OnInit {
     this.snack.open("Updated Successfully","OK",{
       duration:3000
     });
-    this.adminComp.ngOnInit();
+    this.adminService.getAllEmployees();
   }
   )
  }

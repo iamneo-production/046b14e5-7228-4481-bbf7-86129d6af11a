@@ -74,7 +74,10 @@ export class LoginComponent implements OnInit {
     else if (role == "manager")
       this.router.navigate(['manager']);
     else if (role == "admin")
+    {
+      this.adminService.getAllEmployees();
       this.router.navigate(['admin']);
+    }
   }
   clear() {
     this.login.email = '';

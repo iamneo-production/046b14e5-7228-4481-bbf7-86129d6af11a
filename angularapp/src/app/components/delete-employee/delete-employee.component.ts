@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from 'src/app/services/admin/admin.service';
+import { Employee } from 'src/app/services/Employee/Employee';
 import Swal from 'sweetalert2';
-import { AdminComponent } from '../user-comp/admin/admin.component';
 
 @Component({
   selector: 'app-delete-employee',
@@ -22,15 +22,13 @@ export class DeleteEmployeeComponent implements OnInit {
     username: null,
   };
 
-  constructor(public dialog: MatDialog, private snack: MatSnackBar, private adminService: AdminService, private adminComp: AdminComponent) { }
+  constructor(public dialog: MatDialog, private snack: MatSnackBar, private adminService: AdminService) { }
 
   ngOnInit(): void {
     this.setEmployee();
   }
-  setEmployee() {
-    this.emp = JSON.parse(localStorage.getItem("emp"));
-    console.log(this.emp);
-
+  setEmployee(){
+    this.emp=JSON.parse(localStorage.getItem("emp"));
   }
   close() {
     this.dialog.closeAll();
@@ -57,7 +55,6 @@ export class DeleteEmployeeComponent implements OnInit {
                 duration: 3000
               });
               this.adminService.getAllEmployees();
-              this.adminComp.setEmployees();
             });
         this.close();
       }
