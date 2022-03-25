@@ -11,14 +11,9 @@ import baseUrl from '../url';
 export class AdminService {
   emp:Employee;
   constructor(private http:HttpClient,private snack:MatSnackBar) { }
-  public getAllEmployees(){
-    this.http.get<Employee[]>(`${baseUrl}/admin`).subscribe(
-      (data:Employee[])=>{
-        console.log(data[0]);
-        
-        localStorage.setItem("employeeList",JSON.stringify(data));
-      }
-    )
+  public getAllEmployees():Observable<Employee[]>
+  {
+    return this.http.get<Employee[]>(`${baseUrl}/admin`);
   }
   public getEmployees(id:number){
     this.http.get<Employee>(`${baseUrl}/admin/${id}`).subscribe(
@@ -33,7 +28,7 @@ export class AdminService {
     return this.http.post<string>(`${baseUrl}/admin`,emp);
   }
   public updateEmployees(emp:Employee):Observable<string>{
-    return this.http.put<string>(`${baseUrl}/admin`,emp);
+    return this.http.put<string>(`${baseUrl}/admin/${emp.id}`,emp);
   }
   public deleteEmployees(id:number):Observable<string>{
     return this.http.delete<string>(`${baseUrl}/admin/${id}`);

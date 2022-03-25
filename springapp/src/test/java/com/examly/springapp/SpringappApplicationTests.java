@@ -1,10 +1,7 @@
 package com.examly.springapp;
 
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-//import org.junit.Test;
 import org.junit.jupiter.api.Test;
 
 import org.junit.runner.RunWith;

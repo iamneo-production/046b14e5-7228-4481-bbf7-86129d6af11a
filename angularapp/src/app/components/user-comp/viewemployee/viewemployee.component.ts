@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Employee } from 'src/app/services/Employee/Employee';
 
 @Component({
   selector: 'app-viewemployee',
@@ -23,8 +24,6 @@ export class ViewemployeeComponent implements OnInit {
   }
   setEmployee(){
     this.emp=JSON.parse(localStorage.getItem("emp"));
-    console.log(this.emp);
-    
   }
   close()
   {

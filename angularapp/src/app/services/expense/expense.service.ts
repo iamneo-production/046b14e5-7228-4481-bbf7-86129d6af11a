@@ -46,6 +46,10 @@ export class ExpenseService {
   }
   public setLimit(id :number):Observable<number>
   {
-     return this.http.get<number>(`${baseUrl}/expense/curr-month/${id}`);
+     return this.http.get<number>(`${baseUrl}/expense/sum-month/${id}`);
+  }
+  public getCurrentExpenses(id :number):Observable<Expense[]>
+  {
+     return this.http.get<Expense[]>(`${baseUrl}/expense/curr-month/${id}`);
   }
 }
