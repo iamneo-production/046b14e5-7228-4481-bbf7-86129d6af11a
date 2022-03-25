@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Expense } from 'src/app/services/expense/Expense';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ExpenseService } from 'src/app/services/expense/expense.service';
 
 @Component({
@@ -10,15 +10,11 @@ import { ExpenseService } from 'src/app/services/expense/expense.service';
 })
 export class ViewExpenseComponent implements OnInit {
 
-  // date="";
-  constructor(public dialog:MatDialog,public expenseService:ExpenseService) { }
-expense:Expense;
+  constructor(@Inject(MAT_DIALOG_DATA) public expense: any,public dialog: MatDialog, public expenseService: ExpenseService) { }
+
   ngOnInit(): void {
-    this.expense=this.expenseService.getContent();
-    // this.date=(this.expense.datedOn.getUTCFullYear()) + "/" + (this.expense.datedOn.getMonth() + 1)+ "/" + (this.expense.datedOn.getUTCDate());
   }
-  close()
-  {
+  close() {
     this.dialog.closeAll();
   }
 }

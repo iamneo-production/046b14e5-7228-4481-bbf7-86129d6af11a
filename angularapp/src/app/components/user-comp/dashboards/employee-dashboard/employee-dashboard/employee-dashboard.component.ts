@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Employee } from 'src/app/services/Employee/Employee';
+import { EmployeeService } from 'src/app/services/Employee/employee.service';
 import { Expense } from 'src/app/services/expense/Expense';
 import { ExpenseService } from 'src/app/services/expense/expense.service';
 @Component({
@@ -9,71 +10,65 @@ import { ExpenseService } from 'src/app/services/expense/expense.service';
   styleUrls: ['./employee-dashboard.component.css']
 })
 export class EmployeeDashboardComponent implements OnInit {
-  role="";
-  expense:Expense[]=[];
-  emp={
-    id:null,
-    active:null,
-    email:null,
-    mobileNumber:null,
-    password:null,
-    role:null,
-    username:null,
+  role = "";
+  email="";
+  expense: Expense[] = [];
+  emp = {
+    id: null,
+    active: null,
+    email: null,
+    mobileNumber: null,
+    password: null,
+    role: null,
+    username: null,
   };
-  approved:number;
-  pending:number;
-  total:number;
-  totalemp:number;
-  employees:Employee[]=[];
-  constructor(private snack: MatSnackBar,private expenseService:ExpenseService) { }
-  
+  approved: number;
+  pending: number;
+  total: number;
+  totalemp: number;
+  employees: Employee[] = [];
+  constructor(private snack: MatSnackBar, private expenseService: ExpenseService,private empService:EmployeeService) { }
+
   ngOnInit(): void {
-    this.role=localStorage.getItem("role");
-    this.approved=0;
-    this.pending=0;
-    this.total=0;
-    this.totalemp=0;
-    this.employees= JSON.parse(localStorage.getItem("employeeList"));
+    this.role = localStorage.getItem("role");
     this.setEmployee();
-    this.setExpenses();
     this.setDetails();
-    
   }
-  setExpenses(){
-  this.expenseService.getCurrentExpenses(this.emp.id).subscribe(
-    (data)=>{
-      this.expense=data;
-      console.log(this.expense[0]);
-    },
-    (error)=>{
-      console.log(error);
+  setExpenses() {
+    this.expense=this.expenseService.getCurrentExpenses();
+  }
+  setEmployee() {
+    this.emp=this.empService.getEmployee();
+    if(this.role=="manager")
+    {
+      this.employees=this.empService.getAllEmp();
     }
-  );
   }
-  setEmployee()
-  {
-    this.emp=JSON.parse(localStorage.getItem("employee"));
-  }
-  setDetails(){
-    for(let i=0; i<this.expense.length; i++){
-      if(this.expense[i].status=="approved"){
-        this.approved+=this.expense[i].billCost;
+  setDetails() {
+    this.setExpenses();
+    this.approved = 0;
+    this.pending = 0;
+    this.total = 0;
+    this.totalemp = 0;
+    for (let i = 0; i < this.expense.length; i++) {
+      if (this.expense[i].status == "approved") {
+        this.approved += this.expense[i].billCost;
       }
-      if(this.expense[i].status=="pending"){
-        this.pending+=this.expense[i].billCost;
+      if (this.expense[i].status == "pending") {
+        this.pending += this.expense[i].billCost;
       }
-      this.total+=this.expense[i].billCost;
+      this.total += this.expense[i].billCost;
+    }
+    if (this.emp.role == "manager") {
+      for (let i = 0; i < this.employees.length; i++) {
+        if (this.employees[i].role == "employee")
+          this.totalemp++;
+      }
+    }
   }
-  for(let i=0; i<this.employees.length; i++){
-    if(this.employees[i].role=="employee")
-     this.totalemp++;
-
-  }
-  console.log(this.approved);
-  console.log(this.pending);
-  console.log(this.total);
-  console.log(this.totalemp);
-
-  }
+refresh()
+{
+  this.setDetails();
+}
 
 }

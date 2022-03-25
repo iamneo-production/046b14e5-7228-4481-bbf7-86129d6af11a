@@ -10,6 +10,7 @@ public class ExpenseModel {
     @Id
     private String expenseId;
     private int billNumber;
+    @Lob
     private Blob billImage;
     private int billCost;
     private Date datedOn;

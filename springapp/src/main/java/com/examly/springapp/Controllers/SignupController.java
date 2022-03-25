@@ -8,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.PathVariable;import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -26,7 +28,11 @@ public class SignupController {
         LoginModel login = new LoginModel(user.getEmail(),user.getPassword(),user.getRole());
         this.loginService.add(login);
        return new ResponseEntity<>(this.signupService.addUser(user),HttpStatus.OK);
-
-
+    }
+    @GetMapping("/employee/{email}")
+    public ResponseEntity<UserModel> getEmployee(@PathVariable String email)
+    {
+        UserModel user=this.signupService.getUser(email);
+        return new ResponseEntity<>(user,HttpStatus.OK);
     }
 }
