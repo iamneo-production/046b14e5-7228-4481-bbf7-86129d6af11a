@@ -3,15 +3,20 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Employee } from 'src/app/services/Employee/Employee';
 import { Expense } from 'src/app/services/expense/Expense';
 import { ExpenseService } from 'src/app/services/expense/expense.service';
-@Component({
+@Component
+(
+  {
   selector: 'app-employee-dashboard',
   templateUrl: './employee-dashboard.component.html',
   styleUrls: ['./employee-dashboard.component.css']
-})
-export class EmployeeDashboardComponent implements OnInit {
+}
+)
+export class EmployeeDashboardComponent implements OnInit
+ {
   role="";
   expense:Expense[]=[];
-  emp={
+  emp=
+  {
     id:null,
     active:null,
     email:null,
@@ -25,9 +30,14 @@ export class EmployeeDashboardComponent implements OnInit {
   total:number;
   totalemp:number;
   employees:Employee[]=[];
-  constructor(private snack: MatSnackBar,private expenseService:ExpenseService) { }
+  constructor(private snack: MatSnackBar,private expenseService:ExpenseService) 
+  { 
+
+  }
   
-  ngOnInit(): void {
+  ngOnInit(): 
+  void 
+  {
     this.role=localStorage.getItem("role");
     this.approved=0;
     this.pending=0;
@@ -39,13 +49,17 @@ export class EmployeeDashboardComponent implements OnInit {
     this.setDetails();
     
   }
-  setExpenses(){
-  this.expenseService.getCurrentExpenses(this.emp.id).subscribe(
-    (data)=>{
+  setExpenses()
+  {
+  this.expenseService.getCurrentExpenses(this.emp.id).subscribe
+  (
+    (data)=>
+    {
       this.expense=data;
       console.log(this.expense[0]);
     },
-    (error)=>{
+    (error)=>
+    {
       console.log(error);
     }
   );
@@ -54,17 +68,26 @@ export class EmployeeDashboardComponent implements OnInit {
   {
     this.emp=JSON.parse(localStorage.getItem("employee"));
   }
-  setDetails(){
-    for(let i=0; i<this.expense.length; i++){
-      if(this.expense[i].status=="approved"){
+  setDetails()
+  {
+    this.approved=0;
+    this.pending=0;
+    this.total=0;
+    this.totalemp=0;
+    for(let i=0; i<this.expense.length; i++)
+    {
+      if(this.expense[i].status=="approved")
+      {
         this.approved+=this.expense[i].billCost;
       }
-      if(this.expense[i].status=="pending"){
+      if(this.expense[i].status=="pending")
+      {
         this.pending+=this.expense[i].billCost;
       }
       this.total+=this.expense[i].billCost;
   }
-  for(let i=0; i<this.employees.length; i++){
+  for(let i=0; i<this.employees.length; i++)
+  {
     if(this.employees[i].role=="employee")
      this.totalemp++;
 
