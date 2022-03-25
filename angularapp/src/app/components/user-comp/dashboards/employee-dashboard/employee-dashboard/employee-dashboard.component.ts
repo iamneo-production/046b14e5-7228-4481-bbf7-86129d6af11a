@@ -4,7 +4,9 @@ import { Employee } from 'src/app/services/Employee/Employee';
 import { EmployeeService } from 'src/app/services/Employee/employee.service';
 import { Expense } from 'src/app/services/expense/Expense';
 import { ExpenseService } from 'src/app/services/expense/expense.service';
-@Component({
+@Component
+(
+  {
   selector: 'app-employee-dashboard',
   templateUrl: './employee-dashboard.component.html',
   styleUrls: ['./employee-dashboard.component.css']
