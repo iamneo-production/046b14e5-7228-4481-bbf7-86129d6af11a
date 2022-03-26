@@ -1,15 +1,15 @@
-package com.examly.springapp;
+// package com.examly.springapp;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+// import org.springframework.boot.SpringApplication;
+// import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+// @SpringBootApplication
 
-public class UploadFilesDatabaseApplication
+// public class UploadFilesDatabaseApplication
 
- {
-    public static void main(String[] args) 
-    {
-		SpringApplication.run(UploadFilesDatabaseApplication.class, args);
-	}
-}
+//  {
+//     public static void main(String[] args) 
+//     {
+// 		SpringApplication.run(UploadFilesDatabaseApplication.class, args);
+// 	}
+// }

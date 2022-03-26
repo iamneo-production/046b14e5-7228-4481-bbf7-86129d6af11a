@@ -21,19 +21,19 @@ public class FileStorageService
 	@Autowired
 	private FileDBRepository fileDBRepository;
 
-	public FileDBRepository store(MultipartFile file) throws IOException 
-  {
+	public void store(MultipartFile file) throws IOException 
+  	{
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		FileDB FileDB = new FileDB(fileName, file.getContentType(), file.getBytes());
 
-		return fileDBRepository.save(FileDB);
+		fileDBRepository.save(FileDB);
 	}
 
-	public FileDBRepository getFile(String id) {
+	public FileDB getFile(String id) {
 		return fileDBRepository.findById(id).get();
 	}
 
-	public Stream<FileDBRepository> getAllFiles() {
+	public Stream<FileDB> getAllFiles() {
 		return fileDBRepository.findAll().stream();
 	}
 
