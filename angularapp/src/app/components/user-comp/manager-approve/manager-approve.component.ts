@@ -8,7 +8,8 @@ import { ViewExpenseComponent } from '../view-expense/view-expense.component';
   templateUrl: './manager-approve.component.html',
   styleUrls: ['./manager-approve.component.css']
 })
-export class ManagerApproveComponent implements OnInit {
+export class ManagerApproveComponent implements OnInit 
+{
 
   constructor(public dialog:MatDialog,public expenseService:ExpenseService) { }
 
@@ -119,10 +120,10 @@ export class ManagerApproveComponent implements OnInit {
   ];
   view(exp:any)
   {
-    this.expenseService.setContent(exp);
-    const dialogRef = this.dialog.open(ViewExpenseComponent);
+    const dialogRef = this.dialog.open(ViewExpenseComponent,{data:exp});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-    });
+    }
+    );
   }
 }

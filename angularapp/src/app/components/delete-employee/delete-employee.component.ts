@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from 'src/app/services/admin/admin.service';
+import { EmployeeService } from 'src/app/services/Employee/employee.service';
 import Swal from 'sweetalert2';
-import { AdminComponent } from '../user-comp/admin/admin.component';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-delete-employee',
@@ -11,26 +12,9 @@ import { AdminComponent } from '../user-comp/admin/admin.component';
   styleUrls: ['./delete-employee.component.css']
 })
 export class DeleteEmployeeComponent implements OnInit {
-
-  emp = {
-    id: null,
-    active: null,
-    email: null,
-    mobileNumber: null,
-    password: null,
-    role: null,
-    username: null,
-  };
-
-  constructor(public dialog: MatDialog, private snack: MatSnackBar, private adminService: AdminService, private adminComp: AdminComponent) { }
+  constructor(public dialog: MatDialog, private snack: MatSnackBar, private adminService: AdminService, private empService: EmployeeService, @Inject(MAT_DIALOG_DATA) public emp: any) { }
 
   ngOnInit(): void {
-    this.setEmployee();
-  }
-  setEmployee() {
-    this.emp = JSON.parse(localStorage.getItem("emp"));
-    console.log(this.emp);
-
   }
   close() {
     this.dialog.closeAll();
@@ -50,14 +34,12 @@ export class DeleteEmployeeComponent implements OnInit {
           .subscribe(
             (data) => {
               console.log(data);
-
             },
             (error) => {
               this.snack.open("Deleted Successfully", "OK", {
                 duration: 3000
               });
-              this.adminService.getAllEmployees();
-              this.adminComp.setEmployees();
+              this.adminService.setAllEmployees();
             });
         this.close();
       }

@@ -33,8 +33,12 @@ public class ExpenseService {
         this.expenseRepository.save(expense);
         return "Expense Added";
     }
-    public Long getCurrentExpense(int id)
+    public Long getSumOfExpenses(int id)
     {
         return this.expenseRepository.findCurrentMonthExpenses(id);
+    }
+    public List <ExpenseModel> getCurrentExpense(int id)
+    {
+        return this.expenseRepository.getCurrentMonthExpenses(id);
     }
 }

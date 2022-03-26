@@ -6,6 +6,7 @@ import { Expense } from 'src/app/services/expense/Expense';
 import { ExpenseService } from 'src/app/services/expense/expense.service';
 import { ViewExpenseComponent } from '../view-expense/view-expense.component';
 
+
 @Component({
   selector: 'app-userexpenses',
   templateUrl: './userexpenses.component.html',
@@ -15,6 +16,7 @@ export class UserexpensesComponent implements OnInit {
 
   constructor(public dialog:MatDialog,public expenseService:ExpenseService,private empService:EmployeeService,private snack:MatSnackBar) { }
   expenses:Expense[];
+  email="";
   emp={
     id:null,
     active:null,
@@ -25,31 +27,24 @@ export class UserexpensesComponent implements OnInit {
     username:null,
   };
   ngOnInit(): void {
+    this.email = localStorage.getItem("email");
     this.setEmployee();
     this.setExpenses();
   }
   view(exp:any)
   {
-    this.expenseService.setContent(exp);
-    const dialogRef = this.dialog.open(ViewExpenseComponent);
+    const dialogRef = this.dialog.open(ViewExpenseComponent,{data:exp});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   } 
   setExpenses()
   {
-    this.expenseService.getExpense(this.emp.id).subscribe(
-      (data:Expense[])=>{
-        this.expenses=data;
-      },
-      (error)=>{
-        this.snack.open("Something Went Wrong","OK");
-      }
-    );
+    this.expenses=this.expenseService.getExpenses();
   }
   setEmployee()
   {
-    this.emp=JSON.parse(localStorage.getItem("employee"));
+    this.emp=this.empService.getEmployee();
   }
 
 }

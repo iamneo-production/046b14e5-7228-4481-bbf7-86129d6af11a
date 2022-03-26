@@ -4,9 +4,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AddExpenseComponent } from './components/user-comp/add-expense/add-expense.component';
 import { AdminComponent } from './components/user-comp/admin/admin.component';
 import { EmployeeDashboardComponent } from './components/user-comp/dashboards/employee-dashboard/employee-dashboard/employee-dashboard.component';
-import { ManagerDashboardComponent } from './components/user-comp/dashboards/manager-dashboard/manager-dashboard/manager-dashboard.component';
 import { ManagerApproveComponent } from './components/user-comp/manager-approve/manager-approve.component';
-import { ManagerExpenseComponent } from './components/user-comp/manager-expense/manager-expense.component';
 import { UserexpensesComponent } from './components/user-comp/userexpenses/userexpenses.component';
 import { AdminGuard } from './guard/admin.guard';
 import { EmployeeGuard } from './guard/employee.guard';
@@ -77,15 +75,15 @@ const routes: Routes = [
     children:[
       {
         path:'',
-        component:ManagerDashboardComponent
+        component:EmployeeDashboardComponent
       },
       {
         path:'profile',
         component:ProfileComponent
       },
       {
-        path:'view',
-        component:ManagerExpenseComponent
+        path:'expenses',
+        component:UserexpensesComponent
       },
       {
         path:'add',
@@ -97,7 +95,7 @@ const routes: Routes = [
       },
       {
         path:'dashboard',
-        component:ManagerDashboardComponent
+        component:EmployeeDashboardComponent
       }
     ],
     canActivate:[ManagerGuard]
