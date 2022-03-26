@@ -16,6 +16,10 @@ public class EmployeeService {
     {
         return this.userRepository.findEmployeeByEmail(email);
     }
+    public List<UserModel> getEmp()
+    {
+        return this.userRepository.findAll();
+    }
     public List<UserModel> getAllEmployees()
     {
         return this.userRepository.getEmployeeList();

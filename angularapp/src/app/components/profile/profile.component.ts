@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
     this.setEmployee();
   }
   setEmployee() {
-    this.emp=JSON.parse(localStorage.getItem("employee"));
+    this.emp=this.empService.getEmployee();
     if (this.emp.active == true)
           this.status = "ACTIVE";
         else

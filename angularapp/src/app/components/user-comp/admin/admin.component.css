@@ -8,14 +8,6 @@
 .card-x{
 margin: 0;
 }
-.mat-card.scrollable-content{
-  display: flex;
-  flex-direction: column;
-}
-
-.mat-card.scrollable-content mat-card-content {
-    overflow-y: auto;
-}
 .search{
   display: block;
   width: fit-content;

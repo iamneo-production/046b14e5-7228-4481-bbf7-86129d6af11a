@@ -34,8 +34,6 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
 import { DeleteEmployeeComponent } from './components/delete-employee/delete-employee.component';
 import { EmployeeDashboardComponent } from './components/user-comp/dashboards/employee-dashboard/employee-dashboard/employee-dashboard.component';
-import { ManagerDashboardComponent } from './components/user-comp/dashboards/manager-dashboard/manager-dashboard/manager-dashboard.component';
-import { ManagerExpenseComponent } from './components/user-comp/manager-expense/manager-expense.component';
 import { UploadFilesComponent } from './components/upload-files/upload-files.component';
 
 
@@ -57,8 +55,6 @@ import { UploadFilesComponent } from './components/upload-files/upload-files.com
     EditEmployeeComponent,
     DeleteEmployeeComponent,
     EmployeeDashboardComponent,
-    ManagerDashboardComponent,
-    ManagerExpenseComponent,
     UploadFilesComponent
   ],
   imports: [
@@ -102,8 +98,6 @@ import { UploadFilesComponent } from './components/upload-files/upload-files.com
     EditEmployeeComponent,
     DeleteEmployeeComponent,
     EmployeeDashboardComponent,
-    ManagerDashboardComponent,
-    ManagerExpenseComponent,
     UploadFilesComponent
   ],
   bootstrap: [AppComponent]

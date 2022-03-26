@@ -120,10 +120,8 @@ export class ManagerApproveComponent implements OnInit
   ];
   view(exp:any)
   {
-    this.expenseService.setContent(exp);
-    const dialogRef = this.dialog.open(ViewExpenseComponent);
-    dialogRef.afterClosed().subscribe(result => 
-      {
+    const dialogRef = this.dialog.open(ViewExpenseComponent,{data:exp});
+    dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     }
     );

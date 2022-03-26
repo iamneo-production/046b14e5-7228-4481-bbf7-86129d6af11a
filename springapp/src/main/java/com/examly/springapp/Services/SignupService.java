@@ -22,6 +22,9 @@ public class SignupService {
         }
         this.userRepository.save(user);
         return true;
-        
+    }
+    public UserModel getUser(String email)
+    {
+        return this.userRepository.findEmployeeByEmail(email);
     }
 }

@@ -24,6 +24,10 @@ public class AdminController {
     public ResponseEntity<List<UserModel>> getAllUsers(){
         return new ResponseEntity<>(this.employeeService.getAllEmployees(),HttpStatus.OK);
     }
+    @GetMapping("/manager/emp")
+    public ResponseEntity<List<UserModel>> getAllUser(){
+        return new ResponseEntity<>(this.employeeService.getEmp(),HttpStatus.OK);
+    }
     @GetMapping("/admin/{id}")
     public ResponseEntity<UserModel> getUser(@PathVariable int id){
         return new ResponseEntity<>(this.employeeService.getEmpById(id),HttpStatus.OK);

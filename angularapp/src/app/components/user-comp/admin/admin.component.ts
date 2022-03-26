@@ -54,34 +54,30 @@ export class AdminComponent implements OnInit {
         (error:HttpErrorResponse) => {
           console.log(error.message);
 
-          this.snack.open("Added Successfully", "ok", {
-            duration: 3000
-
-          });
+          this.snack.open("Added Successfully", "ok", {duration: 3000});
+          this.adminService.setAllEmployees();
         }
       );
+     
     }
   }
 
   view(empl: any) {
-    this.employeeService.setView(empl);
-    const dialogRef = this.dialog.open(ViewemployeeComponent);
+    const dialogRef = this.dialog.open(ViewemployeeComponent,{data:empl});
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      this.setEmployees();
     });
   }
   edit(empl: any) {
-    this.employeeService.setView(empl);
-    const dialogRef = this.dialog.open(EditEmployeeComponent);
+    const dialogRef = this.dialog.open(EditEmployeeComponent,{data:empl});
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      this.setEmployees();
     });
   }
   delete(empl: any) {
-    this.employeeService.setView(empl);
-    const dialogRef = this.dialog.open(DeleteEmployeeComponent);
+    const dialogRef = this.dialog.open(DeleteEmployeeComponent,{data:empl});
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      this.setEmployees();
     });
   }
   Search() {
@@ -102,17 +98,7 @@ export class AdminComponent implements OnInit {
     this.empl=this.empList;
   }
   setEmployees() {
-    this.adminService.getAllEmployees().subscribe(
-      (data: Employee[]) => {
-        this.empl = data;
-        this.empList = this.empl;
-      },
-      (error) => {
-        console.log(error);
-        this.snack.open("Something Went wrong! Try Later", "OK", {
-          duration: 3000
-        })
-      }
-    );
+    this.empList=this.adminService.getEmployees();
+    this.empl=this.adminService.getEmployees();
   }
 }
