@@ -32,4 +32,8 @@ public class LoginService {
     {
         this.loginRepository.save(login);
     }
+    public LoginModel getLogin(String email)
+    {
+        return this.loginRepository.findByEmail(email);
+    }
 }

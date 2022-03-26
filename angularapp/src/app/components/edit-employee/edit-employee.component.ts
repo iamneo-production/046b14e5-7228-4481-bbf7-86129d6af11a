@@ -1,33 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from 'src/app/services/admin/admin.service';
-import { Employee } from 'src/app/services/Employee/Employee';
-
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 @Component({
   selector: 'app-edit-employee',
   templateUrl: './edit-employee.component.html',
   styleUrls: ['./edit-employee.component.css']
 })
 export class EditEmployeeComponent implements OnInit {
-  emp={
-    id:null,
-    active:null,
-    email:null,
-    mobileNumber:null,
-    password:null,
-    role:null,
-    username:null,
-  };
+  // emp={
+  //   id:null,
+  //   active:null,
+  //   email:null,
+  //   mobileNumber:null,
+  //   password:null,
+  //   role:null,
+  //   username:null,
+  // };
   pass='';
   pass_match=true;
-  constructor(public dialog:MatDialog,private snack:MatSnackBar,private adminService:AdminService) { }
+  constructor(public dialog:MatDialog,private snack:MatSnackBar,private adminService:AdminService, @Inject(MAT_DIALOG_DATA) public emp:any) { }
 
   ngOnInit(): void {
-    this.setEmployee();
-  }
-  setEmployee(){
-    this.emp=JSON.parse(localStorage.getItem("emp"));
   }
   close()
   {
@@ -55,7 +50,8 @@ export class EditEmployeeComponent implements OnInit {
     this.snack.open("Updated Successfully","OK",{
       duration:3000
     });
-    this.adminService.getAllEmployees();
+    this.adminService.setAllEmployees();
+    this.dialog.closeAll();
   }
   )
  }

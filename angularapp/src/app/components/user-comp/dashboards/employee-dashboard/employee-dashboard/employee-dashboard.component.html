@@ -1,18 +1,60 @@
 <mat-card id="trafficHomeBody">
   <mat-card-content>
+<<<<<<< HEAD
     <div style="display: flex; justify-items:left ;">
       <h1>My Expenses</h1>
-      <button  style="margin-left: 20px;" (click)="setDetails()" mat-icon-button>
-          <mat-icon>sync</mat-icon>
-        </button>
+      <button style="margin-left: 20px;" (click)="refresh()" mat-icon-button>
+        <mat-icon>sync</mat-icon>
+      </button>
+    </div>
+
+    <h1 style="margin-left: 20px;" class="text-center mt-2">DASHBOARD</h1>
+    <div class="grid-container">
+      <button class="empbutton-grid" *ngIf="role=='employee'" id="grid1" routerLink="/employee/expenses">
+        <div class="grid-item">
+          <h1 style="margin-left: 20px;">Total Expense<br><br>{{total}}</h1>
+        </div>
+      </button>
+      <button class="empbutton-grid" *ngIf="role=='employee'" id="grid2">
+        <div class="grid-item" routerLink="/employee/expenses">
+          <h1 style="margin-left: 20px;">Pending Expense<br><br>{{pending}}</h1>
+        </div>
+      </button>
+      <button class="empbutton-grid" *ngIf="role=='employee'" id="grid3">
+        <div class="grid-item" routerLink="/employee/expenses">
+          <h1 style="margin-left: 20px;">Approved Expense<br><br>{{approved}}</h1>
+        </div>
+      </button>
+      <button class="empbutton-grid" *ngIf="role=='manager'" id="grid1" routerLink="/manager/expenses">
+        <div class="grid-item">
+          <h1 style="margin-left: 20px;">Total Expense<br><br>{{total}}</h1>
+        </div>
+      </button>
+      <button class="empbutton-grid" *ngIf="role=='manager'" id="grid2">
+        <div class="grid-item" routerLink="/manager/expenses">
+          <h1 style="margin-left: 20px;">Pending Expense<br><br>{{pending}}</h1>
+        </div>
+      </button>
+      <button class="empbutton-grid" *ngIf="role=='manager'" id="grid3">
+        <div class="grid-item" routerLink="/manager/expenses">
+          <h1 style="margin-left: 20px;">Approved Expense<br><br>{{approved}}</h1>
+        </div>
+      </button>
+      <div class="empbutton-grid" *ngIf="role=='manager'" id="grid3">
+        <div class="grid-item">
+          <h1 style="margin-left: 20px;">Total Employees<br><br>{{totalemp}}</h1>
+        </div>
       </div>
-      
-<h1 style="margin-left: 20px;" class="text-center mt-2">DASHBOARD</h1>
+    </div>
+  </mat-card-content>
+=======
+<h1 style="margin-left: 20px;" class="text-center mt-2">DASHBOARD<mat-icon>event</mat-icon></h1>
 <div class="grid-container">
-  <button class="empbutton-grid" id="grid1" routerLink="/employee/expenses"><div class="grid-item"><h1 style="margin-left: 20px;">Total Expense<br><br>{{total}}</h1></div></button>
-  <button class="empbutton-grid" id="grid2"><div class="grid-item" routerLink="/employee/expenses"><h1 style="margin-left: 20px;" >Pending Expense<br><br>{{pending}}</h1></div></button>
-  <button class="empbutton-grid" id="grid3"><div class="grid-item" routerLink="/employee/expenses"><h1 style="margin-left: 20px;" >Approved Expense<br><br>{{approved}}</h1></div></button>
-  <div class="empbutton-grid" *ngIf="role=='manager'" id="grid3"><div class="grid-item" ><h1 style="margin-left: 20px;" >Total Employees<br><br>{{totalemp}}</h1></div></div>
+  <button class="empbutton-grid" id="grid1" routerLink="/employee/expenses"><div class="grid-item"><h3 style="margin-left: 10px;margin-top:30px">Total Expense <mat-icon style="margin-left:10px;font-size:20px">check_circle</mat-icon><br><br>{{total}}</h3></div></button>
+  <button class="empbutton-grid" id="grid2"><div class="grid-item" routerLink="/employee/expenses"><h3 style="margin-left: 10px;margin-top:30px">Pending Expense <mat-icon style="margin-left:10px;font-size:20px">running_with_errors</mat-icon><br><br>{{pending}}</h3></div></button>
+  <button class="empbutton-grid" id="grid3"><div class="grid-item" routerLink="/employee/expenses"><h3 style="margin-left: 10px;margin-top:30px">Approved Expense <mat-icon style="margin-left:10px;font-size:20px">check_circle</mat-icon><br><br>{{approved}}</h3></div></button>
+  <div class="empbutton-grid" *ngIf="role=='manager'" id="grid3"><div class="grid-item" ><h3 style="margin-left: 10px;margin-top:30px">Total Expense <mat-icon style="margin-left:10px;font-size:20px">running_with_errors</mat-icon><br><br>{{totalemp}}</h3></div></div>
 </div>
 </mat-card-content>
+>>>>>>> 9d85c238011bf2d696143922d043d78cad734279
 </mat-card>
