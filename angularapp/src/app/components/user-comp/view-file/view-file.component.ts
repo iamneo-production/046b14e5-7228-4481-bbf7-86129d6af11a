@@ -19,7 +19,7 @@ export class ViewFileComponent implements OnInit {
     let link = document.createElement('a');
     link.setAttribute('type', 'hidden');
     link.href =this.receipt;
-    link.download;
+    link.download='';
     document.body.appendChild(link);
     link.click();
     link.remove();

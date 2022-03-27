@@ -35,9 +35,7 @@ export class UserexpensesComponent implements OnInit {
   view(exp:any)
   {
     const dialogRef = this.dialog.open(ViewExpenseComponent,{data:exp});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    dialogRef.afterClosed().subscribe(result => {});
   } 
   setExpenses()
   {

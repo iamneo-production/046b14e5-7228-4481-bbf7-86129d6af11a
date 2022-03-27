@@ -14,8 +14,6 @@ export class ViewExpenseComponent implements OnInit {
   constructor(private dialog:MatDialog,@Inject(MAT_DIALOG_DATA) public expense: any,public this_dialog: MatDialogRef<ViewExpenseComponent>, public expenseService: ExpenseService) { }
 
   ngOnInit(): void {
-    console.log(this.expense);
-    
   }
   view()
   {
