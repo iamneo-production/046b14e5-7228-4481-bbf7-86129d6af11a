@@ -1,8 +1,8 @@
 package com.examly.springapp.Models;
 
-import java.sql.Blob;
 import java.util.Date;
 import javax.persistence.*;
+
 @Entity
 @Table(name = "Expense")
 public class ExpenseModel {
@@ -11,10 +11,11 @@ public class ExpenseModel {
     private String expenseId;
     private int billNumber;
     @Lob
-    private Blob billImage;
+    private byte[] billImage;
     private int billCost;
     private Date datedOn;
-    private int empId;
+    private String file_name;
+	private int empId;
     private String remark;
     private String status = "pending";
     @OneToOne
@@ -25,7 +26,7 @@ public class ExpenseModel {
     
     public ExpenseModel() {
     }
-    public ExpenseModel(String expenseId, int billNumber, Blob billImage, int billCost, Date datedOn, int empId,
+    public ExpenseModel(String expenseId, int billNumber, byte[] billImage, int billCost, Date datedOn, int empId,
             String remark, String status, UserModel claimedBy) {
         this.expenseId = expenseId;
         this.billNumber = billNumber;
@@ -49,10 +50,10 @@ public class ExpenseModel {
     public void setBillNumber(int billNumber) {
         this.billNumber = billNumber;
     }
-    public Blob getBillImage() {
+    public byte[] getBillImage() {
         return billImage;
     }
-    public void setBillImage(Blob billImage) {
+    public void setBillImage(byte[] billImage) {
         this.billImage = billImage;
     }
     public int getBillCost() {
@@ -91,6 +92,11 @@ public class ExpenseModel {
     public void setClaimedBy(UserModel claimedBy) {
         this.claimedBy = claimedBy;
     }
-
+    public String getFile_name() {
+		return file_name;
+	}
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
+	}
     
 }

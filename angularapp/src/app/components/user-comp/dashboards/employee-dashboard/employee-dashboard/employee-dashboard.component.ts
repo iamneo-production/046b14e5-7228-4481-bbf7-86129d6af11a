@@ -72,5 +72,4 @@ refresh()
 {
   this.setDetails();
 }
-
 }

@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ExpenseService } from 'src/app/services/expense/expense.service';
+import { ViewFileComponent } from '../view-file/view-file.component';
 
 @Component({
   selector: 'app-view-expense',
@@ -10,11 +11,18 @@ import { ExpenseService } from 'src/app/services/expense/expense.service';
 })
 export class ViewExpenseComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public expense: any,public dialog: MatDialog, public expenseService: ExpenseService) { }
+  constructor(private dialog:MatDialog,@Inject(MAT_DIALOG_DATA) public expense: any,public this_dialog: MatDialogRef<ViewExpenseComponent>, public expenseService: ExpenseService) { }
 
   ngOnInit(): void {
+    console.log(this.expense);
+    
   }
+  view()
+  {
+    const dialogRef = this.dialog.open(ViewFileComponent,{data:'data:image/jpeg;base64,'+this.expense.billImage});
+    dialogRef.afterClosed().subscribe(result => {});
+  } 
   close() {
-    this.dialog.closeAll();
+    this.this_dialog.close();
   }
 }

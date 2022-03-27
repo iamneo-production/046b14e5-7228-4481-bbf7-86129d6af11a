@@ -10,14 +10,11 @@ import { Expense } from './Expense';
 export class ExpenseService {
 
   constructor(public http: HttpClient) { }
-  expenses: Expense[];
-  curr_exp: Expense[];
-
   public setAllExpenses(): Observable<Expense[]> {
     return this.http.get<Expense[]>(`${baseUrl}/expense`);
   }
-  public saveExpense(expense: any): Observable<String> {
-    return this.http.post<String>(`${baseUrl}/expense`, expense);
+  public saveExpense(formData:FormData): Observable<any> {
+    return this.http.post(`${baseUrl}/expense`, formData);
   }
   public updateExpense(expense: Expense): Observable<String> {
     return this.http.put<String>(`${baseUrl}/expense/${expense.expenseId}`, expense);
@@ -25,7 +22,7 @@ export class ExpenseService {
   public setExpense(id: number) {
     this.http.get<Expense[]>(`${baseUrl}/expense/${id}`).subscribe(
       (data: Expense[]) => {
-        this.expenses = data;
+        sessionStorage.setItem("expenses",JSON.stringify(data));
       },
       (error) => {
         console.log(error);
@@ -33,7 +30,7 @@ export class ExpenseService {
     );
   }
   public getExpenses() {
-    return this.expenses;
+    return JSON.parse(sessionStorage.getItem("expenses"));
   }
   public deleteExpense(expenseId: string): Observable<String> {
     return this.http.delete<String>(`${baseUrl}/manager/${expenseId}`);
@@ -45,7 +42,7 @@ export class ExpenseService {
     this.http.get<Expense[]>(`${baseUrl}/expense/curr-month/${id}`)
       .subscribe(
         (data:Expense[]) => {
-          this.curr_exp=data;
+          sessionStorage.setItem("curr_expenses",JSON.stringify(data));
         },
         (error) => {
           console.log(error);
@@ -54,7 +51,7 @@ export class ExpenseService {
   }
   public getCurrentExpenses()
   {
-    return this.curr_exp;
+    return JSON.parse(sessionStorage.getItem("curr_expenses"));
   }
   public getEmpExpense(id: number) { }
 }

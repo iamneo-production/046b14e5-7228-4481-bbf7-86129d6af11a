@@ -35,7 +35,8 @@ import { EditEmployeeComponent } from './components/edit-employee/edit-employee.
 import { DeleteEmployeeComponent } from './components/delete-employee/delete-employee.component';
 import { EmployeeDashboardComponent } from './components/user-comp/dashboards/employee-dashboard/employee-dashboard/employee-dashboard.component';
 import { UploadFilesComponent } from './components/upload-files/upload-files.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { ViewFileComponent } from './components/user-comp/view-file/view-file.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { UploadFilesComponent } from './components/upload-files/upload-files.com
     EditEmployeeComponent,
     DeleteEmployeeComponent,
     EmployeeDashboardComponent,
-    UploadFilesComponent
+    UploadFilesComponent,
+    ViewFileComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +78,7 @@ import { UploadFilesComponent } from './components/upload-files/upload-files.com
     MatNativeDateModule,
     MatRippleModule,
     NgxUiLoaderModule,
+    ReactiveFormsModule,
     NgxUiLoaderHttpModule.forRoot({
       showForeground:true
     }),

@@ -2,8 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import Swal from 'sweetalert2';
 import { AdminService } from '../admin/admin.service';
 import { ExpenseService } from '../expense/expense.service';
 
@@ -15,15 +13,13 @@ import { Employee } from './Employee';
 })
 export class EmployeeService {
   role: string;
-  emp: Employee;
-  employees:Employee[];
   constructor(public snack:MatSnackBar,public http: HttpClient, private router: Router, private adminService: AdminService, private expenseService: ExpenseService) { }
   public setEmployee(email: string){
     this.http.get<Employee>(`${baseUrl}/employee/${email}`).subscribe(
       (data:Employee)=>{
-        this.emp=data;
-        this.expenseService.setExpense(this.emp.id);
-        this.expenseService.setCurrentExpenses(this.emp.id);
+        sessionStorage.setItem("emp",JSON.stringify(data));
+        this.expenseService.setExpense(data.id);
+        this.expenseService.setCurrentExpenses(data.id);
       },
       (error)=>{
         this.snack.open("Something Went Wrong","OK",{duration:3000});
@@ -33,7 +29,7 @@ export class EmployeeService {
   public setAllEmployees() {
     this.http.get<Employee[]>(`${baseUrl}/manager/emp`).subscribe(
     (data:Employee[])=>{
-      this.employees=data;
+      sessionStorage.setItem("Allemp",JSON.stringify(data));
     },
     (error)=>{
       this.snack.open("Something Went Wrong","OK",{duration:3000});
@@ -42,10 +38,10 @@ export class EmployeeService {
   }
   public getEmployee()
   {
-    return this.emp;
+    return JSON.parse(sessionStorage.getItem("emp"));
   }
   public getAllEmp()
   {
-    return this.employees;
+    return JSON.parse(sessionStorage.getItem("Allemp"));
   }
 }
