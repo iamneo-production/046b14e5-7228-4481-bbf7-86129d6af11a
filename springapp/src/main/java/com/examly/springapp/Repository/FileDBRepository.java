@@ -1,26 +1,26 @@
-package com.examly.springapp.Repository;
+// package com.examly.springapp.Repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+// import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.stereotype.Repository;
 
-import com.examly.springapp.Models.FileDB;
-//import ma.files.store.model.FileDB;
+// import com.examly.springapp.Models.FileDB;
+// //import ma.files.store.model.FileDB;
 
-import com.examly.springapp.Repository.FileDBRepository;
+// import com.examly.springapp.Repository.FileDBRepository;
 
-@Repository
-public interface FileDBRepository extends JpaRepository<FileDBRepository, String>
+// @Repository
+// public interface FileDBRepository extends JpaRepository<FileDBRepository, String>
 
- {
+//  {
 
-    FileDBRepository save(FileDB fileDB);
+//     FileDBRepository save(FileDB fileDB);
 
-    String getId();
+//     String getId();
 
-    String getName();
+//     String getName();
 
-    String getType();
+//     String getType();
 
-    Object getData();
+//     Object getData();
 
-  }
+//   }

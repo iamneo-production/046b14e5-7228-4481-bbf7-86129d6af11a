@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Expense } from 'src/app/services/expense/Expense';
 import { ExpenseService } from 'src/app/services/expense/expense.service';
+import { ManagerService } from 'src/app/services/manager/manager.service';
 import { ViewExpenseComponent } from '../view-expense/view-expense.component';
 
 @Component({
@@ -10,114 +13,30 @@ import { ViewExpenseComponent } from '../view-expense/view-expense.component';
 })
 export class ManagerApproveComponent implements OnInit 
 {
-
-  constructor(public dialog:MatDialog,public expenseService:ExpenseService) { }
-
+  expenses:Expense[]=[];
+  constructor(public dialog:MatDialog,public managerService:ManagerService,private snack:MatSnackBar) { }
+  
   ngOnInit(): void {
+    this.setExpenses();
   }
-  date = new Date(2018, 11, 24, 10, 33, 30, 0);
-  expenses = [
-    {
-      expenseId: "001",
-      billNumber: 90,
-      empId: 1,
-      billCost: 2020,
-      datedOn: this.date,
-      remark: "Travel Expense",
-      status: "approved",
-      billImage: null,
-      claimedBy: null
-    },
-    {
-      expenseId: "001",
-      billNumber: 90,
-      empId: 1,
-      billCost: 2020,
-      datedOn: this.date,
-      remark: "Travel Expense",
-      status: "approved",
-      billImage: null,
-      claimedBy: null
-    },
-    {
-      expenseId: "001",
-      billNumber: 90,
-      empId: 1,
-      billCost: 2020,
-      datedOn: this.date,
-      remark: "Travel Expense",
-      status: "approved",
-      billImage: null,
-      claimedBy: null
-    },
-    {
-      expenseId: "001",
-      billNumber: 90,
-      empId: 1,
-      billCost: 2020,
-      datedOn: this.date,
-      remark: "Travel Expense",
-      status: "approved",
-      billImage: null,
-      claimedBy: null
-    },
-    {
-      expenseId: "001",
-      billNumber: 90,
-      empId: 1,
-      billCost: 2020,
-      datedOn: this.date,
-      remark: "Travel Expense",
-      status: "approved",
-      billImage: null,
-      claimedBy: null
-    },
-    {
-      expenseId: "001",
-      billNumber: 90,
-      empId: 1,
-      billCost: 2020,
-      datedOn: this.date,
-      remark: "Travel Expense",
-      status: "approved",
-      billImage: null,
-      claimedBy: null
-    },
-    {
-      expenseId: "001",
-      billNumber: 90,
-      empId: 1,
-      billCost: 2020,
-      datedOn: this.date,
-      remark: "Travel Expense",
-      status: "approved",
-      billImage: null,
-      claimedBy: null
-    },
-    {
-      expenseId: "001",
-      billNumber: 90,
-      empId: 1,
-      billCost: 2020,
-      datedOn: this.date,
-      remark: "Travel Expense",
-      status: "approved",
-      billImage: null,
-      claimedBy: null
-    },
-    {
-      expenseId: "001",
-      billNumber: 90,
-      empId: 1,
-      billCost: 2020,
-      datedOn: this.date,
-      remark: "Travel Expense",
-      status: "approved",
-      billImage: null,
-      claimedBy: null
-    },
-    
-  ];
+  public setExpenses(){
+  this.expenses=this.managerService.getAllExpenses();
+  }
+  public approveExpense(exp:Expense,status:string){
+  exp.status=status;
+  this.managerService.updateExpense(exp).subscribe(
+    (data:any)=>{this.snack.open("Expense "+status,"ok",{duration:3000});},
+    (error)=>{console.log(error);
+    }
+  );
+  }
+  public deleteExpense(exp:Expense){
+    this.managerService.deleteExpense(exp).subscribe(
+      (data:any)=>{this.snack.open(data,"ok",{duration:3000});},
+      (error)=>{console.log(error);
+      }
+    );
+    }
   view(exp:any)
   {
     const dialogRef = this.dialog.open(ViewExpenseComponent,{data:exp});
