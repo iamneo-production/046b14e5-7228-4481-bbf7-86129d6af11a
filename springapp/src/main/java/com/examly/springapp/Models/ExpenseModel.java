@@ -8,14 +8,13 @@ import javax.persistence.*;
 public class ExpenseModel {
 
     @Id
-    private String expenseId;
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int billNumber;
+    private String expenseId;
     @Lob
     private byte[] billImage;
     private int billCost;
     private Date datedOn;
-    private int empId;
     private String remark;
     private String status = "pending";
     @OneToOne
@@ -25,14 +24,13 @@ public class ExpenseModel {
     public ExpenseModel() {
     }
 
-    public ExpenseModel(String expenseId, int billNumber, byte[] billImage, int billCost, Date datedOn, int empId,
+    public ExpenseModel(String expenseId, int billNumber, byte[] billImage, int billCost, Date datedOn,
             String remark, String status, UserModel claimedBy) {
         this.expenseId = expenseId;
         this.billNumber = billNumber;
         this.billImage = billImage;
         this.billCost = billCost;
         this.datedOn = datedOn;
-        this.empId = empId;
         this.remark = remark;
         this.status = status;
         this.claimedBy = claimedBy;
@@ -77,15 +75,6 @@ public class ExpenseModel {
     public void setDatedOn(Date datedOn) {
         this.datedOn = datedOn;
     }
-
-    public int getEmpId() {
-        return empId;
-    }
-
-    public void setEmpId(int empId) {
-        this.empId = empId;
-    }
-
     public String getRemark() {
         return remark;
     }

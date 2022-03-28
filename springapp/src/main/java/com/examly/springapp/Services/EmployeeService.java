@@ -29,7 +29,8 @@ public class EmployeeService {
        return "Updated";
     }
     public String deleteEmployee(int id){
-        this.expenseRepository.deleteExpenseByEmpId(id);
+        UserModel user=this.userRepository.findEmployeeById(id);
+        this.expenseRepository.deleteExpenseByClaimedBy(user);
         this.userRepository.deleteById(id);
         return "Employee Deleted";
     }
