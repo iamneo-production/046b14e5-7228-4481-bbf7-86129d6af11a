@@ -1,6 +1,8 @@
 package com.examly.springapp.Controllers;
 
 import com.examly.springapp.Models.ExpenseModel;
+import com.examly.springapp.Models.UserModel;
+import com.examly.springapp.Services.EmployeeService;
 import com.examly.springapp.Services.ExpenseService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,53 +27,54 @@ import java.util.List;
 @RestController
 @CrossOrigin("*")
 public class ExpenseController {
-    @Autowired
-    private ExpenseService expenseService;
-    @GetMapping("/expense")
-    public ResponseEntity<List<ExpenseModel>> getExpese()
-    {
-         List<ExpenseModel> list= this.expenseService.findAll();
-         return new ResponseEntity<>(list,HttpStatus.OK);
-    }
-    
-    @GetMapping("/expense/{id}")
-    public ResponseEntity<ExpenseModel[]> expenseEditData(@PathVariable int id) throws Exception
-    {
-         ExpenseModel[] expense= this.expenseService.findById(id);
-         return new ResponseEntity<>(expense,HttpStatus.OK);
-    }
+     @Autowired
+     private ExpenseService expenseService;
+     @Autowired
+     private EmployeeService employeeService;
 
-    @PostMapping("/expense")
-    public ResponseEntity<ResponseMessage> expenseSave(@RequestParam("expense") String exp,@RequestParam("file") MultipartFile file) throws JsonMappingException, JsonProcessingException
-    {
-         ExpenseModel expense=new ObjectMapper().readValue(exp, ExpenseModel.class);
-         String message;
-          try{
-               this.expenseService.addExpense(expense,file);
+     @GetMapping("/expense")
+     public ResponseEntity<List<ExpenseModel>> getExpese() {
+          List<ExpenseModel> list = this.expenseService.findAll();
+          return new ResponseEntity<>(list, HttpStatus.OK);
+     }
+
+     @GetMapping("/expense/{id}")
+     public ResponseEntity<ExpenseModel[]> expenseEditData(@PathVariable int id) throws Exception {
+          UserModel user = this.employeeService.getEmpById(id);
+          ExpenseModel[] expense = this.expenseService.findById(user);
+          return new ResponseEntity<>(expense, HttpStatus.OK);
+     }
+
+     @PostMapping("/expense")
+     public ResponseEntity<ResponseMessage> expenseSave(@RequestParam("expense") String exp,
+               @RequestParam("file") MultipartFile file) throws JsonMappingException, JsonProcessingException {
+          String message;
+          ExpenseModel expense = new ObjectMapper().readValue(exp, ExpenseModel.class);
+          try {
+               this.expenseService.addExpense(expense, file);
                message = "Expense Added";
-			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
-          }
-          catch (Exception e)
-          {
+               return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+          } catch (Exception e) {
                message = "Could not upload the file!";
-			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
+               return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
           }
-    }
+     }
 
-    @PutMapping("/expense/{id}")
-    public ResponseEntity<String> expenseEditSave(@RequestBody ExpenseModel expense)
-    {
-         String result=this.expenseService.updateExpense(expense);
-         return new ResponseEntity<>(result,HttpStatus.OK);
-    }
-    @GetMapping("/expense/sum-month/{id}")
-    public ResponseEntity<Long> sumOfExpenses(@PathVariable int id)
-    {
-         return new ResponseEntity<>(this.expenseService.getSumOfExpenses(id),HttpStatus.OK);
-    } 
-    @GetMapping("/expense/curr-month/{id}")
-    public ResponseEntity<List <ExpenseModel>> currentMonthExpense(@PathVariable int id)
-    {
-         return new ResponseEntity<>(this.expenseService.getCurrentExpense(id),HttpStatus.OK);
-    } 
+     @PutMapping("/expense/{id}")
+     public ResponseEntity<String> expenseEditSave(@RequestBody ExpenseModel expense) {
+          String result = this.expenseService.updateExpense(expense);
+          return new ResponseEntity<>(result, HttpStatus.OK);
+     }
+
+     @GetMapping("/expense/sum-month/{id}")
+     public ResponseEntity<Long> sumOfExpenses(@PathVariable int id) {
+          UserModel user = this.employeeService.getEmpById(id);
+          return new ResponseEntity<>(this.expenseService.getSumOfExpenses(user), HttpStatus.OK);
+     }
+
+     @GetMapping("/expense/curr-month/{id}")
+     public ResponseEntity<List<ExpenseModel>> currentMonthExpense(@PathVariable int id) {
+          UserModel user = this.employeeService.getEmpById(id);
+          return new ResponseEntity<>(this.expenseService.getCurrentExpense(user), HttpStatus.OK);
+     }
 }

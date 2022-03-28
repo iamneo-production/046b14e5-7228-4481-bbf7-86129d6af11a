@@ -41,4 +41,8 @@ public class EmployeeService {
         this.userRepository.save(user);
         return "Employee Added";
     }
+    public boolean checkEmp(int id)
+    {
+        return this.userRepository.existsById(id);
+    }
 }

@@ -12,12 +12,6 @@
                             <mat-icon matSuffix>currency_rupee</mat-icon>
                         </mat-form-field>
                         <mat-form-field class="w100" appearance="outline">
-                            <mat-label>Bill Number</mat-label>
-                            <input required name="billNumber" [(ngModel)]="expense.billNumber"  type="number" matInput
-                                placeholder="Enter Bill Number">
-                            <mat-icon matSuffix>tag</mat-icon>
-                        </mat-form-field>
-                        <mat-form-field class="w100" appearance="outline">
                             <mat-label>Description</mat-label>
                             <input name="remark" [(ngModel)]="expense.remark" type="text" matInput
                                 placeholder="Enter Description">
@@ -32,8 +26,8 @@
                             </mat-datepicker>
                         </mat-form-field>
                         <div class="form-group">
-                            <label for="receipt">Upload Receipt</label>
-                            <input type="file" name="receipt" (change)="selectFile($event)">
+                            <label style="font-size: 20px; margin-right: 16px;" for="receipt">Upload Receipt</label>
+                            <input  style="text-decoration: none; margin-right: 10px;" type="file" name="receipt" (change)="selectFile($event)">
                         </div>
                         <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
                             <button  class="full-w" type="submit" mat-raised-button color="primary">Add</button>

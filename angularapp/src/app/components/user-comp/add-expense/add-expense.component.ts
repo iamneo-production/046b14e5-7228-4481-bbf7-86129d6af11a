@@ -19,11 +19,9 @@ export class AddExpenseComponent implements OnInit {
   t_date = new Date();
   public emp: Employee;
   expense = {
-    expenseId: null,
-    billNumber: null,
+    expenseId:null,
     billCost: null,
     datedOn: null,
-    empId: null,
     remark: null,
     claimedBy: null
   }
@@ -51,9 +49,10 @@ export class AddExpenseComponent implements OnInit {
       });
     }
     else {
-      this.expense.empId = this.emp.id;
+      this.expense.expenseId="exp_"+this.t_date.toLocaleTimeString();
+      console.log(this.expense.expenseId);
+      
       this.expense.claimedBy = this.emp;
-      this.expense.expenseId = 'E_' + this.expense.billNumber
       this.expense.datedOn = this.t_date;
       const formData = new FormData();
       formData.append('expense', JSON.stringify(this.expense));
@@ -98,7 +97,5 @@ export class AddExpenseComponent implements OnInit {
     const file = event.target.files[0];
     this.receipt = file;
     console.log(this.receipt);
-
-
   }
 }

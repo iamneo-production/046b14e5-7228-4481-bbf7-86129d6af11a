@@ -2,7 +2,7 @@ package com.examly.springapp.Controllers;
 
 import com.examly.springapp.Models.UserModel;
 import com.examly.springapp.Services.EmployeeService;
-
+import com.examly.springapp.message.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,7 +41,11 @@ public class AdminController {
         return new ResponseEntity<>(this.employeeService.deleteEmployee(id),HttpStatus.OK);
     }
     @PostMapping("/admin")
-    public ResponseEntity<String> addUser(@RequestBody UserModel user){
-        return new ResponseEntity<>(this.employeeService.addEmployee(user),HttpStatus.OK);
+    public ResponseEntity<ResponseMessage> addUser(@RequestBody UserModel user){
+        if(this.employeeService.checkEmp(user.getId()))
+        {
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage("User Already Exists"));
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(this.employeeService.addEmployee(user)));
     }
 }

@@ -15,8 +15,7 @@ export class RegisterComponent implements OnInit {
     username:'',
     password:'',
     email:'',
-    mobileNumber:'',
-    role:'employee'
+    mobileNumber:''
   };
   pass:'';
   pass_match=true;
