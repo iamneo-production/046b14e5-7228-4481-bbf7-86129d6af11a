@@ -16,6 +16,7 @@ export class UserexpensesComponent implements OnInit {
 
   constructor(public dialog:MatDialog,public expenseService:ExpenseService,private empService:EmployeeService,private snack:MatSnackBar) { }
   expenses:Expense[];
+  receipt:any=[];
   email="";
   emp={
     id:null,
@@ -34,13 +35,15 @@ export class UserexpensesComponent implements OnInit {
   view(exp:any)
   {
     const dialogRef = this.dialog.open(ViewExpenseComponent,{data:exp});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    dialogRef.afterClosed().subscribe(result => {});
   } 
   setExpenses()
   {
     this.expenses=this.expenseService.getExpenses();
+    for(let i=0;i<this.expenses.length;i++)
+    {
+      this.receipt[i]='data:image/jpeg;base64,'+this.expenses[i].billImage;
+    }
   }
   setEmployee()
   {

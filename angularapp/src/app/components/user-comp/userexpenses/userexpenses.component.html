@@ -9,7 +9,7 @@
             </div>
             <mat-card-content>
                 <mat-list>
-                    <mat-list-item class="card" *ngFor="let e of expenses">
+                    <mat-list-item class="card" *ngFor="let e of expenses;let i=index">
                         <div mat-line>Total price: {{e.billCost}}</div>
                         <div mat-line>Bill Number :{{e.billNumber}}</div>
                         <div mat-line>Status:{{e.status}}</div>

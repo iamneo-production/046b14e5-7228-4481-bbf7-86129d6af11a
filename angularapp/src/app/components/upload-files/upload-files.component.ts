@@ -14,6 +14,9 @@ export class UploadFilesComponent implements OnInit {
   message = '';
   fileInfos: Observable<any>;
   constructor(private uploadService: UploadFileService) { }
+  ngOnInit(): void {
+    // this.fileInfos = this.uploadService.getFiles();
+  }
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
@@ -35,9 +38,6 @@ export class UploadFilesComponent implements OnInit {
         this.currentFile = undefined;
       });
     this.selectedFiles = undefined;
-  }
-  ngOnInit(): void {
-    this.fileInfos = this.uploadService.getFiles();
   }
 
 }

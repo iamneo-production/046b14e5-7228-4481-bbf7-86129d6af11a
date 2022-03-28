@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Employee } from 'src/app/services/Employee/Employee';
 import { EmployeeService } from 'src/app/services/Employee/employee.service';
@@ -11,7 +12,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-expense.component.css']
 })
 export class AddExpenseComponent implements OnInit {
-
+  message: "";
+  receipt: any = File;
   email = "";
   limit: number;
   t_date = new Date();
@@ -53,16 +55,23 @@ export class AddExpenseComponent implements OnInit {
       this.expense.claimedBy = this.emp;
       this.expense.expenseId = 'E_' + this.expense.billNumber
       this.expense.datedOn = this.t_date;
-      this.expenseService.saveExpense(this.expense).subscribe(
-        (data: String) => {
-          this.snack.open("Expense Added Sucessfully", "OK");
-        },
-        (error) => {
-          console.log(error);
-          this.snack.open("Expense Added Sucessfully", "OK");
+      const formData = new FormData();
+      formData.append('expense', JSON.stringify(this.expense));
+      formData.append('file', this.receipt);
+      console.log(formData.get('file'));
+
+      this.expenseService.saveExpense(formData).subscribe(
+        (data: any) => {
+          console.log(data);
+          this.snack.open("Expense Added Sucessfully", "OK",{duration:2000});
           this.expenseService.setLimit(this.emp.id);
           this.expenseService.setCurrentExpenses(this.emp.id);
           this.expenseService.setExpense(this.emp.id);
+        },
+        (error) => {
+          console.log(error);
+          this.snack.open("Something Went Wrong", "OK",{duration:2000});
+
           this.ngOnInit();
         }
       );
@@ -85,4 +94,11 @@ export class AddExpenseComponent implements OnInit {
     }
   }
 
+  selectFile(event) {
+    const file = event.target.files[0];
+    this.receipt = file;
+    console.log(this.receipt);
+
+
+  }
 }

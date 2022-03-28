@@ -4,16 +4,16 @@
         <div class="bootstrap-wrapper">
             <div class="row" style=" margin-top: 60px;">
                 <div class="col-md-6 offset-md-3">
-                    <form (ngSubmit)="submit()">
+                    <form  (ngSubmit)="submit()">
                         <mat-form-field class="w100" appearance="outline">
                             <mat-label>Price</mat-label>
-                            <input required name="billCost" [(ngModel)]="expense.billCost" type="number" matInput
+                            <input required name="billCost" [(ngModel)]="expense.billCost"  type="number" matInput
                                 placeholder="Enter price">
                             <mat-icon matSuffix>currency_rupee</mat-icon>
                         </mat-form-field>
                         <mat-form-field class="w100" appearance="outline">
                             <mat-label>Bill Number</mat-label>
-                            <input required name="billNumber" [(ngModel)]="expense.billNumber" type="number" matInput
+                            <input required name="billNumber" [(ngModel)]="expense.billNumber"  type="number" matInput
                                 placeholder="Enter Bill Number">
                             <mat-icon matSuffix>tag</mat-icon>
                         </mat-form-field>
@@ -25,15 +25,18 @@
                         </mat-form-field>
                         <mat-form-field class="w100" appearance="outline">
                             <mat-label>Date</mat-label>
-                            <input required matInput [matDatepicker]="picker2" >
-                            <mat-datepicker-toggle color="primary" matSuffix [for]="picker2" [disabled]="false"></mat-datepicker-toggle>
-                            <mat-datepicker #picker2 color="primary" [disabled]="false" [touchUi]="true"></mat-datepicker>
+                            <input required matInput [matDatepicker]="picker2">
+                            <mat-datepicker-toggle color="primary" matSuffix [for]="picker2" [disabled]="false">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker2 color="primary" [disabled]="false" [touchUi]="true">
+                            </mat-datepicker>
                         </mat-form-field>
-                        <app-upload-files></app-upload-files>
-
-                          
+                        <div class="form-group">
+                            <label for="receipt">Upload Receipt</label>
+                            <input type="file" name="receipt" (change)="selectFile($event)">
+                        </div>
                         <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
-                            <button class="full-w" type="submit" mat-raised-button color="primary">Add</button>
+                            <button  class="full-w" type="submit" mat-raised-button color="primary">Add</button>
                         </div>
                     </form>
                 </div>

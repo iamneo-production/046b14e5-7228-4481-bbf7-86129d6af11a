@@ -4,6 +4,7 @@ import com.examly.springapp.Models.ExpenseModel;
 import com.examly.springapp.Services.ExpenseService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,7 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import com.examly.springapp.message.ResponseMessage;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.List;
 
@@ -36,10 +42,20 @@ public class ExpenseController {
     }
 
     @PostMapping("/expense")
-    public ResponseEntity<String> expenseSave(@RequestBody ExpenseModel expense)
+    public ResponseEntity<ResponseMessage> expenseSave(@RequestParam("expense") String exp,@RequestParam("file") MultipartFile file) throws JsonMappingException, JsonProcessingException
     {
-        String result= this.expenseService.addExpense(expense);
-        return new ResponseEntity<>(result,HttpStatus.CREATED);
+         ExpenseModel expense=new ObjectMapper().readValue(exp, ExpenseModel.class);
+         String message;
+          try{
+               this.expenseService.addExpense(expense,file);
+               message = "Expense Added";
+			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+          }
+          catch (Exception e)
+          {
+               message = "Could not upload the file!";
+			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
+          }
     }
 
     @PutMapping("/expense/{id}")

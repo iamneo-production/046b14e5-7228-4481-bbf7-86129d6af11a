@@ -7,12 +7,12 @@ public class ResponseFile
 	private String type;
 	private long size;
 
-	public ResponseFile(String name, String url, String type, Object object)
+	public ResponseFile(String name, String url, String type, long size)
   {
 		this.name = name;
 		this.url = url;
 		this.type = type;
-	//	this.size = object;
+		this.size =size;
 	}
 
 	public String getName() 
