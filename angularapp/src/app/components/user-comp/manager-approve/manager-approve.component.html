@@ -17,10 +17,10 @@
                         <button mat-raised-button color="primary" (click)="view(e)" style="margin: 10px;">
                             View
                         </button>
-                        <button  mat-mini-fab color="green" style="margin: 10px;">
+                        <button  mat-mini-fab color="green" (click)="approveExpense(e,'approved')" style="margin: 10px;">
                             <mat-icon>check_circle</mat-icon>
                         </button>
-                        <button   mat-mini-fab color="red" style="margin: 10px;">
+                        <button   mat-mini-fab color="red" (click)="deleteExpense(e)" style="margin: 10px;">
                             <mat-icon>error_outline</mat-icon>
                         </button>
                     </mat-list-item>
