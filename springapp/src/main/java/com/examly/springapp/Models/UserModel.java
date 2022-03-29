@@ -11,7 +11,7 @@ public class UserModel {
     @Column(unique = true)
     private String email;
     private String mobileNumber;
-    private String role;
+    private String role="employee";
     private Boolean active=true;
 
     

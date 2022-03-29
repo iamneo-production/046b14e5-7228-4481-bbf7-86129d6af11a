@@ -1,8 +1,8 @@
 package com.examly.springapp.Services;
 
 import com.examly.springapp.Models.ExpenseModel;
+import com.examly.springapp.Models.UserModel;
 import com.examly.springapp.Repository.ExpenseRepository;
-import org.springframework.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -17,11 +17,11 @@ public class ExpenseService {
     public List<ExpenseModel> findAll(){
         return this.expenseRepository.findAll();
     }
-    public ExpenseModel[] findById(int id)
+    public ExpenseModel[] findById(UserModel user)
     {
-        return this.expenseRepository.findAllExpenseByEmpId(id);
+        return this.expenseRepository.findExpenseByEmpId(user);
     }
-    public String deleteExpense(String id)
+    public String deleteExpense(int id)
     {
         if(this.expenseRepository.existsById((id)))
         {
@@ -38,17 +38,18 @@ public class ExpenseService {
     }
     public void addExpense(ExpenseModel expense,MultipartFile file) throws IOException
     {
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         expense.setBillImage(file.getBytes());
-        expense.setFile_name(fileName);
         this.expenseRepository.save(expense);
     }
-    public Long getSumOfExpenses(int id)
+    public Long getSumOfExpenses(UserModel user)
     {
-        return this.expenseRepository.findCurrentMonthExpenses(id);
+        return this.expenseRepository.findCurrentMonthExpenses(user);
     }
-    public List <ExpenseModel> getCurrentExpense(int id)
+    public List <ExpenseModel> getCurrentExpense(UserModel user)
     {
-        return this.expenseRepository.getCurrentMonthExpenses(id);
+        return this.expenseRepository.getCurrentMonthExpenses(user);
+    }
+    public ExpenseModel findByExpenseId(String expenseId) {
+        return this.expenseRepository.findExpenseByExpenseId(expenseId);
     }
 }

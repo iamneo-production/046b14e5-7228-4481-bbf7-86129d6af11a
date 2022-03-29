@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin/admin.service';
 import { Employee } from 'src/app/services/Employee/Employee';
 import { EmployeeService } from 'src/app/services/Employee/employee.service';
+import Swal from 'sweetalert2';
 import { DeleteEmployeeComponent } from '../../delete-employee/delete-employee.component';
 import { EditEmployeeComponent } from '../../edit-employee/edit-employee.component';
 import { ViewemployeeComponent } from '../viewemployee/viewemployee.component';
@@ -50,12 +51,12 @@ export class AdminComponent implements OnInit {
       this.adminService.addEmployees(this.emp).subscribe(
         (data: any) => {
           console.log(data);
-        },
-        (error:HttpErrorResponse) => {
-          console.log(error.message);
-
           this.snack.open("Added Successfully", "ok", {duration: 3000});
           this.adminService.setAllEmployees();
+        },
+        (error:HttpErrorResponse) => {
+          Swal.fire("Employee with email "+this.emp.email+" already Exists","Cannot add duplicates","error");
+          console.log(error.error);
         }
       );
      
