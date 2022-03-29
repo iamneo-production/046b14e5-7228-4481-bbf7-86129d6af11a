@@ -19,28 +19,34 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
+
 public class ManagerController {
+
     @Autowired
     private ExpenseService expenseService;
     private ExpenseRepository er;
+
     @GetMapping("/manager")
     public ResponseEntity<List<ExpenseModel>> getExpense()
     {
          List<ExpenseModel> list= this.expenseService.findAll();
          return new ResponseEntity<>(list,HttpStatus.OK);
     }
+
     @PutMapping("/manager/expense/{id}")
     public ResponseEntity<String> expenseEditSave(@RequestBody ExpenseModel expense)
     {
          String result=this.expenseService.updateExpense(expense);
          return new ResponseEntity<>(result,HttpStatus.OK);
     }
+
     @PutMapping("/manger/expense/{id}")
     public ResponseEntity<String> expenseDelete(@RequestBody ExpenseModel expense)
     {
          this.er.delete(expense);
          return new ResponseEntity<>("Expense deleted",HttpStatus.OK);
     }
+    
     @GetMapping("/manager/expense/{id}")
     public ResponseEntity<ExpenseModel> expenseEditData(@PathVariable String id) throws Exception
     {
