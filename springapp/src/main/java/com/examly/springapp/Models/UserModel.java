@@ -4,12 +4,9 @@ import javax.persistence.*;
 @Table(name="employees")
 public class UserModel {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
+    private String email;
     private String username;
     private String password;
-    @Column(unique = true)
-    private String email;
     private String mobileNumber;
     private String role="employee";
     private Boolean active=false;
@@ -18,9 +15,8 @@ public class UserModel {
     public UserModel() {
     }
 
-    public UserModel(int id, String username, String password, String email, String mobileNumber, String role,
+    public UserModel( String username, String password, String email, String mobileNumber, String role,
         Boolean active) {
-    this.id = id;
     this.username = username;
     this.password = password;
     this.email = email;
@@ -29,12 +25,6 @@ public class UserModel {
     this.active = active;
 }
     
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
     public String getUsername() {
         return username;
     }

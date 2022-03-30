@@ -16,7 +16,6 @@ export class EmployeeDashboardComponent implements OnInit {
   email="";
   expense: Expense[] = [];
   emp = {
-    id: null,
     active: null,
     email: null,
     mobileNumber: null,

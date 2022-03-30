@@ -15,13 +15,13 @@ import { Login } from './Login';
 })
 export class LoginService {
   status = false;
-  constructor(private expeneService:ExpenseService,private router: Router, public http: HttpClient, public snack: MatSnackBar, private empService: EmployeeService, private adminService: AdminService ,private managerService:ManagerService) { }
+  constructor(private expeneService: ExpenseService, private router: Router, public http: HttpClient, public snack: MatSnackBar, private empService: EmployeeService, private adminService: AdminService, private managerService: ManagerService) { }
   public login(login: Login) {
     return this.http.post<Boolean>(`${baseUrl}/login`, login).subscribe(
       (data: boolean) => {
         if (data == true) {
           this.setStatus(true);
-          this.setRole(login.email);
+          this.empService.setEmployee(login.email);
           sessionStorage.setItem("email", login.email);
           Swal.fire({
             title: 'Welcome',
@@ -63,28 +63,5 @@ export class LoginService {
   public logout() {
     localStorage.clear();
     this.status = false;
-  }
-  public setRole(email: string) {
-    this.http.get<Login>(`${baseUrl}/login/${email}`).subscribe(
-      (data: Login) => {
-        sessionStorage.setItem("role", data.role);
-        if (data.role == "admin") {
-          this.adminService.setAllEmployees();
-        }
-        else if(data.role=="manager")
-        {
-          this.empService.setEmployee(data.email);
-          this.managerService.setAllExpenses();
-          this.empService.setAllEmployees();
-        }
-        else if(data.role=="employee")
-        {
-          this.empService.setEmployee(data.email);
-        }
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error);
-      }
-    );
   }
 }

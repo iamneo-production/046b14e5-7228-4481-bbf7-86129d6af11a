@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from 'src/app/services/admin/admin.service';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -9,24 +9,15 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
   styleUrls: ['./edit-employee.component.css']
 })
 export class EditEmployeeComponent implements OnInit {
-  // emp={
-  //   id:null,
-  //   active:null,
-  //   email:null,
-  //   mobileNumber:null,
-  //   password:null,
-  //   role:null,
-  //   username:null,
-  // };
   pass='';
   pass_match=true;
-  constructor(public dialog:MatDialog,private snack:MatSnackBar,private adminService:AdminService, @Inject(MAT_DIALOG_DATA) public emp:any) { }
+  constructor(public dialog:MatDialog,private diag:MatDialogRef<EditEmployeeComponent>,private snack:MatSnackBar,private adminService:AdminService, @Inject(MAT_DIALOG_DATA) public emp:any) { }
 
   ngOnInit(): void {
   }
   close()
   {
-    this.dialog.closeAll();
+    
   }
  formSubmit(){
   if(this.emp.username==''|| this.emp.username==null || this.emp.email==''|| this.emp.email==null)
@@ -44,14 +35,15 @@ export class EditEmployeeComponent implements OnInit {
   this.adminService.updateEmployees(this.emp).subscribe(
     (data)=>{
       console.log(data);
-      
+      this.diag.close();
+      this.snack.open("Updated Successfully","OK",{
+        duration:3000
+      });
+      this.adminService.setAllEmployees();
     },
-  (error)=>{
-    this.snack.open("Updated Successfully","OK",{
-      duration:3000
-    });
-    this.adminService.setAllEmployees();
-    this.dialog.closeAll();
+  (error)=>{ 
+    console.log(error);
+    
   }
   )
  }

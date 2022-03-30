@@ -1,16 +1,15 @@
 package com.examly.springapp.Controllers;
 
 import com.examly.springapp.Models.ExpenseModel;
-import com.examly.springapp.Models.UserModel;
 import com.examly.springapp.Services.ExpenseService;
-import com.examly.springapp.Repository.ExpenseRepository;
+import com.examly.springapp.message.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,8 +23,6 @@ public class ManagerController {
 
     @Autowired
     private ExpenseService expenseService;
-    private ExpenseRepository er;
-
     @GetMapping("/manager")
     public ResponseEntity<List<ExpenseModel>> getExpense()
     {
@@ -33,18 +30,18 @@ public class ManagerController {
          return new ResponseEntity<>(list,HttpStatus.OK);
     }
 
-    @PutMapping("/manager/expense/{id}")
-    public ResponseEntity<String> expenseEditSave(@RequestBody ExpenseModel expense)
+    @PutMapping("/manager/expense/{email}")
+    public ResponseEntity<ResponseMessage> expenseEditSave(@RequestBody ExpenseModel expense)
     {
          String result=this.expenseService.updateExpense(expense);
-         return new ResponseEntity<>(result,HttpStatus.OK);
+         return new ResponseEntity<>(new ResponseMessage(result),HttpStatus.OK);
     }
 
-    @PutMapping("/manger/expense/{id}")
-    public ResponseEntity<String> expenseDelete(@RequestBody ExpenseModel expense)
+    @DeleteMapping("/manger/expense/{id}")
+    public ResponseEntity<ResponseMessage> expenseDelete(@PathVariable String id)
     {
-         this.er.delete(expense);
-         return new ResponseEntity<>("Expense deleted",HttpStatus.OK);
+         this.expenseService.deleteExpense(id);
+         return new ResponseEntity<>(new ResponseMessage("Expense deleted"),HttpStatus.OK);
     }
     
     @GetMapping("/manager/expense/{id}")

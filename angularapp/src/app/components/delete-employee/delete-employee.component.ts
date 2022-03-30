@@ -30,16 +30,17 @@ export class DeleteEmployeeComponent implements OnInit {
       confirmButtonText: 'Delete'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.adminService.deleteEmployees(this.emp.id)
+        this.adminService.deleteEmployees(this.emp.email)
           .subscribe(
             (data) => {
-              console.log(data);
-            },
-            (error) => {
               this.snack.open("Deleted Successfully", "OK", {
                 duration: 3000
               });
               this.adminService.setAllEmployees();
+            },
+            (error) => {
+          console.log(error);
+          (error)
             });
         this.close();
       }

@@ -61,9 +61,9 @@ export class AddExpenseComponent implements OnInit {
         (data: any) => {
           console.log(data);
           this.snack.open("Expense Added Sucessfully", "OK",{duration:2000});
-          this.expenseService.setLimit(this.emp.id);
-          this.expenseService.setCurrentExpenses(this.emp.id);
-          this.expenseService.setExpense(this.emp.id);
+          this.expenseService.setLimit(this.emp.email);
+          this.expenseService.setCurrentExpenses(this.emp.email);
+          this.expenseService.setExpense(this.emp.email);
         },
         (error) => {
           console.log(error);
@@ -78,7 +78,7 @@ export class AddExpenseComponent implements OnInit {
     this.emp = this.empService.getEmployee();
   }
   setLimit() {
-    this.expenseService.setLimit(this.emp.id).subscribe(
+    this.expenseService.setLimit(this.emp.email).subscribe(
       (data: number) => {
         this.limit = data;
       },

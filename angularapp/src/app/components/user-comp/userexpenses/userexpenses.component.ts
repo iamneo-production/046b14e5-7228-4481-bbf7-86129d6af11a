@@ -19,7 +19,6 @@ export class UserexpensesComponent implements OnInit {
   receipt:any=[];
   email="";
   emp={
-    id:null,
     active:null,
     email:null,
     mobileNumber:null,

@@ -38,9 +38,9 @@ public class ExpenseController {
           return new ResponseEntity<>(list, HttpStatus.OK);
      }
 
-     @GetMapping("/expense/{id}")
-     public ResponseEntity<ExpenseModel[]> expenseEditData(@PathVariable int id) throws Exception {
-          UserModel user = this.employeeService.getEmpById(id);
+     @GetMapping("/expense/{email}")
+     public ResponseEntity<ExpenseModel[]> expenseEditData(@PathVariable String email) throws Exception {
+          UserModel user = this.employeeService.getEmpById(email);
           ExpenseModel[] expense = this.expenseService.findById(user);
           return new ResponseEntity<>(expense, HttpStatus.OK);
      }
@@ -60,21 +60,21 @@ public class ExpenseController {
           }
      }
 
-     @PutMapping("/expense/{id}")
-     public ResponseEntity<String> expenseEditSave(@RequestBody ExpenseModel expense) {
+     @PutMapping("/expense/{email}")
+     public ResponseEntity<ResponseMessage> expenseEditSave(@RequestBody ExpenseModel expense) {
           String result = this.expenseService.updateExpense(expense);
-          return new ResponseEntity<>(result, HttpStatus.OK);
+          return new ResponseEntity<>(new ResponseMessage(result), HttpStatus.OK);
      }
 
-     @GetMapping("/expense/sum-month/{id}")
-     public ResponseEntity<Long> sumOfExpenses(@PathVariable int id) {
-          UserModel user = this.employeeService.getEmpById(id);
+     @GetMapping("/expense/sum-month/{email}")
+     public ResponseEntity<Long> sumOfExpenses(@PathVariable String email) {
+          UserModel user = this.employeeService.getEmpById(email);
           return new ResponseEntity<>(this.expenseService.getSumOfExpenses(user), HttpStatus.OK);
      }
 
-     @GetMapping("/expense/curr-month/{id}")
-     public ResponseEntity<List<ExpenseModel>> currentMonthExpense(@PathVariable int id) {
-          UserModel user = this.employeeService.getEmpById(id);
+     @GetMapping("/expense/curr-month/{email}")
+     public ResponseEntity<List<ExpenseModel>> currentMonthExpense(@PathVariable String email) {
+          UserModel user = this.employeeService.getEmpById(email);
           return new ResponseEntity<>(this.expenseService.getCurrentExpense(user), HttpStatus.OK);
      }
 }

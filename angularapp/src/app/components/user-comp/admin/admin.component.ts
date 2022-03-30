@@ -24,7 +24,7 @@ export class AdminComponent implements OnInit {
   searchVal = "";
   emp = {
     id: null,
-    active: true,
+    active:true,
     email: null,
     mobileNumber: null,
     password: null,
@@ -46,7 +46,9 @@ export class AdminComponent implements OnInit {
     }
     if (this.emp.password != this.pass) {
       this.pass_match = false;
-      this.snack.open("Passwords Don't Match", "OK");
+      this.snack.open("Passwords Don't Match", "OK", {
+        duration: 3000,
+      });
     }
     else {
       this.adminService.addEmployees(this.emp).subscribe(
@@ -112,7 +114,9 @@ export class AdminComponent implements OnInit {
     }
     this.adminService.updateEmployees(emp).subscribe(
       (data) => {
-        console.log(data);
+        this.snack.open("Employee Authoized", "OK", {
+          duration: 3000
+        });
       },
       (error) => {
         console.log(error);
