@@ -34,7 +34,6 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
 import { DeleteEmployeeComponent } from './components/delete-employee/delete-employee.component';
 import { EmployeeDashboardComponent } from './components/user-comp/dashboards/employee-dashboard/employee-dashboard/employee-dashboard.component';
-import { UploadFilesComponent } from './components/upload-files/upload-files.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ViewFileComponent } from './components/user-comp/view-file/view-file.component';
 import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.component';
@@ -57,7 +56,6 @@ import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.co
     EditEmployeeComponent,
     DeleteEmployeeComponent,
     EmployeeDashboardComponent,
-    UploadFilesComponent,
     ViewFileComponent,
     NotAuthorizedComponent
   ],
@@ -103,7 +101,6 @@ import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.co
     EditEmployeeComponent,
     DeleteEmployeeComponent,
     EmployeeDashboardComponent,
-    UploadFilesComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -50,7 +50,8 @@
               <form #signupForm="ngForm" (ngSubmit)="formSubmit()">
                 <mat-form-field class="w100" appearance="outline">
                   <mat-label>Email</mat-label>
-                  <input required name="email" [(ngModel)]="emp.email" type="email" matInput placeholder="Enter Email">
+                  <input required name="email" [(ngModel)]="emp.email" type="email" [formControl]="email" matInput placeholder="Enter Email">
+                  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
                   <mat-icon matSuffix>email</mat-icon>
                 </mat-form-field>
                 <mat-form-field class="w100" appearance="outline">

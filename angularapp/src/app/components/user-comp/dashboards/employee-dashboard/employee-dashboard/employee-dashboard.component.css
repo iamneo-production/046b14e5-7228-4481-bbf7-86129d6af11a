@@ -6,7 +6,8 @@
   grid-template-columns: auto auto auto;
   padding-top: 20px;
   padding-bottom: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.055), 0 6px 20px 0 rgba(0, 0, 0, 0.055);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.055), 0 6px 20px 0 rgba(0, 0, 0, 0.055); */
+
 }
 
 .grid-item 
@@ -35,3 +36,8 @@
   border-radius: 25px;
 }
 
+
+body {
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+}

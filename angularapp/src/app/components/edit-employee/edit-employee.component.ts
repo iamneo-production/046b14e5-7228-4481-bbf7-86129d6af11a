@@ -34,7 +34,6 @@ export class EditEmployeeComponent implements OnInit {
   }
   this.adminService.updateEmployees(this.emp).subscribe(
     (data)=>{
-      console.log(data);
       this.diag.close();
       this.snack.open("Updated Successfully","OK",{
         duration:3000

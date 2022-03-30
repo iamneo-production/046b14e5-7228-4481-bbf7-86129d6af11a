@@ -1,6 +1,7 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { EmptyExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -34,6 +35,14 @@ export class AdminComponent implements OnInit {
   empList: Employee[] = [];
   empl: Employee[] = [];
   constructor(private adminService: AdminService, public router: Router, private snack: MatSnackBar, private employeeService: EmployeeService, public dialog: MatDialog) { }
+  email = new FormControl('', [Validators.required, Validators.email]);
+
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'Cannot be Empty';
+    }
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
   ngOnInit(): void {
     this.setEmployees();
   }
@@ -53,7 +62,6 @@ export class AdminComponent implements OnInit {
     else {
       this.adminService.addEmployees(this.emp).subscribe(
         (data: any) => {
-          console.log(data);
           this.snack.open("Added Successfully", "ok", { duration: 3000 });
           this.adminService.setAllEmployees();
         },
@@ -106,22 +114,25 @@ export class AdminComponent implements OnInit {
     this.empl = this.adminService.getEmployees();
   }
   auth(emp: Employee, status: string) {
+    let action:string;
     if (status == "true") {
       emp.active = true;
+      action="Authorized";
     }
     else {
-      emp.active = false;
+      this.delete(emp);
+      return;
     }
     this.adminService.updateEmployees(emp).subscribe(
       (data) => {
-        this.snack.open("Employee Authoized", "OK", {
+        this.snack.open("Employee " +action, "OK", {
           duration: 3000
         });
+        this.adminService.setAllEmployees();
       },
       (error) => {
         console.log(error);
       }
     );
-    this.adminService.setAllEmployees();
   }
 }

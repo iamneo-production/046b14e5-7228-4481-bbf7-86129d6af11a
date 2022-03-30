@@ -58,10 +58,10 @@ export class LoginService {
     this.status = s;
   }
   public isLoggedIn() {
-    this.status;
+    return this.status;
   }
   public logout() {
-    localStorage.clear();
+    sessionStorage.clear();
     this.status = false;
   }
 }

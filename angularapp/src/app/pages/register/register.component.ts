@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { SignupService } from 'src/app/services/signup/signup.service';
@@ -9,8 +10,15 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
   constructor(public snack: MatSnackBar, public router: Router, private signupService: SignupService) { }
+  email = new FormControl('', [Validators.required, Validators.email]);
+
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'Cannot be Empty';
+    }
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
   emp = {
     username: '',
     password: '',
