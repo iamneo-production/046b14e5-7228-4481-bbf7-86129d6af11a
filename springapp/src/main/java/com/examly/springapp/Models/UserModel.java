@@ -12,7 +12,7 @@ public class UserModel {
     private String email;
     private String mobileNumber;
     private String role="employee";
-    private Boolean active=true;
+    private Boolean active=false;
 
     
     public UserModel() {

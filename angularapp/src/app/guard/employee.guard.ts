@@ -11,7 +11,7 @@ export class EmployeeGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.loginService.isLoggedIn && localStorage.getItem('role') == "employee")
+    if (this.loginService.isLoggedIn && sessionStorage.getItem('role') == "employee")
       return true;
     this.router.navigate(['/login']);
     return false;

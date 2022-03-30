@@ -1,7 +1,9 @@
 package com.examly.springapp.Services;
 
+import com.examly.springapp.Models.LoginModel;
 import com.examly.springapp.Models.UserModel;
 import com.examly.springapp.Repository.ExpenseRepository;
+import com.examly.springapp.Repository.LoginRepository;
 import com.examly.springapp.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,8 @@ public class EmployeeService {
     private ExpenseRepository expenseRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private LoginRepository loginRepository;
     public UserModel getEmployee(String email)
     {
         return this.userRepository.findEmployeeByEmail(email);
@@ -30,6 +34,7 @@ public class EmployeeService {
     }
     public String deleteEmployee(int id){
         UserModel user=this.userRepository.findEmployeeById(id);
+        this.loginRepository.deleteLoginByEmail(user.getEmail());
         this.expenseRepository.deleteExpenseByClaimedBy(user);
         this.userRepository.deleteById(id);
         return "Employee Deleted";

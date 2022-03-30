@@ -37,6 +37,7 @@ import { EmployeeDashboardComponent } from './components/user-comp/dashboards/em
 import { UploadFilesComponent } from './components/upload-files/upload-files.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ViewFileComponent } from './components/user-comp/view-file/view-file.component';
+import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { ViewFileComponent } from './components/user-comp/view-file/view-file.co
     DeleteEmployeeComponent,
     EmployeeDashboardComponent,
     UploadFilesComponent,
-    ViewFileComponent
+    ViewFileComponent,
+    NotAuthorizedComponent
   ],
   imports: [
     BrowserModule,

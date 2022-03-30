@@ -28,7 +28,7 @@ export class UserexpensesComponent implements OnInit {
     username:null,
   };
   ngOnInit(): void {
-    this.email = localStorage.getItem("email");
+    this.email = sessionStorage.getItem("email");
     this.setEmployee();
     this.setExpenses();
   }
@@ -40,8 +40,6 @@ export class UserexpensesComponent implements OnInit {
   setExpenses()
   {
     this.expenses=this.expenseService.getExpenses();
-    console.log(this.expenses[0]);
-    
     for(let i=0;i<this.expenses.length;i++)
     {
       this.receipt[i]='data:image/jpeg;base64,'+this.expenses[i].billImage;

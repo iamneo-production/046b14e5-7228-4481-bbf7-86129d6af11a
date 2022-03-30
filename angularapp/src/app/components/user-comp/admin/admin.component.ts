@@ -1,4 +1,5 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { EmptyExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -51,32 +52,32 @@ export class AdminComponent implements OnInit {
       this.adminService.addEmployees(this.emp).subscribe(
         (data: any) => {
           console.log(data);
-          this.snack.open("Added Successfully", "ok", {duration: 3000});
+          this.snack.open("Added Successfully", "ok", { duration: 3000 });
           this.adminService.setAllEmployees();
         },
-        (error:HttpErrorResponse) => {
-          Swal.fire("Employee with email "+this.emp.email+" already Exists","Cannot add duplicates","error");
+        (error: HttpErrorResponse) => {
+          Swal.fire("Employee with email " + this.emp.email + " already Exists", "Cannot add duplicates", "error");
           console.log(error.error);
         }
       );
-     
+
     }
   }
 
   view(empl: any) {
-    const dialogRef = this.dialog.open(ViewemployeeComponent,{data:empl});
+    const dialogRef = this.dialog.open(ViewemployeeComponent, { data: empl });
     dialogRef.afterClosed().subscribe(result => {
       this.setEmployees();
     });
   }
   edit(empl: any) {
-    const dialogRef = this.dialog.open(EditEmployeeComponent,{data:empl});
+    const dialogRef = this.dialog.open(EditEmployeeComponent, { data: empl });
     dialogRef.afterClosed().subscribe(result => {
       this.setEmployees();
     });
   }
   delete(empl: any) {
-    const dialogRef = this.dialog.open(DeleteEmployeeComponent,{data:empl});
+    const dialogRef = this.dialog.open(DeleteEmployeeComponent, { data: empl });
     dialogRef.afterClosed().subscribe(result => {
       this.setEmployees();
     });
@@ -96,10 +97,27 @@ export class AdminComponent implements OnInit {
   }
   reset() {
     this.searchVal = "";
-    this.empl=this.empList;
+    this.empl = this.empList;
   }
   setEmployees() {
-    this.empList=this.adminService.getEmployees();
-    this.empl=this.adminService.getEmployees();
+    this.empList = this.adminService.getEmployees();
+    this.empl = this.adminService.getEmployees();
+  }
+  auth(emp: Employee, status: string) {
+    if (status == "true") {
+      emp.active = true;
+    }
+    else {
+      emp.active = false;
+    }
+    this.adminService.updateEmployees(emp).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    this.adminService.setAllEmployees();
   }
 }

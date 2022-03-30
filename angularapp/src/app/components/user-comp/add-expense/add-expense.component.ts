@@ -50,8 +50,6 @@ export class AddExpenseComponent implements OnInit {
     }
     else {
       this.expense.expenseId="exp_"+this.t_date.toLocaleTimeString();
-      console.log(this.expense.expenseId);
-      
       this.expense.claimedBy = this.emp;
       this.expense.datedOn = this.t_date;
       const formData = new FormData();
@@ -96,6 +94,5 @@ export class AddExpenseComponent implements OnInit {
   selectFile(event) {
     const file = event.target.files[0];
     this.receipt = file;
-    console.log(this.receipt);
   }
 }

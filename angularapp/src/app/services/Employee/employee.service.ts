@@ -17,9 +17,16 @@ export class EmployeeService {
   public setEmployee(email: string){
     this.http.get<Employee>(`${baseUrl}/employee/${email}`).subscribe(
       (data:Employee)=>{
-        sessionStorage.setItem("emp",JSON.stringify(data));
-        this.expenseService.setExpense(data.id);
-        this.expenseService.setCurrentExpenses(data.id);
+        if(data.active==false)
+        {
+          sessionStorage.setItem("role", "notAuthorized");
+          return;
+        }
+        else{
+          sessionStorage.setItem("emp",JSON.stringify(data));
+          this.expenseService.setExpense(data.id);
+          this.expenseService.setCurrentExpenses(data.id);
+        }
       },
       (error)=>{
         this.snack.open("Something Went Wrong","OK",{duration:3000});

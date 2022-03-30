@@ -32,7 +32,7 @@ export class EmployeeDashboardComponent implements OnInit {
   constructor(private snack: MatSnackBar, private expenseService: ExpenseService,private empService:EmployeeService) { }
 
   ngOnInit(): void {
-    this.role = localStorage.getItem("role");
+    this.role = sessionStorage.getItem("role");
     this.setEmployee();
     this.setDetails();
   }

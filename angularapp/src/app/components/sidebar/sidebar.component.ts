@@ -18,7 +18,7 @@ export class SidebarComponent implements OnInit
 
   ngOnInit(): void 
   {
-    this.role=localStorage.getItem('role');
+    this.role=sessionStorage.getItem('role');
   }
   status: boolean = false;
   clickEvent()

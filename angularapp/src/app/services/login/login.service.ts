@@ -21,7 +21,7 @@ export class LoginService {
         if (data == true) {
           this.setStatus(true);
           this.setRole(login.email);
-          localStorage.setItem("email", login.email);
+          sessionStorage.setItem("email", login.email);
           Swal.fire({
             title: 'Welcome',
             text: "Login Success!",
@@ -50,7 +50,7 @@ export class LoginService {
     );
   }
   route() {
-    let role = localStorage.getItem("role");
+    let role = sessionStorage.getItem("role");
     this.router.navigate([role]);
   }
   public setStatus(s: boolean) {
@@ -66,8 +66,7 @@ export class LoginService {
   public setRole(email: string) {
     this.http.get<Login>(`${baseUrl}/login/${email}`).subscribe(
       (data: Login) => {
-        localStorage.setItem("role", data.role);
-        console.log(data.role);
+        sessionStorage.setItem("role", data.role);
         if (data.role == "admin") {
           this.adminService.setAllEmployees();
         }
@@ -82,7 +81,7 @@ export class LoginService {
         }
       },
       (error: HttpErrorResponse) => {
-        console.log(error.message);
+        console.log(error);
       }
     );
   }
