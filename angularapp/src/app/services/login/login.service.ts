@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { AdminService } from '../admin/admin.service';
 import { EmployeeService } from '../Employee/employee.service';
 import { ExpenseService } from '../expense/expense.service';
+import { ManagerService } from '../manager/manager.service';
 import baseUrl from '../url';
 import { Login } from './Login';
 
@@ -14,7 +15,7 @@ import { Login } from './Login';
 })
 export class LoginService {
   status = false;
-  constructor(private expeneService:ExpenseService,private router: Router, public http: HttpClient, public snack: MatSnackBar, private empService: EmployeeService, private adminService: AdminService) { }
+  constructor(private expeneService:ExpenseService,private router: Router, public http: HttpClient, public snack: MatSnackBar, private empService: EmployeeService, private adminService: AdminService ,private managerService:ManagerService) { }
   public login(login: Login) {
     return this.http.post<Boolean>(`${baseUrl}/login`, login).subscribe(
       (data: boolean) => {
@@ -73,6 +74,7 @@ export class LoginService {
         else if(data.role=="manager")
         {
           this.empService.setEmployee(data.email);
+          this.managerService.setAllExpenses();
           this.empService.setAllEmployees();
         }
         else if(data.role=="employee")

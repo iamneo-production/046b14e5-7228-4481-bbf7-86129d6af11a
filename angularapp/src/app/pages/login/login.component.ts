@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, public loginService: LoginService, public snack: MatSnackBar) { }
 
   ngOnInit(): void {
-    localStorage.clear();
+    sessionStorage.clear();
   }
   validate() {
     console.log('Login button clicked');
