@@ -13,6 +13,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { UserhomeComponent } from './pages/userhome/userhome.component';
 import { AdminComponent } from './components/admin/admin-home/admin.component';
 import { EmployeeDashboardComponent } from './components/dashboard/employee-dashboard.component';
+import { AdminAddEmployeeComponent } from './components/admin/admin-add-employee/admin-add-employee.component';
+import { AdminAuthorizeComponent } from './components/admin/admin-authorize/admin-authorize.component';
 
 const routes: Routes = [
   {
@@ -39,6 +41,14 @@ const routes: Routes = [
      {
        path:'',
        component:ProfileComponent,
+     },
+     {
+       path:'authorize',
+       component:AdminAuthorizeComponent,
+     },
+     {
+       path:'addEmployee',
+       component:AdminAddEmployeeComponent,
      },
      {
        path:'dashboard',

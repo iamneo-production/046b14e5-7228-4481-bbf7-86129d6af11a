@@ -1,1 +1,48 @@
-<p>admin-add-employee works!</p>
+<mat-card>
+  <mat-card-title style="font-weight: 300px; text-align: center;">Add Employees</mat-card-title>
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="row" style=" margin-top: 60px;">
+        <div class="col-md-6 offset-md-3">
+          <form #signupForm="ngForm" (ngSubmit)="formSubmit()">
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input required name="email" [(ngModel)]="emp.email" type="email" [formControl]="email" matInput
+                placeholder="Enter Email">
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Username</mat-label>
+              <input required name="username" [(ngModel)]="emp.username" type="email" matInput
+                placeholder="Enter Username">
+              <mat-icon matSuffix>badge</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>mobile Number</mat-label>
+              <input required name="mobileNumber" [(ngModel)]="emp.mobileNumber" type="number" matInput
+                placeholder="Enter Phone Number">
+              <mat-icon matSuffix>phone</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Password</mat-label>
+              <input required name="password" [(ngModel)]="emp.password" type="password" matInput
+                placeholder="Enter Password">
+              <mat-icon matSuffix>key</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="w100" appearance="outline">
+              <mat-label>Confirm Password</mat-label>
+              <input required name="pass" [(ngModel)]="pass" type="password" matInput placeholder="Confirm Password">
+              <mat-icon *ngIf="pass_match==true" matSuffix>done_all</mat-icon>
+              <mat-icon *ngIf="pass_match==false" matSuffix>error</mat-icon>
+            </mat-form-field>
+            <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
+              <button id="addButton" [disabled]="signupForm.invalid" class="full-w" type="submit" mat-raised-button
+                color="primary">ADD</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

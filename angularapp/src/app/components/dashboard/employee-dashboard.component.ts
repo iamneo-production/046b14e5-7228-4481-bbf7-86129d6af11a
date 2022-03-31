@@ -37,7 +37,7 @@ export class EmployeeDashboardComponent implements OnInit {
     this.setDetails();
   }
   setExpenses() {
-    this.expense=this.expenseService.getCurrentExpenses();
+    this.expense=this.expenseService.getExpenses();
   }
   setEmployee() {
     this.emp=this.empService.getEmployee();

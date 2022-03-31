@@ -37,6 +37,7 @@ import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.co
 import { AdminComponent } from './components/admin/admin-home/admin.component';
 import { EmployeeDashboardComponent } from './components/dashboard/employee-dashboard.component';
 import { AdminAddEmployeeComponent } from './components/admin/admin-add-employee/admin-add-employee.component';
+import { AdminAuthorizeComponent } from './components/admin/admin-authorize/admin-authorize.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { AdminAddEmployeeComponent } from './components/admin/admin-add-employee
     EmployeeDashboardComponent,
     ViewFileComponent,
     NotAuthorizedComponent,
-    AdminAddEmployeeComponent
+    AdminAddEmployeeComponent,
+    AdminAuthorizeComponent
   ],
   imports: [
     BrowserModule,
