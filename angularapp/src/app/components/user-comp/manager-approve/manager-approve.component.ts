@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Expense } from 'src/app/services/expense/Expense';
-import { ExpenseService } from 'src/app/services/expense/expense.service';
 import { ManagerService } from 'src/app/services/manager/manager.service';
 import { ViewExpenseComponent } from '../view-expense/view-expense.component';
 

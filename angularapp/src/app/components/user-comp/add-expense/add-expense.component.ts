@@ -18,7 +18,7 @@ export class AddExpenseComponent implements OnInit {
   t_date = new Date();
   public emp: Employee;
   expense = {
-    expenseId:null,
+    expenseId: null,
     billCost: null,
     datedOn: null,
     remark: null,
@@ -48,7 +48,7 @@ export class AddExpenseComponent implements OnInit {
       });
     }
     else {
-      this.expense.expenseId="exp_"+this.t_date.toLocaleTimeString();
+      this.expense.expenseId = "exp_" + this.t_date.toLocaleTimeString();
       this.expense.claimedBy = this.emp;
       this.expense.datedOn = this.t_date;
       const formData = new FormData();
@@ -56,14 +56,14 @@ export class AddExpenseComponent implements OnInit {
       formData.append('file', this.receipt);
       this.expenseService.saveExpense(formData).subscribe(
         (data: any) => {
-          this.snack.open("Expense Added Sucessfully", "OK",{duration:2000});
+          this.snack.open("Expense Added Sucessfully", "OK", { duration: 2000 });
           this.expenseService.setLimit(this.emp.email);
           this.expenseService.setCurrentExpenses(this.emp.email);
           this.expenseService.setExpense(this.emp.email);
         },
         (error) => {
           console.log(error);
-          this.snack.open("Something Went Wrong", "OK",{duration:2000});
+          this.snack.open("Something Went Wrong", "OK", { duration: 2000 });
 
           this.ngOnInit();
         }

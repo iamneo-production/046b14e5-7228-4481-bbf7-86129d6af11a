@@ -18,7 +18,7 @@ public class LoginService {
     
     @Autowired
     private LoginRepository loginRepository;
-    public Boolean check(LoginModel login) throws Exception
+    public Boolean check(LoginModel login)
     {
         LoginModel local=this.loginRepository.findByEmail(login.getEmail());
         if(local!=null)
@@ -31,7 +31,7 @@ public class LoginService {
             }
             return false;
         }
-       throw new Exception("User Does not Exist");
+        return false;
     }
     public void add(LoginModel login)
     {

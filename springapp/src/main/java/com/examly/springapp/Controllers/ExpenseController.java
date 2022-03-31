@@ -46,6 +46,10 @@ public class ExpenseController {
      }
 
      @PostMapping("/expense")
+     public ExpenseModel expenseSave(@RequestBody ExpenseModel expenseModel) {
+           return this.expenseService.addExpenseTest(expenseModel);
+     }
+     @PostMapping("/expense/v1")
      public ResponseEntity<ResponseMessage> expenseSave(@RequestParam("expense") String exp,
                @RequestParam("file") MultipartFile file) throws JsonMappingException, JsonProcessingException {
           String message;

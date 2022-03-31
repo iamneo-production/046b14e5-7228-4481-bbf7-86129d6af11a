@@ -27,6 +27,7 @@ export class EmployeeDashboardComponent implements OnInit {
   pending: number;
   total: number;
   totalemp: number;
+  declined:number;
   employees: Employee[] = [];
   constructor(private snack: MatSnackBar, private expenseService: ExpenseService,private empService:EmployeeService) { }
 
@@ -47,6 +48,7 @@ export class EmployeeDashboardComponent implements OnInit {
   }
   setDetails() {
     this.setExpenses();
+    this.declined=0;
     this.approved = 0;
     this.pending = 0;
     this.total = 0;
@@ -57,6 +59,10 @@ export class EmployeeDashboardComponent implements OnInit {
       }
       if (this.expense[i].status == "pending") {
         this.pending += this.expense[i].billCost;
+      }
+      if(this.expense[i].status == "declined")
+      {
+        this.declined+=this.expense[i].billCost;
       }
       this.total += this.expense[i].billCost;
     }

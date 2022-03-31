@@ -33,11 +33,12 @@ export class EmployeeService {
             this.expenseService.setCurrentExpenses(data.email);
             this.setAllEmployees();
           }
-          else if (data.role != "admin") {
+          else if (data.role =="employee") {
             this.expenseService.setExpense(data.email);
             this.expenseService.setCurrentExpenses(data.email);
           }
           sessionStorage.setItem("emp", JSON.stringify(data));
+          this.router.navigate([data.role]);
         }
       },
       (error) => {

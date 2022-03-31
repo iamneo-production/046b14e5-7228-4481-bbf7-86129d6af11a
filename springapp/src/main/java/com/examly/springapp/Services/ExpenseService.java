@@ -52,4 +52,7 @@ public class ExpenseService {
     public ExpenseModel findByExpenseId(String expenseId) {
         return this.expenseRepository.findExpenseByExpenseId(expenseId);
     }
+    public ExpenseModel addExpenseTest(ExpenseModel expenseModel) {
+        return this.expenseRepository.save(expenseModel);
+    }
 }

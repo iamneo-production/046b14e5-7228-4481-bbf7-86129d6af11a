@@ -21,21 +21,20 @@ export class LoginService {
       (data: boolean) => {
         if (data == true) {
           this.setStatus(true);
-          this.empService.setEmployee(login.email);
           sessionStorage.setItem("email", login.email);
-          Swal.fire({
-            title: 'Welcome',
-            text: "Login Success!",
-            icon: 'success',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'OK'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              this.route();
-            }
-          });
+          this.empService.setEmployee(login.email);
+          // Swal.fire({
+          //   title: 'Welcome',
+          //   text: "Login Success!",
+          //   icon: 'success',
+          //   showCancelButton: false,
+          //   confirmButtonColor: '#3085d6',
+          //   cancelButtonColor: '#d33',
+          //   confirmButtonText: 'OK'
+          // }).then((result) => {
+          //   if (result.isConfirmed) {
+          //   }
+          // });
         }
         else {
           this.snack.open("Invalid Credentials", "OK", {

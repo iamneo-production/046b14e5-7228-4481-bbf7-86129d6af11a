@@ -18,7 +18,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
     @PostMapping("/login")
-    public ResponseEntity<Boolean> checkUser(@RequestBody LoginModel login) throws Exception
+    public ResponseEntity<Boolean> checkUser(@RequestBody LoginModel login)
     {
         return new ResponseEntity<>(this.loginService.check(login),HttpStatus.OK);
     }

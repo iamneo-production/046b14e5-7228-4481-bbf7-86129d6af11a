@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
     email: '',
     mobileNumber: ''
   };
-  pass: '';
+  confirmPassword: '';
   pass_match = true;
   ngOnInit(): void {
   }
@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
       });
       return;
     }
-    if (this.emp.password != this.pass) {
+    if (this.emp.password != this.confirmPassword) {
       this.pass_match = false;
       this.snack.open("Passwords Don't Match", "OK", {
         duration: 3000,
@@ -47,34 +47,34 @@ export class RegisterComponent implements OnInit {
       this.signupService.saveUser(this.emp).subscribe(
         (data: boolean) => {
           if (data == true) {
-            Swal.fire({
-              title: 'Account Created',
-              text: "Registration Successfull!",
-              icon: 'success',
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'Go to Login!'
-            }).then((result) => {
-              if (result.isConfirmed) {
-                this.router.navigate(['login']);
-              }
-            });
+            // Swal.fire({
+            //   title: 'Account Created',
+            //   text: "Registration Successfull!",
+            //   icon: 'success',
+            //   showCancelButton: true,
+            //   confirmButtonColor: '#3085d6',
+            //   cancelButtonColor: '#d33',
+            //   confirmButtonText: 'Go to Login!'
+            // }).then((result) => {
+            //   if (result.isConfirmed) {
+            //   }
+            // });
+            this.router.navigate(['login']);
           }
           else {
-            Swal.fire({
-              title: 'Email  is already linked with an Account!!',
-              text: "Please try logging in",
-              icon: 'warning',
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'Go to Login!'
-            }).then((result) => {
-              if (result.isConfirmed) {
-                this.router.navigate(['login']);
-              }
-            });
+            // Swal.fire({
+            //   title: 'Email  is already linked with an Account!!',
+            //   text: "Please try logging in",
+            //   icon: 'warning',
+            //   showCancelButton: true,
+            //   confirmButtonColor: '#3085d6',
+            //   cancelButtonColor: '#d33',
+            //   confirmButtonText: 'Go to Login!'
+            // }).then((result) => {
+            //   if (result.isConfirmed) {
+            //   }
+            // });
+            this.router.navigate(['login']);
           }
         },
         (error) => {
@@ -91,7 +91,7 @@ export class RegisterComponent implements OnInit {
     this.emp.password = "";
     this.emp.email = "";
     this.emp.mobileNumber = "";
-    this.pass = "";
+    this.confirmPassword = "";
     this.emp.username = "";
   }
 }

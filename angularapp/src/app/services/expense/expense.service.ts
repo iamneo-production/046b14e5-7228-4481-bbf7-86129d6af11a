@@ -13,8 +13,8 @@ export class ExpenseService {
   public setAllExpenses(): Observable<Expense[]> {
     return this.http.get<Expense[]>(`${baseUrl}/expense`);
   }
-  public saveExpense(formData:FormData): Observable<any> {
-    return this.http.post(`${baseUrl}/expense`, formData);
+  public saveExpense(formData:any): Observable<any> {
+    return this.http.post(`${baseUrl}/expense/v1`, formData);
   }
   public updateExpense(expense: Expense): Observable<String> {
     return this.http.put<String>(`${baseUrl}/expense/${expense.expenseId}`, expense);
