@@ -18,7 +18,11 @@ export class ManagerService {
     return this.http.delete(`${baseUrl}/manager/expense/${expense.expenseId}`);
 }
 public setAllExpenses(){
-  this.http.get(`${baseUrl}/manager`).subscribe(
+  return this.http.get(`${baseUrl}/manager`);
+}
+public storeAllManagerExpenses()
+{
+  this.setAllExpenses().subscribe(
     (data:Expense[])=>{
       sessionStorage.setItem("managerExp",JSON.stringify(data));
     },

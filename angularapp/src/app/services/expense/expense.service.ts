@@ -13,14 +13,18 @@ export class ExpenseService {
   public setAllExpenses(): Observable<Expense[]> {
     return this.http.get<Expense[]>(`${baseUrl}/expense`);
   }
-  public saveExpense(formData:FormData): Observable<any> {
-    return this.http.post(`${baseUrl}/expense`, formData);
+  public saveExpense(formData:any): Observable<any> {
+    return this.http.post(`${baseUrl}/expense/v1`, formData);
   }
   public updateExpense(expense: Expense): Observable<String> {
     return this.http.put<String>(`${baseUrl}/expense/${expense.expenseId}`, expense);
   }
-  public setExpense(id: number) {
-    this.http.get<Expense[]>(`${baseUrl}/expense/${id}`).subscribe(
+  public setExpense(email: string) {
+    return this.http.get<Expense[]>(`${baseUrl}/expense/${email}`);
+  }
+  public storeEmpExpenseByEmail(email:string)
+  {
+    this.setExpense(email).subscribe(
       (data: Expense[]) => {
         sessionStorage.setItem("expenses",JSON.stringify(data));
       },
@@ -35,23 +39,25 @@ export class ExpenseService {
   public deleteExpense(expenseId: string): Observable<String> {
     return this.http.delete<String>(`${baseUrl}/manager/${expenseId}`);
   }
-  public setLimit(id: number): Observable<number> {
-    return this.http.get<number>(`${baseUrl}/expense/sum-month/${id}`);
+  public setLimit(email: string): Observable<number> {
+    return this.http.get<number>(`${baseUrl}/expense/sum-month/${email}`);
   }
-  public setCurrentExpenses(id: number) {
-    this.http.get<Expense[]>(`${baseUrl}/expense/curr-month/${id}`)
-      .subscribe(
-        (data:Expense[]) => {
-          sessionStorage.setItem("curr_expenses",JSON.stringify(data));
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+  public setCurrentExpenses(email: string) {
+    return this.http.get<Expense[]>(`${baseUrl}/expense/curr-month/${email}`);
+  }
+  public storeCurrentExpenses(email:string)
+  {
+    this.setCurrentExpenses(email).subscribe(
+      (data:Expense[]) => {
+        sessionStorage.setItem("curr_expenses",JSON.stringify(data));
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
   public getCurrentExpenses()
   {
     return JSON.parse(sessionStorage.getItem("curr_expenses"));
   }
-  public getEmpExpense(id: number) { }
 }

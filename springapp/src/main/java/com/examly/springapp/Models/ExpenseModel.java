@@ -8,9 +8,10 @@ import javax.persistence.*;
 public class ExpenseModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int billNumber;
     private String expenseId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true,columnDefinition = "INT(20) NOT NULL UNIQUE KEY auto_increment")
+    private int billNumber;
     @Lob
     private byte[] billImage;
     private int billCost;

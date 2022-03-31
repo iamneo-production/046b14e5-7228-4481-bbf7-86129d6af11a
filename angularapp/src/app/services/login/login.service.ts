@@ -15,27 +15,26 @@ import { Login } from './Login';
 })
 export class LoginService {
   status = false;
-  constructor(private expeneService:ExpenseService,private router: Router, public http: HttpClient, public snack: MatSnackBar, private empService: EmployeeService, private adminService: AdminService ,private managerService:ManagerService) { }
+  constructor(private expeneService: ExpenseService, private router: Router, public http: HttpClient, public snack: MatSnackBar, private empService: EmployeeService, private adminService: AdminService, private managerService: ManagerService) { }
   public login(login: Login) {
     return this.http.post<Boolean>(`${baseUrl}/login`, login).subscribe(
       (data: boolean) => {
         if (data == true) {
           this.setStatus(true);
-          this.setRole(login.email);
-          localStorage.setItem("email", login.email);
-          Swal.fire({
-            title: 'Welcome',
-            text: "Login Success!",
-            icon: 'success',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'OK'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              this.route();
-            }
-          });
+          sessionStorage.setItem("email", login.email);
+          this.empService.setEmployee(login.email);
+          // Swal.fire({
+          //   title: 'Welcome',
+          //   text: "Login Success!",
+          //   icon: 'success',
+          //   showCancelButton: false,
+          //   confirmButtonColor: '#3085d6',
+          //   cancelButtonColor: '#d33',
+          //   confirmButtonText: 'OK'
+          // }).then((result) => {
+          //   if (result.isConfirmed) {
+          //   }
+          // });
         }
         else {
           this.snack.open("Invalid Credentials", "OK", {
@@ -51,41 +50,17 @@ export class LoginService {
     );
   }
   route() {
-    let role = localStorage.getItem("role");
+    let role = sessionStorage.getItem("role");
     this.router.navigate([role]);
   }
   public setStatus(s: boolean) {
     this.status = s;
   }
   public isLoggedIn() {
-    this.status;
+    return this.status;
   }
   public logout() {
-    localStorage.clear();
+    sessionStorage.clear();
     this.status = false;
-  }
-  public setRole(email: string) {
-    this.http.get<Login>(`${baseUrl}/login/${email}`).subscribe(
-      (data: Login) => {
-        localStorage.setItem("role", data.role);
-        console.log(data.role);
-        if (data.role == "admin") {
-          this.adminService.setAllEmployees();
-        }
-        else if(data.role=="manager")
-        {
-          this.empService.setEmployee(data.email);
-          this.managerService.setAllExpenses();
-          this.empService.setAllEmployees();
-        }
-        else if(data.role=="employee")
-        {
-          this.empService.setEmployee(data.email);
-        }
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error.message);
-      }
-    );
   }
 }

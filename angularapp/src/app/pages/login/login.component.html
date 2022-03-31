@@ -1,4 +1,4 @@
-<<section class="vh-100">
+<section class="vh-100">
     <div class="container-fluid h-custom">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-md-9 col-lg-6 col-xl-5  wauto">
@@ -23,12 +23,13 @@
                         </mat-form-field>
                         <mat-form-field class="full-w" appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input id="password" required name="password" [(ngModel)]="login.password" type="password" matInput
-                                placeholder="Enter Password">
+                            <input id="password" required name="password" [(ngModel)]="login.password" type="password"
+                                matInput placeholder="Enter Password">
                             <mat-icon matSuffix>key</mat-icon>
                         </mat-form-field>
                         <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
-                            <button [disabled]="loginForm.invalid" id="loginButton" class="full-w" type="submit" mat-raised-button color="primary">Sign in</button>
+                            <button id="loginButton" class="full-w" type="submit" mat-raised-button color="primary">Sign
+                                in</button>
                         </div>
                     </form>
                     <div class="container text-center" style="margin-top: 20px; font-size: 17px;">
@@ -40,3 +41,14 @@
         </div>
     </div>
 </section>
+
+
+<!-- <div id="loginBox">
+    <form #loginForm="ngForm" (ngSubmit)="validate()">
+    <input id="email" required name="email" [(ngModel)]="login.email" type="email" matInput placeholder="Enter Email">
+    <input id="password" required name="password" [(ngModel)]="login.password" type="password" matInput
+        placeholder="Enter Password">
+    <a id="signupLink" routerLink="/signup" style="padding-left: 20px;">Sign up Here</a>
+    <button id="loginButton" class="full-w" type="submit" mat-raised-button color="primary">Sign in</button>
+    </form>
+</div> -->

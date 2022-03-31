@@ -1,5 +1,4 @@
 export interface Employee{
-    id:number,
     active:boolean
     email:string,
     mobileNumber:string,

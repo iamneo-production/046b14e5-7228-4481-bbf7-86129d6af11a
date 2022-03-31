@@ -1,0 +1,19 @@
+.card{
+  margin: 20px 0px 20px 0px;
+  /* margin:0; */
+}
+.card-x{
+margin: 0;
+}
+.mat-card.scrollable-content{
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-card.scrollable-content mat-card-content {
+    overflow-y: auto;
+}
+
+.list{
+  font-size: 20px;
+}

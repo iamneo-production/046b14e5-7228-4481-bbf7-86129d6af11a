@@ -10,15 +10,14 @@ public class LoginModel {
     @Id
     private String email;
     private String password;
-    private String role;
 
     
     public LoginModel() {
     }
-    public LoginModel(String email, String password, String role) {
+    public LoginModel(String email, String password) {
         this.email = email;
         this.password = password;
-        this.role = role;
+
     }
     public String getEmail() {
         return email;
@@ -31,12 +30,6 @@ public class LoginModel {
     }
     public void setPassword(String password) {
         this.password = password;
-    }
-    public String getRole() {
-        return role;
-    }
-    public void setRole(String role) {
-        this.role = role;
     }
     
 }

@@ -21,7 +21,7 @@ public class ExpenseService {
     {
         return this.expenseRepository.findExpenseByEmpId(user);
     }
-    public String deleteExpense(int id)
+    public String deleteExpense(String id)
     {
         if(this.expenseRepository.existsById((id)))
         {
@@ -51,5 +51,8 @@ public class ExpenseService {
     }
     public ExpenseModel findByExpenseId(String expenseId) {
         return this.expenseRepository.findExpenseByExpenseId(expenseId);
+    }
+    public ExpenseModel addExpenseTest(ExpenseModel expenseModel) {
+        return this.expenseRepository.save(expenseModel);
     }
 }

@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProfileComponent } from './components/profile/profile.component';
-import { AddExpenseComponent } from './components/user-comp/add-expense/add-expense.component';
-import { AdminComponent } from './components/user-comp/admin/admin.component';
-import { EmployeeDashboardComponent } from './components/user-comp/dashboards/employee-dashboard/employee-dashboard/employee-dashboard.component';
-import { ManagerApproveComponent } from './components/user-comp/manager-approve/manager-approve.component';
-import { UserexpensesComponent } from './components/user-comp/userexpenses/userexpenses.component';
+import { AddExpenseComponent } from './components/employee/add-expense/add-expense.component';
+import { ManagerApproveComponent } from './components/manager/manager-approve/manager-approve.component';
+import { UserexpensesComponent } from './components/employee/userexpenses/userexpenses.component';
 import { AdminGuard } from './guard/admin.guard';
 import { EmployeeGuard } from './guard/employee.guard';
 import { ManagerGuard } from './guard/manager.guard';
 import { LoginComponent } from './pages/login/login.component';
+import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { UserhomeComponent } from './pages/userhome/userhome.component';
+import { AdminComponent } from './components/admin/admin-home/admin.component';
+import { EmployeeDashboardComponent } from './components/dashboard/employee-dashboard.component';
+import { AdminAddEmployeeComponent } from './components/admin/admin-add-employee/admin-add-employee.component';
+import { AdminAuthorizeComponent } from './components/admin/admin-authorize/admin-authorize.component';
 
 const routes: Routes = [
   {
@@ -28,11 +31,27 @@ const routes: Routes = [
     component:RegisterComponent,
   },
   {
+    path:'notAuthorized',
+    component:NotAuthorizedComponent,
+  },
+  {
    path:'admin',
    component:UserhomeComponent,
    children:[
      {
        path:'',
+       component:ProfileComponent,
+     },
+     {
+       path:'authorize',
+       component:AdminAuthorizeComponent,
+     },
+     {
+       path:'addEmployee',
+       component:AdminAddEmployeeComponent,
+     },
+     {
+       path:'dashboard',
        component:AdminComponent,
      },
      {
@@ -48,7 +67,7 @@ const routes: Routes = [
     children:[
       {
         path:'',
-        component:EmployeeDashboardComponent
+        component:ProfileComponent
       },
       {
         path:'profile',
@@ -75,7 +94,7 @@ const routes: Routes = [
     children:[
       {
         path:'',
-        component:EmployeeDashboardComponent
+        component:ProfileComponent
       },
       {
         path:'profile',
