@@ -9,8 +9,8 @@ import { AdminService } from 'src/app/services/admin/admin.service';
 import { Employee } from 'src/app/services/Employee/Employee';
 import { EmployeeService } from 'src/app/services/Employee/employee.service';
 import Swal from 'sweetalert2';
-import { DeleteEmployeeComponent } from '../../delete-employee/delete-employee.component';
-import { EditEmployeeComponent } from '../../edit-employee/edit-employee.component';
+import { DeleteEmployeeComponent } from '../delete-employee/delete-employee.component';
+import { EditEmployeeComponent } from '../edit-employee/edit-employee.component';
 import { ViewemployeeComponent } from '../viewemployee/viewemployee.component';
 
 @Component({

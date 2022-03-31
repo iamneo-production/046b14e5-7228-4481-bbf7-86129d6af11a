@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Expense } from 'src/app/services/expense/Expense';
 import { ManagerService } from 'src/app/services/manager/manager.service';
-import { ViewExpenseComponent } from '../view-expense/view-expense.component';
+import { ViewExpenseComponent } from '../../employee/view-expense/view-expense.component';
 
 @Component({
   selector: 'app-manager-approve',
