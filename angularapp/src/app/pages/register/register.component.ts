@@ -26,9 +26,7 @@ export class RegisterComponent implements OnInit {
   {
     if(this.emp.username==''|| this.emp.username==null || this.emp.email==''|| this.emp.email==null)
     {
-      this.snack.open("Mandatory fields cannot be empty","ok",{
-        duration:3000,
-      });
+      this.snack.open("Mandatory fields cannot be empty","ok",{duration:3000,});
       return; 
     }
     if(this.emp.password!=this.pass)
