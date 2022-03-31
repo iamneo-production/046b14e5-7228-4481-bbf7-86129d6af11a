@@ -4,28 +4,32 @@
         <div class="row">
             <div class="col">
                 <table class="table-h">
+                    <tr *ngIf="role=='manager'">
+                        <td class="bold">Claimed By</td>
+                        <td>{{expense.claimedBy.username}}</td>
+                    </tr>
+                    <tr *ngIf="role=='manager'">
+                        <td class="bold">Email</td>
+                        <td>{{expense.claimedBy.email}}</td>
+                    </tr>
                     <tr>
-                        <td>Bill Number</td>
+                        <td class="bold">Bill Number</td>
                         <td>{{expense.billNumber}}</td>
                     </tr>
                     <tr>
-                        <td>Expense Id</td>
-                        <td>{{expense.expenseId}}</td>
-                    </tr>
-                    <tr>
-                        <td>Price</td>
+                        <td class="bold">Price</td>
                         <td>{{expense.billCost}}</td>
                     </tr>
                     <tr>
-                        <td>Date</td>
-                        <td>{{expense.datedOn}}</td>
+                        <td class="bold">Date</td>
+                        <td>{{date}}</td>
                     </tr>
                     <tr>
-                        <td>Description</td>
+                        <td class="bold">Description</td>
                         <td>{{expense.remark}}</td>
                     </tr>
                     <tr>
-                        <td>Status</td>
+                        <td class="bold">Status</td>
                         <td>{{expense.status}}</td>
                     </tr>
                 </table>

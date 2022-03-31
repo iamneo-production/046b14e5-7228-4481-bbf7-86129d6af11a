@@ -45,4 +45,16 @@ export class ManagerApproveComponent implements OnInit
     }
     );
   }
+  refresh()
+  {
+    this.managerService.setAllExpenses().subscribe(
+      (data:Expense[])=>{
+        this.expenses=data;
+        sessionStorage.setItem("managerExp",JSON.stringify(data));
+      },
+      (error)=>{
+        console.log(error);
+      }
+    );
+  }
 }

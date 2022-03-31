@@ -19,23 +19,23 @@ export class EmployeeService {
     this.http.get<Employee>(`${baseUrl}/employee/${email}`).subscribe(
       (data: Employee) => {
         if (data.active == false) {
-          sessionStorage.setItem("role", "notAuthorized");
+          this.router.navigate(["notAuthorized"]);
           return;
         }
         else {
           sessionStorage.setItem("role", data.role);
           if (data.role == "admin") {
-            this.adminService.setAllEmployees();
+            this.adminService.storeAllAdminEmployees();
           }
           else if (data.role == "manager") {
-            this.expenseService.setExpense(data.email);
-            this.managerService.setAllExpenses();
-            this.expenseService.setCurrentExpenses(data.email);
+            this.expenseService.storeEmpExpenseByEmail(data.email);
+            this.managerService.storeAllManagerExpenses();
+            this.expenseService.storeCurrentExpenses(data.email);
             this.setAllEmployees();
           }
           else if (data.role =="employee") {
-            this.expenseService.setExpense(data.email);
-            this.expenseService.setCurrentExpenses(data.email);
+            this.expenseService.storeEmpExpenseByEmail(data.email);
+            this.expenseService.storeCurrentExpenses(data.email);
           }
           sessionStorage.setItem("emp", JSON.stringify(data));
           this.router.navigate([data.role]);

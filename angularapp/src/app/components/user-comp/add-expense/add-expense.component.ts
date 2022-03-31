@@ -58,14 +58,12 @@ export class AddExpenseComponent implements OnInit {
         (data: any) => {
           this.snack.open("Expense Added Sucessfully", "OK", { duration: 2000 });
           this.expenseService.setLimit(this.emp.email);
-          this.expenseService.setCurrentExpenses(this.emp.email);
-          this.expenseService.setExpense(this.emp.email);
+          this.expenseService.storeCurrentExpenses(this.emp.email);
+          this.expenseService.storeEmpExpenseByEmail(this.emp.email);
         },
         (error) => {
           console.log(error);
           this.snack.open("Something Went Wrong", "OK", { duration: 2000 });
-
-          this.ngOnInit();
         }
       );
     }

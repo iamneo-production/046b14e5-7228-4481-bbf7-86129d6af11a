@@ -47,33 +47,33 @@ export class RegisterComponent implements OnInit {
       this.signupService.saveUser(this.emp).subscribe(
         (data: boolean) => {
           if (data == true) {
-            // Swal.fire({
-            //   title: 'Account Created',
-            //   text: "Registration Successfull!",
-            //   icon: 'success',
-            //   showCancelButton: true,
-            //   confirmButtonColor: '#3085d6',
-            //   cancelButtonColor: '#d33',
-            //   confirmButtonText: 'Go to Login!'
-            // }).then((result) => {
-            //   if (result.isConfirmed) {
-            //   }
-            // });
+            Swal.fire({
+              title: 'Account Created',
+              text: "Registration Successfull!",
+              icon: 'success',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Go to Login!'
+            }).then((result) => {
+              if (result.isConfirmed) {
+              }
+            });
             this.router.navigate(['login']);
           }
           else {
-            // Swal.fire({
-            //   title: 'Email  is already linked with an Account!!',
-            //   text: "Please try logging in",
-            //   icon: 'warning',
-            //   showCancelButton: true,
-            //   confirmButtonColor: '#3085d6',
-            //   cancelButtonColor: '#d33',
-            //   confirmButtonText: 'Go to Login!'
-            // }).then((result) => {
-            //   if (result.isConfirmed) {
-            //   }
-            // });
+            Swal.fire({
+              title: 'Email  is already linked with an Account!!',
+              text: "Please try logging in",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Go to Login!'
+            }).then((result) => {
+              if (result.isConfirmed) {
+              }
+            });
             this.router.navigate(['login']);
           }
         },

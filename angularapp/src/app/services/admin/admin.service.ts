@@ -11,19 +11,23 @@ import baseUrl from '../url';
 export class AdminService {
   constructor(private http: HttpClient, private snack: MatSnackBar) { }
   public setAllEmployees() {
-    this.http.get<Employee[]>(`${baseUrl}/admin`).subscribe(
+    return this.http.get<Employee[]>(`${baseUrl}/admin`);
+  }
+  public storeAllAdminEmployees() {
+    this.setAllEmployees().subscribe(
       (data: Employee[]) => {
-        sessionStorage.setItem("adminAllEmp",JSON.stringify(data));
+        sessionStorage.setItem("adminAllEmp", JSON.stringify(data));
       },
       (error) => {
         this.snack.open("Something Went wrong", "OK", { duration: 3000 });
       }
     );
   }
+
   public setEmployee(email: string) {
     this.http.get<Employee>(`${baseUrl}/admin/${email}`).subscribe(
       (data: any) => {
-        sessionStorage.setItem("adminEmp",JSON.stringify(data));
+        sessionStorage.setItem("adminEmp", JSON.stringify(data));
       },
       (error) => {
         this.snack.open("Something Went wrong", "OK", { duration: 3000 });

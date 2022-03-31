@@ -20,7 +20,11 @@ export class ExpenseService {
     return this.http.put<String>(`${baseUrl}/expense/${expense.expenseId}`, expense);
   }
   public setExpense(email: string) {
-    this.http.get<Expense[]>(`${baseUrl}/expense/${email}`).subscribe(
+    return this.http.get<Expense[]>(`${baseUrl}/expense/${email}`);
+  }
+  public storeEmpExpenseByEmail(email:string)
+  {
+    this.setExpense(email).subscribe(
       (data: Expense[]) => {
         sessionStorage.setItem("expenses",JSON.stringify(data));
       },
@@ -39,15 +43,18 @@ export class ExpenseService {
     return this.http.get<number>(`${baseUrl}/expense/sum-month/${email}`);
   }
   public setCurrentExpenses(email: string) {
-    this.http.get<Expense[]>(`${baseUrl}/expense/curr-month/${email}`)
-      .subscribe(
-        (data:Expense[]) => {
-          sessionStorage.setItem("curr_expenses",JSON.stringify(data));
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    return this.http.get<Expense[]>(`${baseUrl}/expense/curr-month/${email}`);
+  }
+  public storeCurrentExpenses(email:string)
+  {
+    this.setCurrentExpenses(email).subscribe(
+      (data:Expense[]) => {
+        sessionStorage.setItem("curr_expenses",JSON.stringify(data));
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
   public getCurrentExpenses()
   {

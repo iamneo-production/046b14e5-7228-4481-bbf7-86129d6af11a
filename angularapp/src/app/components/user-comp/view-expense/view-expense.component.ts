@@ -12,12 +12,19 @@ import { ViewFileComponent } from '../view-file/view-file.component';
 export class ViewExpenseComponent implements OnInit {
 
   constructor(private dialog:MatDialog,@Inject(MAT_DIALOG_DATA) public expense: any,public this_dialog: MatDialogRef<ViewExpenseComponent>, public expenseService: ExpenseService) { }
-
+  role:string;
+  date:any;
   ngOnInit(): void {
+    this.role=sessionStorage.getItem("role");
+    this.setDate();
+  }
+  setDate()
+  {
+    this.date=new Date(this.expense.datedOn).toLocaleDateString();
   }
   view()
   {
-    const dialogRef = this.dialog.open(ViewFileComponent,{data:'data:image/jpeg;base64,'+this.expense.billImage});
+    const dialogRef = this.dialog.open(ViewFileComponent,{maxWidth:'120vh',maxHeight:'100vh',data:'data:image/jpeg;base64,'+this.expense.billImage});
     dialogRef.afterClosed().subscribe(result => {});
   } 
   close() {

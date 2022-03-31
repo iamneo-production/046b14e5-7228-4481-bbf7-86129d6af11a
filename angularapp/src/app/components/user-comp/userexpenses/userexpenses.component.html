@@ -1,107 +1,120 @@
 <mat-tab-group mat-align-tabs="center" style="height: max-content;">
     <mat-tab label="All Expenses">
-        <mat-card class="scrollable-content">
-            <div style="display: flex; justify-items:left ;">
+        <div style="display: flex; justify-items:left; margin:20px 0px 20px 20px;">
             <h1>My Expenses</h1>
-            <button  style="margin-left: 20px;" (click)="ngOnInit()" mat-icon-button>
+            <button style="margin-left: 20px;" (click)="refresh()" mat-icon-button>
                 <mat-icon>sync</mat-icon>
-              </button>
-            </div>
-            <mat-card-content>
-                <mat-list>
-                    <mat-list-item class="card" *ngFor="let e of expenses;let i=index">
-                        <div mat-line>Total price: {{e.billCost}}</div>
-                        <div mat-line>Bill Number :{{e.billNumber}}</div>
-                        <div mat-line>Status:{{e.status}}</div>
-                        <mat-divider></mat-divider>
-                        <button mat-raised-button color="primary" (click)="view(e)" style="margin: 10px;">
-                            View
-                        </button>
-                    </mat-list-item>
-                </mat-list>
-            </mat-card-content>
-        </mat-card>
+            </button>
+        </div>
+        <div style="display: flex; flex-direction: row;gap: 50px;">
+            <mat-card style="display: block; width: fit-content; border: 2px solid rgb(235, 230, 230);"
+                *ngFor="let e of expenses;">
+                <mat-card-title style="font-size: 22px; font-weight:410; margin-bottom:20px;">Bill Number :
+                    {{e.billNumber}}</mat-card-title>
+                <mat-card-content>
+                    <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Status : {{e.status}}</div>
+                    <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Price : {{e.billCost}}</div>
+                    <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Remarks : {{e.remark}}</div>
+                    <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Date :
+                        {{e.datedOn.toLocaleDateString()}}</div>
+                </mat-card-content>
+                <mat-card-actions style="display: flex; justify-content: center;">
+                    <button mat-raised-button (click)="view(e)" color="primary">View Receipt</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
     </mat-tab>
     <mat-tab>
         <ng-template mat-tab-label>
             <mat-icon style="margin-right: 10px;">check_circle</mat-icon>
             Approved
-          </ng-template>
-        <mat-card class="scrollable-content">
-            <div style="display: flex; justify-items:left ;">
-                <h1>Approved Expenses</h1>
-                <button  style="margin-left: 20px;" (click)="ngOnInit()" mat-icon-button>
-                    <mat-icon>sync</mat-icon>
-                  </button>
-                </div>
-            <h1 style="margin-left: 20px;"></h1>
-            <mat-card-content>
-                <mat-list *ngFor="let e of expenses">
-                    <mat-list-item class="card-x" *ngIf="e.status=='approved'">
-                        <div mat-line>Total price: {{e.billCost}}</div>
-                        <div mat-line>Bill Number :{{e.billNumber}}</div>
-                        <div mat-line>Status:{{e.status}}</div>
-                        <mat-divider></mat-divider>
-                        <button mat-raised-button color="primary" (click)="view(e)" style="margin: 10px;">
-                            View
-                        </button>
-                    </mat-list-item>
-                </mat-list>
-            </mat-card-content>
-        </mat-card>
+        </ng-template>
+        <div style="display: flex; justify-items:left ; margin:20px 0px 20px 20px;">
+            <h1>Approved Expenses</h1>
+            <button style="margin-left: 20px;" (click)="ngOnInit()" mat-icon-button>
+                <mat-icon>sync</mat-icon>
+            </button>
+        </div>
+        <div style="display: flex; flex-direction: row;gap: 50px;">
+            <ng-container *ngFor="let e of expenses;">
+                <mat-card style="display: block; width: fit-content; border: 2px solid rgb(235, 230, 230);"
+                    *ngIf="e.status=='approved'">
+                    <mat-card-title style="font-size: 22px; font-weight:410; margin-bottom:20px;">Bill Number :
+                        {{e.billNumber}}</mat-card-title>
+                    <mat-card-content>
+                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Status : {{e.status}}</div>
+                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Price : {{e.billCost}}</div>
+                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Remarks : {{e.remark}}</div>
+                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Date :
+                            {{e.datedOn.toLocaleDateString()}}</div>
+                    </mat-card-content>
+                    <mat-card-actions style="display: flex; justify-content: center;">
+                        <button mat-raised-button (click)="view(e)" color="primary">View Receipt</button>
+                    </mat-card-actions>
+                </mat-card>
+            </ng-container>
+        </div>
     </mat-tab>
     <mat-tab>
         <ng-template mat-tab-label>
             <mat-icon style="margin-right: 10px;">running_with_errors</mat-icon>
             Pending
-          </ng-template>
-        <mat-card class="scrollable-content">
-            <div style="display: flex; justify-items:left ;">
-                <h1>Pending Expenses</h1>
-                <button  style="margin-left: 20px;" (click)="ngOnInit()" mat-icon-button>
-                    <mat-icon>sync</mat-icon>
-                  </button>
-                </div>
-            <mat-card-content>
-                <mat-list *ngFor="let e of expenses">
-                    <mat-list-item class="card-x" *ngIf="e.status=='pending'">
-                        <div mat-line>Total price: {{e.billCost}}</div>
-                        <div mat-line>Bill Number :{{e.billNumber}}</div>
-                        <div mat-line>Status:{{e.status}}</div>
-                        <mat-divider></mat-divider>
-                        <button mat-raised-button color="primary" (click)="view(e)" style="margin: 10px;">
-                            View
-                        </button>
-                    </mat-list-item>
-                </mat-list>
-            </mat-card-content>
-        </mat-card>
+        </ng-template>
+        <div style="display: flex; justify-items:left ; margin:20px 0px 20px 20px;">
+            <h1>Pending Expenses</h1>
+            <button style="margin-left: 20px;" (click)="ngOnInit()" mat-icon-button>
+                <mat-icon>sync</mat-icon>
+            </button>
+        </div>
+        <div style="display: flex; flex-direction: row;gap: 50px;">
+            <ng-container *ngFor="let e of expenses;">
+                <mat-card style="display: block; width: fit-content; border: 2px solid rgb(235, 230, 230);"
+                    *ngIf="e.status=='pending'">
+                    <mat-card-title style="font-size: 22px; font-weight:410; margin-bottom:20px;">Bill Number :
+                        {{e.billNumber}}</mat-card-title>
+                    <mat-card-content>
+                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Status : {{e.status}}</div>
+                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Price : {{e.billCost}}</div>
+                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Remarks : {{e.remark}}</div>
+                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Date :
+                            {{e.datedOn.toLocaleDateString()}}</div>
+                    </mat-card-content>
+                    <mat-card-actions style="display: flex; justify-content: center;">
+                        <button mat-raised-button (click)="view(e)" color="primary">View Receipt</button>
+                    </mat-card-actions>
+                </mat-card>
+            </ng-container>
+        </div>
     </mat-tab>
     <mat-tab>
         <ng-template mat-tab-label>
             <mat-icon style="margin-right: 10px;">error_outline</mat-icon>
             Declined
-          </ng-template>
-        <mat-card class="scrollable-content">
-            <div style="display: flex; justify-items:left ;">
-                <h1>Declined Expenses</h1>
-                <button  style="margin-left: 20px;" (click)="ngOnInit()" mat-icon-button>
-                    <mat-icon>sync</mat-icon>
-                  </button>
-                </div>
-            <mat-card-content>
-                <mat-list *ngFor="let e of expenses">
-                    <mat-list-item class="card-x" *ngIf="e.status=='declined'">
-                        <div mat-line>Total price: {{e.billCost}}</div>
-                        <div mat-line>Bill Number :{{e.billNumber}}</div>
-                        <div mat-line>Status:{{e.status}}</div>
-                        <mat-divider></mat-divider>
-                        <button mat-raised-button color="primary" (click)="view(e)" style="margin: 10px;">
-                            View
-                        </button>
-                    </mat-list-item>
-                </mat-list>
-            </mat-card-content>
-        </mat-card>
+        </ng-template>
+        <div style="display: flex; justify-items:left ; margin:20px 0px 20px 20px;">
+            <h1>Declined Expenses</h1>
+            <button style="margin-left: 20px;" (click)="ngOnInit()" mat-icon-button>
+                <mat-icon>sync</mat-icon>
+            </button>
+        </div>
+        <div style="display: flex; flex-direction: row;gap: 50px;">
+            <ng-container *ngFor="let e of expenses;">
+                <mat-card style="display: block; width: fit-content; border: 2px solid rgb(235, 230, 230);"
+                    *ngIf="e.status=='declined'">
+                    <mat-card-title style="font-size: 22px; font-weight:410; margin-bottom:20px;">Bill Number :
+                        {{e.billNumber}}</mat-card-title>
+                    <mat-card-content>
+                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Status : {{e.status}}</div>
+                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Price : {{e.billCost}}</div>
+                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Remarks : {{e.remark}}</div>
+                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Date :
+                            {{e.datedOn.toLocaleDateString()}}</div>
+                    </mat-card-content>
+                    <mat-card-actions style="display: flex; justify-content: center;">
+                        <button mat-raised-button (click)="view(e)" color="primary">View Receipt</button>
+                    </mat-card-actions>
+                </mat-card>
+            </ng-container>
+        </div>
     </mat-tab>
 </mat-tab-group>

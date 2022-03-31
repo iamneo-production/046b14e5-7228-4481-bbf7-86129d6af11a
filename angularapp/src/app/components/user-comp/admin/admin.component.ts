@@ -63,7 +63,7 @@ export class AdminComponent implements OnInit {
       this.adminService.addEmployees(this.emp).subscribe(
         (data: any) => {
           this.snack.open("Added Successfully", "ok", { duration: 3000 });
-          this.adminService.setAllEmployees();
+          this.adminService.storeAllAdminEmployees();
         },
         (error: HttpErrorResponse) => {
           Swal.fire("Employee with email " + this.emp.email + " already Exists", "Cannot add duplicates", "error");
@@ -73,7 +73,6 @@ export class AdminComponent implements OnInit {
 
     }
   }
-
   view(empl: any) {
     const dialogRef = this.dialog.open(ViewemployeeComponent, { data: empl });
     dialogRef.afterClosed().subscribe(result => {
@@ -132,6 +131,19 @@ export class AdminComponent implements OnInit {
       },
       (error) => {
         console.log(error);
+      }
+    );
+  }
+  refresh()
+  {
+    this.adminService.setAllEmployees().subscribe(
+      (data: Employee[]) => {
+        this.empList=data;
+        this.empl=data;
+        sessionStorage.setItem("adminAllEmp",JSON.stringify(data));
+      },
+      (error) => {
+        this.snack.open("Something Went wrong", "OK", { duration: 3000 });
       }
     );
   }
