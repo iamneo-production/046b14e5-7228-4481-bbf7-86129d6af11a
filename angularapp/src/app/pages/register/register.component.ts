@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
     username: '',
     password: '',
     email: '',
-    mobileNumber: ''
+    mobileNumber: '',
   };
   confirmPassword: '';
   pass_match = true;
