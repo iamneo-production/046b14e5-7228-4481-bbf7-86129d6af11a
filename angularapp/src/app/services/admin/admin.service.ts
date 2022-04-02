@@ -9,23 +9,25 @@ import baseUrl from '../url';
   providedIn: 'root'
 })
 export class AdminService {
-  employees: Employee[];
-  emp: Employee;
   constructor(private http: HttpClient, private snack: MatSnackBar) { }
   public setAllEmployees() {
-    this.http.get<Employee[]>(`${baseUrl}/admin`).subscribe(
+    return this.http.get<Employee[]>(`${baseUrl}/admin`);
+  }
+  public storeAllAdminEmployees() {
+    this.setAllEmployees().subscribe(
       (data: Employee[]) => {
-        this.employees = data;
+        sessionStorage.setItem("adminAllEmp", JSON.stringify(data));
       },
       (error) => {
         this.snack.open("Something Went wrong", "OK", { duration: 3000 });
       }
     );
   }
-  public setEmployee(id: number) {
-    this.http.get<Employee>(`${baseUrl}/admin/${id}`).subscribe(
+
+  public setEmployee(email: string) {
+    this.http.get<Employee>(`${baseUrl}/admin/${email}`).subscribe(
       (data: any) => {
-        this.emp = data;
+        sessionStorage.setItem("adminEmp", JSON.stringify(data));
       },
       (error) => {
         this.snack.open("Something Went wrong", "OK", { duration: 3000 });
@@ -33,19 +35,19 @@ export class AdminService {
     );
   }
   public getEmployee() {
-    return this.emp;
+    return JSON.parse(sessionStorage.getItem("adminEmp"));
   }
   public getEmployees() {
-    return this.employees;
+    return JSON.parse(sessionStorage.getItem("adminAllEmp"));
   }
   public addEmployees(emp: Employee): Observable<string> {
     return this.http.post<string>(`${baseUrl}/admin`, emp);
   }
   public updateEmployees(emp: Employee): Observable<string> {
-    return this.http.put<string>(`${baseUrl}/admin/${emp.id}`, emp);
+    return this.http.put<string>(`${baseUrl}/admin/${emp.email}`, emp);
   }
-  public deleteEmployees(id: number): Observable<string> {
-    return this.http.delete<string>(`${baseUrl}/admin/${id}`);
+  public deleteEmployees(email: string): Observable<string> {
+    return this.http.delete<string>(`${baseUrl}/admin/${email}`);
   }
 }
 

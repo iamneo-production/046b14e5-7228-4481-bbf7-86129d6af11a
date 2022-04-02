@@ -8,6 +8,6 @@ export interface Expense{
     datedOn:Date,
     remark:string,
     status:string,
-    billImage:Blob,
+    billImage:any,
     claimedBy:Employee
 }

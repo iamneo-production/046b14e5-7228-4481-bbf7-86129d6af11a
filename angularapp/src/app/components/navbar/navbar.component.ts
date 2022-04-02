@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   Logout()
   {
     this.loginService.logout();
-    localStorage.clear();
+    sessionStorage.clear();
 
   }
 }
