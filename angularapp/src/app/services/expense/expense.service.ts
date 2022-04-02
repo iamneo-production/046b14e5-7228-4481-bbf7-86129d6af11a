@@ -42,22 +42,4 @@ export class ExpenseService {
   public setLimit(email: string): Observable<number> {
     return this.http.get<number>(`${baseUrl}/expense/sum-month/${email}`);
   }
-  // public setCurrentExpenses(email: string) {
-  //   return this.http.get<Expense[]>(`${baseUrl}/expense/curr-month/${email}`);
-  // }
-  // public storeCurrentExpenses(email:string)
-  // {
-  //   this.setCurrentExpenses(email).subscribe(
-  //     (data:Expense[]) => {
-  //       sessionStorage.setItem("curr_expenses",JSON.stringify(data));
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
-  public getCurrentExpenses()
-  {
-    return JSON.parse(sessionStorage.getItem("curr_expenses"));
-  }
 }
