@@ -32,6 +32,7 @@ export class ManagerApproveComponent implements OnInit
   exp.status=status;
   this.managerService.updateExpense(exp).subscribe(
     (data:any)=>{this.snack.open("Expense "+status,"ok",{duration:3000});
+    this.refresh();
   },
     (error)=>{console.log(error);
     }
@@ -57,6 +58,7 @@ export class ManagerApproveComponent implements OnInit
     this.managerService.setAllExpenses().subscribe(
       (data:Expense[])=>{
         this.expenses=data;
+        this.seperate();
         sessionStorage.setItem("managerExp",JSON.stringify(data));
       },
       (error)=>{
@@ -66,8 +68,12 @@ export class ManagerApproveComponent implements OnInit
   }
   seperate()
   {
+    this.pending=[];
+    this.approved=[];
+    this.declined=[];
     for(let exp of this.expenses)
     {
+
       if(exp.status=="approved")
       this.approved.push(exp);
       if(exp.status=="pending")

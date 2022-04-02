@@ -68,7 +68,8 @@ export class AdminAuthorizeComponent implements OnInit {
   delete(empl: any) {
     const dialogRef = this.dialog.open(DeleteEmployeeComponent, { data: empl });
     dialogRef.afterClosed().subscribe(result => {
-      this.setEmployees();
+      if(result)
+      this.refresh();
     });
   }
   view(empl: any) {

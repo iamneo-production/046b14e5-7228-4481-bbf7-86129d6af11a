@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
     password: '',
     email: '',
     mobileNumber: '',
+    role:''
   };
   confirmPassword: '';
   pass_match = true;
@@ -44,6 +45,10 @@ export class RegisterComponent implements OnInit {
       });
     }
     else {
+      console.log(
+        this.emp.role
+      );
+      
       this.signupService.saveUser(this.emp).subscribe(
         (data: boolean) => {
           if (data == true) {
@@ -57,9 +62,9 @@ export class RegisterComponent implements OnInit {
               confirmButtonText: 'Go to Login!'
             }).then((result) => {
               if (result.isConfirmed) {
+                this.router.navigate(['login']);
               }
             });
-            this.router.navigate(['login']);
           }
           else {
             Swal.fire({

@@ -46,6 +46,13 @@
               <mat-icon *ngIf="pass_match==true" matSuffix>done_all</mat-icon>
               <mat-icon *ngIf="pass_match==false" matSuffix>error</mat-icon>
             </mat-form-field>
+            <mat-form-field appearance="outline" class="full-w">
+              <mat-label>Role</mat-label>
+            <mat-select [(value)]="emp.role" placeholder="Role">
+              <mat-option value="employee">Employee</mat-option>
+              <mat-option value="manager">Manager</mat-option>
+            </mat-select>
+          </mat-form-field>
             <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
               <button [disabled]="signupForm.invalid" id="submitButton"  class="full-w" type="submit" mat-raised-button
                 color="primary">Register</button>

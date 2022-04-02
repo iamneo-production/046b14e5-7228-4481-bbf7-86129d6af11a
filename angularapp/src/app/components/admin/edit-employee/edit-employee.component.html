@@ -6,7 +6,7 @@
             <form #signupForm="ngForm" (ngSubmit)="formSubmit()">
               <mat-form-field class="w100" appearance="outline">
                 <mat-label>Email</mat-label>
-                <input id="enterEmail" required name="email" [(ngModel)]="emp.email" type="email" matInput placeholder="Enter Email">
+                <input id="enterEmail" disabled required name="email" [(ngModel)]="emp.email" type="email" matInput placeholder="Enter Email">
                 <mat-icon matSuffix>email</mat-icon>
               </mat-form-field>
               <mat-form-field class="w100" appearance="outline">
