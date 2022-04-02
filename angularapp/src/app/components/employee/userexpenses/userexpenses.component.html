@@ -6,13 +6,20 @@
                 <mat-icon>sync</mat-icon>
             </button>
         </div>
-        <div style="display: flex; flex-direction: row;gap: 50px;">
-            <mat-card style="display: block; width: fit-content; border: 2px solid rgb(235, 230, 230);"
-                *ngFor="let e of expenses;">
+        <div style="display: flex; flex-direction: row;gap: 30px; flex-wrap:wrap;">
+            <mat-card style="border: 2px solid rgb(235, 230, 230);" *ngFor="let e of expenses;">
                 <mat-card-title style="font-size: 22px; font-weight:410; margin-bottom:20px;">Bill Number :
                     {{e.billNumber}}</mat-card-title>
                 <mat-card-content>
-                    <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Status : {{e.status}}</div>
+                    <div *ngIf="e.status=='approved'"
+                        style="font-size: 18px; font-weight: 400;margin-bottom:15px ;color:rgb(18, 228, 18);">Status :
+                        {{e.status}}</div>
+                    <div *ngIf="e.status=='pending'"
+                        style="font-size: 18px; font-weight: 400;margin-bottom:15px ;color:rgb(11, 120, 221);">Status :
+                        {{e.status}}</div>
+                    <div *ngIf="e.status=='declined'"
+                        style="font-size: 18px; font-weight: 400;margin-bottom:15px ;color:rgb(196, 7, 7);">Status :
+                        {{e.status}}</div>
                     <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Price : {{e.billCost}}</div>
                     <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Remarks : {{e.remark}}</div>
                     <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Date :
@@ -23,6 +30,7 @@
                 </mat-card-actions>
             </mat-card>
         </div>
+        <div class="info" *ngIf="expenses.length==0">Nothing to See Here :)</div>
     </mat-tab>
     <mat-tab>
         <ng-template mat-tab-label>
@@ -31,18 +39,18 @@
         </ng-template>
         <div style="display: flex; justify-items:left ; margin:20px 0px 20px 20px;">
             <h1>Approved Expenses</h1>
-            <button style="margin-left: 20px;" (click)="ngOnInit()" mat-icon-button>
+            <button style="margin-left: 20px;" (click)="refresh()" mat-icon-button>
                 <mat-icon>sync</mat-icon>
             </button>
         </div>
-        <div style="display: flex; flex-direction: row;gap: 50px;">
-            <ng-container *ngFor="let e of expenses;">
-                <mat-card style="display: block; width: fit-content; border: 2px solid rgb(235, 230, 230);"
-                    *ngIf="e.status=='approved'">
+        <div style="display: flex; flex-direction: row;gap: 30px; flex-wrap:wrap;">
+            <ng-container *ngFor="let e of approved;">
+                <mat-card style="border: 2px solid rgb(235, 230, 230);" *ngIf="e.status=='approved'">
                     <mat-card-title style="font-size: 22px; font-weight:410; margin-bottom:20px;">Bill Number :
                         {{e.billNumber}}</mat-card-title>
                     <mat-card-content>
-                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Status : {{e.status}}</div>
+                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px ;color:rgb(18, 228, 18);">
+                            Status : {{e.status}}</div>
                         <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Price : {{e.billCost}}</div>
                         <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Remarks : {{e.remark}}</div>
                         <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Date :
@@ -54,6 +62,7 @@
                 </mat-card>
             </ng-container>
         </div>
+        <div class="info" *ngIf="approved.length==0">Nothing to See Here :)</div>
     </mat-tab>
     <mat-tab>
         <ng-template mat-tab-label>
@@ -62,18 +71,18 @@
         </ng-template>
         <div style="display: flex; justify-items:left ; margin:20px 0px 20px 20px;">
             <h1>Pending Expenses</h1>
-            <button style="margin-left: 20px;" (click)="ngOnInit()" mat-icon-button>
+            <button style="margin-left: 20px;" (click)="refresh()" mat-icon-button>
                 <mat-icon>sync</mat-icon>
             </button>
         </div>
-        <div style="display: flex; flex-direction: row;gap: 50px;">
-            <ng-container *ngFor="let e of expenses;">
-                <mat-card style="display: block; width: fit-content; border: 2px solid rgb(235, 230, 230);"
-                    *ngIf="e.status=='pending'">
+        <div style="display: flex; flex-direction: row;gap: 30px; flex-wrap:wrap;">
+            <ng-container *ngFor="let e of pending;">
+                <mat-card style="border: 2px solid rgb(235, 230, 230);" *ngIf="e.status=='pending'">
                     <mat-card-title style="font-size: 22px; font-weight:410; margin-bottom:20px;">Bill Number :
                         {{e.billNumber}}</mat-card-title>
                     <mat-card-content>
-                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Status : {{e.status}}</div>
+                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px; color:rgb(11, 120, 221);">
+                            Status : {{e.status}}</div>
                         <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Price : {{e.billCost}}</div>
                         <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Remarks : {{e.remark}}</div>
                         <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Date :
@@ -85,6 +94,7 @@
                 </mat-card>
             </ng-container>
         </div>
+        <div class="info" *ngIf="pending.length==0">Nothing to See Here :)</div>
     </mat-tab>
     <mat-tab>
         <ng-template mat-tab-label>
@@ -93,18 +103,18 @@
         </ng-template>
         <div style="display: flex; justify-items:left ; margin:20px 0px 20px 20px;">
             <h1>Declined Expenses</h1>
-            <button style="margin-left: 20px;" (click)="ngOnInit()" mat-icon-button>
+            <button style="margin-left: 20px;" (click)="refresh()" mat-icon-button>
                 <mat-icon>sync</mat-icon>
             </button>
         </div>
-        <div style="display: flex; flex-direction: row;gap: 50px;">
-            <ng-container *ngFor="let e of expenses;">
-                <mat-card style="display: block; width: fit-content; border: 2px solid rgb(235, 230, 230);"
-                    *ngIf="e.status=='declined'">
+        <div style="display: flex; flex-direction: row;gap: 30px; flex-wrap:wrap;">
+            <ng-container *ngFor="let e of declined;">
+                <mat-card style="border: 2px solid rgb(235, 230, 230);" *ngIf="e.status=='declined'">
                     <mat-card-title style="font-size: 22px; font-weight:410; margin-bottom:20px;">Bill Number :
                         {{e.billNumber}}</mat-card-title>
                     <mat-card-content>
-                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Status : {{e.status}}</div>
+                        <div style="font-size: 18px; font-weight: 400;margin-bottom:15px;color:rgb(196, 7, 7);">Status :
+                            {{e.status}}</div>
                         <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Price : {{e.billCost}}</div>
                         <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Remarks : {{e.remark}}</div>
                         <div style="font-size: 18px; font-weight: 400;margin-bottom:15px">Date :
@@ -116,5 +126,6 @@
                 </mat-card>
             </ng-container>
         </div>
+        <div class="info" *ngIf="declined.length==0">Nothing to See Here :)</div>
     </mat-tab>
 </mat-tab-group>

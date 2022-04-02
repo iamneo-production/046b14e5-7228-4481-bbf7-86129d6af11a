@@ -3,14 +3,16 @@ package com.examly.springapp.Models;
 import java.util.Date;
 import javax.persistence.*;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name = "Expense")
 public class ExpenseModel {
 
     @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String expenseId;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true,columnDefinition = "INT(20) NOT NULL UNIQUE KEY auto_increment")
     private int billNumber;
     @Lob
     private byte[] billImage;
@@ -25,8 +27,8 @@ public class ExpenseModel {
     public ExpenseModel() {
     }
 
-    public ExpenseModel(String expenseId, int billNumber, byte[] billImage, int billCost, Date datedOn,
-            String remark, String status, UserModel claimedBy) {
+    public ExpenseModel(String expenseId, int billNumber, byte[] billImage, int billCost, Date datedOn, String remark,
+            String status, UserModel claimedBy) {
         this.expenseId = expenseId;
         this.billNumber = billNumber;
         this.billImage = billImage;
@@ -76,6 +78,7 @@ public class ExpenseModel {
     public void setDatedOn(Date datedOn) {
         this.datedOn = datedOn;
     }
+
     public String getRemark() {
         return remark;
     }

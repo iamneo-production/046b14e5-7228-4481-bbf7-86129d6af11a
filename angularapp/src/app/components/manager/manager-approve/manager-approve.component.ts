@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Employee } from 'src/app/services/Employee/Employee';
 import { Expense } from 'src/app/services/expense/Expense';
 import { ManagerService } from 'src/app/services/manager/manager.service';
 import { ViewExpenseComponent } from '../../employee/view-expense/view-expense.component';
@@ -12,14 +13,20 @@ import { ViewExpenseComponent } from '../../employee/view-expense/view-expense.c
 })
 export class ManagerApproveComponent implements OnInit 
 {
+  emp:Employee;
   expenses:Expense[]=[];
+  approved:Expense[]=[];
+  pending:Expense[]=[];
+  declined:Expense[]=[];
   constructor(public dialog:MatDialog,public managerService:ManagerService,private snack:MatSnackBar) { }
   
   ngOnInit(): void {
+    this.emp=JSON.parse(sessionStorage.getItem("emp"));
     this.setExpenses();
   }
   public setExpenses(){
   this.expenses=this.managerService.getAllExpenses();
+  this.seperate();
   }
   public approveExpense(exp:Expense,status:string){
   exp.status=status;
@@ -56,5 +63,17 @@ export class ManagerApproveComponent implements OnInit
         console.log(error);
       }
     );
+  }
+  seperate()
+  {
+    for(let exp of this.expenses)
+    {
+      if(exp.status=="approved")
+      this.approved.push(exp);
+      if(exp.status=="pending")
+      this.pending.push(exp);
+      if(exp.status=="declined")
+      this.declined.push(exp);
+    }
   }
 }

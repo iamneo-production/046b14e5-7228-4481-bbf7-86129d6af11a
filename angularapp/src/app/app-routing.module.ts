@@ -40,7 +40,7 @@ const routes: Routes = [
    children:[
      {
        path:'',
-       component:ProfileComponent,
+       component:AdminComponent,
      },
      {
        path:'authorize',
@@ -67,7 +67,7 @@ const routes: Routes = [
     children:[
       {
         path:'',
-        component:ProfileComponent
+        component:EmployeeDashboardComponent
       },
       {
         path:'profile',
@@ -94,7 +94,7 @@ const routes: Routes = [
     children:[
       {
         path:'',
-        component:ProfileComponent
+        component:EmployeeDashboardComponent
       },
       {
         path:'profile',

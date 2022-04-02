@@ -28,7 +28,7 @@ public class ExpenseRepositoryImpl {
         return query.getResultList();
     }
     public List <ExpenseModel> findExpenseByEmpId(UserModel user) {
-        String hql = "select e from ExpenseModel e where e.claimedBy=:user";
+        String hql = "select e from ExpenseModel e where  month(e.datedOn)=month(current_timestamp) and e.claimedBy=:user";
         TypedQuery <ExpenseModel> query = entityManager.createQuery(hql,ExpenseModel.class);
         query.setParameter("user", user);
         return query.getResultList();

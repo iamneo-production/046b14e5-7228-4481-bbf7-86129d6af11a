@@ -17,6 +17,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatRadioModule} from '@angular/material/radio';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -86,7 +87,8 @@ import { AdminAuthorizeComponent } from './components/admin/admin-authorize/admi
       showForeground:true
     }),
     MatSelectModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatRadioModule
   ],
   providers: [
     LoginComponent,
@@ -104,6 +106,10 @@ import { AdminAuthorizeComponent } from './components/admin/admin-authorize/admi
     EditEmployeeComponent,
     DeleteEmployeeComponent,
     EmployeeDashboardComponent,
+    ViewFileComponent,
+    NotAuthorizedComponent,
+    AdminAddEmployeeComponent,
+    AdminAuthorizeComponent
   ],
   bootstrap: [AppComponent]
 })

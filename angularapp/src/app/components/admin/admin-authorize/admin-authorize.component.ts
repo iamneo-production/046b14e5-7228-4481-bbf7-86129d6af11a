@@ -13,30 +13,34 @@ import { ViewemployeeComponent } from '../viewemployee/viewemployee.component';
 })
 export class AdminAuthorizeComponent implements OnInit {
 
+  role="";
   empList: Employee[] = [];
-  notAuth:Employee[]=[];
-  constructor(private adminService: AdminService,private snack: MatSnackBar,public dialog: MatDialog) { }
+  notAuth: Employee[] = [];
+  constructor(private adminService: AdminService, private snack: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.setEmployees();
   }
   setEmployees() {
-    this.notAuth=[];
     this.empList = this.adminService.getEmployees();
-    for(let i=0;i<this.empList.length;i++)
-    {
-      if(!this.empList[i].active)
-      {
-        this.notAuth.push(this.empList[i]);
+    this.setNotAuth();
+  }
+  setNotAuth()
+  {
+    this.notAuth = [];
+    for (let emp of this.empList) {
+      if (!emp.active) {
+        this.notAuth.push(emp);
       }
     }
   }
-  
+
   auth(emp: Employee, status: string) {
-    let action:string;
+    let action: string;
     if (status == "true") {
+      emp.role=this.role;
       emp.active = true;
-      action="Authorized";
+      action = "Authorized";
     }
     else {
       this.delete(emp);
@@ -44,10 +48,17 @@ export class AdminAuthorizeComponent implements OnInit {
     }
     this.adminService.updateEmployees(emp).subscribe(
       (data) => {
-        this.snack.open("Employee " +action, "OK", {
-          duration: 3000
-        });
-        this.adminService.setAllEmployees().subscribe(data=>{this.empList=data;});
+        this.adminService.setAllEmployees().subscribe(
+          (data:Employee[]) => {
+            this.empList = data;
+            this.setNotAuth();
+            sessionStorage.setItem("adminAllEmp", JSON.stringify(data));
+            this.snack.open("Employee " + action, "OK", {
+              duration: 3000
+            });
+          },
+          (error) => { console.log(error); }
+        );
       },
       (error) => {
         console.log(error);
@@ -65,5 +76,17 @@ export class AdminAuthorizeComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.setEmployees();
     });
+  }
+  refresh()
+  {
+   this.adminService.setAllEmployees().subscribe(
+     (data:Employee[]) => {
+       this.empList = data;
+       this.setNotAuth();
+       sessionStorage.setItem("adminAllEmp", JSON.stringify(data))
+     },
+     (error) => { console.log(error);
+      this.snack.open("Something Went wrong", "OK", { duration: 3000 }); }
+   );
   }
 }

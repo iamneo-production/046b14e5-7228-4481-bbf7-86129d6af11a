@@ -4,7 +4,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { EmployeeService } from 'src/app/services/Employee/employee.service';
 import { Expense } from 'src/app/services/expense/Expense';
 import { ExpenseService } from 'src/app/services/expense/expense.service';
-import { ViewExpenseComponent } from '../view-expense/view-expense.component';
 import { ViewFileComponent } from '../view-file/view-file.component';
 
 
@@ -17,6 +16,9 @@ export class UserexpensesComponent implements OnInit {
 
   constructor(public dialog: MatDialog, public expenseService: ExpenseService, private empService: EmployeeService, private snack: MatSnackBar) { }
   expenses: Expense[];
+  approved:Expense[]=[];
+  pending:Expense[]=[];
+  declined:Expense[]=[];
   receipt: any = [];
   email = "";
   emp = {
@@ -39,6 +41,7 @@ export class UserexpensesComponent implements OnInit {
   setExpenses() {
     this.expenses = this.expenseService.getExpenses();
     this.setDate(this.expenses);
+    this.seperate();
   }
   refresh() {
     this.expenseService.setExpense(this.emp.email).subscribe(
@@ -59,6 +62,18 @@ export class UserexpensesComponent implements OnInit {
     for (let i = 0; i < exp.length; i++) {
       exp[i].datedOn = new Date(exp[i].datedOn);;
       this.receipt[i] = 'data:image/jpeg;base64,' + exp[i].billImage;
+    }
+  }
+  seperate()
+  {
+    for(let exp of this.expenses)
+    {
+      if(exp.status=="approved")
+      this.approved.push(exp);
+      if(exp.status=="pending")
+      this.pending.push(exp);
+      if(exp.status=="declined")
+      this.declined.push(exp);
     }
   }
 }

@@ -25,20 +25,20 @@ export class AdminComponent implements OnInit {
   }
   view(empl: any) {
     const dialogRef = this.dialog.open(ViewemployeeComponent, { data: empl });
-    dialogRef.afterClosed().subscribe(result => {
-      this.setEmployees();
-    });
+    dialogRef.afterClosed().subscribe(result => {});
   }
   edit(empl: any) {
     const dialogRef = this.dialog.open(EditEmployeeComponent, { data: empl });
     dialogRef.afterClosed().subscribe(result => {
-      this.setEmployees();
+      if(result)
+      this.refresh();
     });
   }
   delete(empl: any) {
     const dialogRef = this.dialog.open(DeleteEmployeeComponent, { data: empl });
     dialogRef.afterClosed().subscribe(result => {
-      this.setEmployees();
+      if(result)
+      this.refresh();
     });
   }
   Search() {
