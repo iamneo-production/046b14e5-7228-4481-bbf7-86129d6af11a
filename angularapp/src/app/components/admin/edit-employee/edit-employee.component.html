@@ -14,7 +14,6 @@
                 <input id="enterName" required name="username" [(ngModel)]="emp.username" type="email" matInput
                   placeholder="Enter Username">
                 <mat-icon matSuffix>badge</mat-icon>
-                <!-- <mat-hint>Must Be Unique</mat-hint> -->
               </mat-form-field>
               <mat-form-field class="w100" appearance="outline">
                 <mat-label>mobile Number</mat-label>
@@ -41,9 +40,10 @@
                 <mat-icon *ngIf="pass_match==true" matSuffix>done_all</mat-icon>
                 <mat-icon *ngIf="pass_match==false" matSuffix>error</mat-icon>
               </mat-form-field>
-              <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
+              <div style="margin-top: 20px; margin-bottom: 20px; display: flex; justify-content: center;">
                 <button id="updateButton" [disabled]="signupForm.invalid" class="full-w" type="submit" mat-raised-button
                   color="primary">Update</button>
+                  <button type="button" style="margin-left: 20px;" mat-raised-button color="warn" (click)="close()">Close</button>
               </div>
             </form>
           </div>

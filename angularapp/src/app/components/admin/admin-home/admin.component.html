@@ -20,18 +20,17 @@
 </div>
 <mat-card class="scrollable-content">
   <mat-card-content>
-    <mat-list *ngFor="let e of empl">
-      <mat-list-item style="padding-left:30px;border:1px solid grey" *ngIf="e.active==true">
+    <mat-list class="card" *ngFor="let e of empl">
+      <mat-list-item style="padding-left:30px;" *ngIf="e.active==true">
         <div mat-line>Name:&nbsp;{{e.username}}</div>
         <div mat-line>E-mail:&nbsp;{{e.email}}</div>
         <mat-divider></mat-divider>
         <button mat-raised-button color="primary" (click)="view(e)" style="margin: 10px;">
           View
         </button>
-        <button (click)="edit(e)" mat-mini-fab color="#D9DDD8" style="margin: 10px">
+        <button (click)="edit(e)" mat-mini-fab color="accent" style="margin: 10px">
           <mat-icon>edit</mat-icon>
         </button>
-
         <button (click)="delete(e)" mat-mini-fab color="warn" style="margin: 10px;">
           <mat-icon>delete</mat-icon>
         </button>

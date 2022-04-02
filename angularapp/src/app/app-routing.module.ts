@@ -8,7 +8,6 @@ import { AdminGuard } from './guard/admin.guard';
 import { EmployeeGuard } from './guard/employee.guard';
 import { ManagerGuard } from './guard/manager.guard';
 import { LoginComponent } from './pages/login/login.component';
-import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { UserhomeComponent } from './pages/userhome/userhome.component';
 import { AdminComponent } from './components/admin/admin-home/admin.component';
@@ -31,16 +30,12 @@ const routes: Routes = [
     component:RegisterComponent,
   },
   {
-    path:'notAuthorized',
-    component:NotAuthorizedComponent,
-  },
-  {
    path:'admin',
    component:UserhomeComponent,
    children:[
      {
        path:'',
-       component:ProfileComponent,
+       component:AdminComponent,
      },
      {
        path:'authorize',
@@ -67,7 +62,7 @@ const routes: Routes = [
     children:[
       {
         path:'',
-        component:ProfileComponent
+        component:EmployeeDashboardComponent
       },
       {
         path:'profile',
@@ -94,7 +89,7 @@ const routes: Routes = [
     children:[
       {
         path:'',
-        component:ProfileComponent
+        component:EmployeeDashboardComponent
       },
       {
         path:'profile',

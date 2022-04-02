@@ -2,7 +2,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
 import { AdminService } from '../admin/admin.service';
 import { EmployeeService } from '../Employee/employee.service';
 import { ExpenseService } from '../expense/expense.service';
@@ -23,18 +22,6 @@ export class LoginService {
           this.setStatus(true);
           sessionStorage.setItem("email", login.email);
           this.empService.setEmployee(login.email);
-          // Swal.fire({
-          //   title: 'Welcome',
-          //   text: "Login Success!",
-          //   icon: 'success',
-          //   showCancelButton: false,
-          //   confirmButtonColor: '#3085d6',
-          //   cancelButtonColor: '#d33',
-          //   confirmButtonText: 'OK'
-          // }).then((result) => {
-          //   if (result.isConfirmed) {
-          //   }
-          // });
         }
         else {
           this.snack.open("Invalid Credentials", "OK", {

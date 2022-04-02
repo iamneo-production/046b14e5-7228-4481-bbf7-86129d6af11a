@@ -14,10 +14,13 @@ export class EditEmployeeComponent implements OnInit {
   constructor(public dialog:MatDialog,private diag:MatDialogRef<EditEmployeeComponent>,private snack:MatSnackBar,private adminService:AdminService, @Inject(MAT_DIALOG_DATA) public emp:any) { }
 
   ngOnInit(): void {
+    this.diag.backdropClick().subscribe(result => {
+      this.diag.close(false);
+    });
   }
   close()
   {
-    
+    this.diag.close(false);
   }
  formSubmit(){
   if(this.emp.username==''|| this.emp.username==null || this.emp.email==''|| this.emp.email==null)
@@ -34,15 +37,15 @@ export class EditEmployeeComponent implements OnInit {
   }
   this.adminService.updateEmployees(this.emp).subscribe(
     (data)=>{
-      this.diag.close();
+      this.diag.close(true);
       this.snack.open("Updated Successfully","OK",{
         duration:3000
       });
       this.adminService.setAllEmployees();
+      this.diag.close(true);
     },
   (error)=>{ 
-    console.log(error);
-    
+    console.log(error);  
   }
   )
  }

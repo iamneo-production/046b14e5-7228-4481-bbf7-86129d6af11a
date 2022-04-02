@@ -17,6 +17,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatRadioModule} from '@angular/material/radio';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -33,7 +34,6 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { EditEmployeeComponent } from './components/admin/edit-employee/edit-employee.component';
 import { DeleteEmployeeComponent } from './components/admin/delete-employee/delete-employee.component';
 import { ViewFileComponent } from './components/employee/view-file/view-file.component';
-import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.component';
 import { AdminComponent } from './components/admin/admin-home/admin.component';
 import { EmployeeDashboardComponent } from './components/dashboard/employee-dashboard.component';
 import { AdminAddEmployeeComponent } from './components/admin/admin-add-employee/admin-add-employee.component';
@@ -58,7 +58,6 @@ import { AdminAuthorizeComponent } from './components/admin/admin-authorize/admi
     DeleteEmployeeComponent,
     EmployeeDashboardComponent,
     ViewFileComponent,
-    NotAuthorizedComponent,
     AdminAddEmployeeComponent,
     AdminAuthorizeComponent
   ],
@@ -86,7 +85,8 @@ import { AdminAuthorizeComponent } from './components/admin/admin-authorize/admi
       showForeground:true
     }),
     MatSelectModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatRadioModule
   ],
   providers: [
     LoginComponent,
@@ -104,6 +104,9 @@ import { AdminAuthorizeComponent } from './components/admin/admin-authorize/admi
     EditEmployeeComponent,
     DeleteEmployeeComponent,
     EmployeeDashboardComponent,
+    ViewFileComponent,
+    AdminAddEmployeeComponent,
+    AdminAuthorizeComponent
   ],
   bootstrap: [AppComponent]
 })
