@@ -48,6 +48,7 @@ export class UserexpensesComponent implements OnInit {
       (data: Expense[]) => {
         this.expenses = data;
         this.setDate(this.expenses);
+        this.seperate();
         sessionStorage.setItem("expenses", JSON.stringify(data));
       },
       (error) => {

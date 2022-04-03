@@ -35,16 +35,19 @@
             </mat-form-field>
             <mat-form-field class="full-w" appearance="outline">
               <mat-label>Password</mat-label>
-              <input id="password" required name="password" [(ngModel)]="emp.password" type="password" matInput
+              <input id="password" [type]="hide ? 'password' : 'text'" required name="password" [(ngModel)]="emp.password"  matInput
                 placeholder="Enter Password">
-              <mat-icon matSuffix>key</mat-icon>
+                <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
             </mat-form-field>
             <mat-form-field class="full-w" appearance="outline">
               <mat-label>Confirm Password</mat-label>
-              <input id="confirmPassword" required name="confirmPassword" [(ngModel)]="confirmPassword" type="password" matInput
+              <input [type]="hide_cf ? 'password' : 'text'" id="confirmPassword" required name="confirmPassword" [(ngModel)]="confirmPassword"  matInput
                 placeholder="Confirm Password">
-              <mat-icon *ngIf="pass_match==true" matSuffix>done_all</mat-icon>
-              <mat-icon *ngIf="pass_match==false" matSuffix>error</mat-icon>
+              <button type="button" mat-icon-button matSuffix (click)="hide_cf = !hide_cf" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide_cf ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
             </mat-form-field>
             <mat-form-field appearance="outline" class="full-w">
               <mat-label>Role</mat-label>

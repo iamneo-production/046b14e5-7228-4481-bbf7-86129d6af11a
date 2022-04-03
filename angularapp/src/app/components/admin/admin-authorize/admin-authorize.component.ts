@@ -13,7 +13,7 @@ import { ViewemployeeComponent } from '../viewemployee/viewemployee.component';
 })
 export class AdminAuthorizeComponent implements OnInit {
 
-  role="";
+  role="employee";
   empList: Employee[] = [];
   notAuth: Employee[] = [];
   constructor(private adminService: AdminService, private snack: MatSnackBar, public dialog: MatDialog) { }

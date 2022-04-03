@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { AdminService } from 'src/app/services/admin/admin.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AdminService } from 'src/app/services/admin/admin.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-admin-add-employee',
   templateUrl: './admin-add-employee.component.html',
@@ -11,6 +11,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AdminAddEmployeeComponent implements OnInit {
 
+  hide = true;
+  hide_cf = true;
   pass_match = true;
   pass = '';
   emp = {
