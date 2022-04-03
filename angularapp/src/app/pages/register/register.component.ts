@@ -12,7 +12,8 @@ import Swal from 'sweetalert2';
 export class RegisterComponent implements OnInit {
   constructor(public snack: MatSnackBar, public router: Router, private signupService: SignupService) { }
   email = new FormControl('', [Validators.required, Validators.email]);
-
+  hide = true;
+  hide_cf = true;
   getErrorMessage() {
     if (this.email.hasError('required')) {
       return 'Cannot be Empty';
@@ -24,9 +25,9 @@ export class RegisterComponent implements OnInit {
     password: '',
     email: '',
     mobileNumber: '',
-    role:''
+    role: 'employee'
   };
-  confirmPassword: '';
+  confirmPassword ="";
   pass_match = true;
   ngOnInit(): void {
   }
@@ -48,7 +49,7 @@ export class RegisterComponent implements OnInit {
       console.log(
         this.emp.role
       );
-      
+
       this.signupService.saveUser(this.emp).subscribe(
         (data: boolean) => {
           if (data == true) {
@@ -77,9 +78,9 @@ export class RegisterComponent implements OnInit {
               confirmButtonText: 'Go to Login!'
             }).then((result) => {
               if (result.isConfirmed) {
+                this.router.navigate(['login']);
               }
             });
-            this.router.navigate(['login']);
           }
         },
         (error) => {
@@ -90,13 +91,5 @@ export class RegisterComponent implements OnInit {
       );
     }
 
-  }
-  clear() {
-    this.emp.email = "";
-    this.emp.password = "";
-    this.emp.email = "";
-    this.emp.mobileNumber = "";
-    this.confirmPassword = "";
-    this.emp.username = "";
   }
 }

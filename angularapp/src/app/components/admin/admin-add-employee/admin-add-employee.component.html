@@ -1,8 +1,8 @@
 <mat-card>
-  <mat-card-title style="font-weight: 300px; text-align: center;">Add Employees</mat-card-title>
+  <mat-card-title style="font-size: 28px; font-weight: 400px; text-align: center;">Add Employees</mat-card-title>
   <mat-card-content>
     <div class="bootstrap-wrapper">
-      <div class="row" style=" margin-top: 60px;">
+      <div class="row" style=" margin-top: 20px;">
         <div class="col-md-6 offset-md-3">
           <form #signupForm="ngForm" (ngSubmit)="formSubmit()">
             <mat-form-field class="w100" appearance="outline">
@@ -36,15 +36,28 @@
             </mat-form-field>
             <mat-form-field class="w100" appearance="outline">
               <mat-label>Password</mat-label>
-              <input required name="password" [(ngModel)]="emp.password" type="password" matInput
-                placeholder="Enter Password">
-              <mat-icon matSuffix>key</mat-icon>
+              <input id="password" [type]="hide ? 'password' : 'text'" required name="password"
+                [(ngModel)]="emp.password" matInput placeholder="Enter Password">
+              <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
             </mat-form-field>
             <mat-form-field class="w100" appearance="outline">
               <mat-label>Confirm Password</mat-label>
-              <input required name="pass" [(ngModel)]="pass" type="password" matInput placeholder="Confirm Password">
-              <mat-icon *ngIf="pass_match==true" matSuffix>done_all</mat-icon>
-              <mat-icon *ngIf="pass_match==false" matSuffix>error</mat-icon>
+              <input [type]="hide_cf ? 'password' : 'text'" id="confirmPassword" required name="pass"
+                [(ngModel)]="pass" matInput placeholder="Confirm Password">
+              <button type="button" mat-icon-button matSuffix (click)="hide_cf = !hide_cf"
+                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide_cf ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w100">
+              <mat-label>Role</mat-label>
+              <mat-select [(value)]="emp.role" placeholder="Role">
+                <mat-option value="employee">Employee</mat-option>
+                <mat-option value="manager">Manager</mat-option>
+              </mat-select>
             </mat-form-field>
             <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
               <button id="addButton" [disabled]="signupForm.invalid" class="full-w" type="submit" mat-raised-button
