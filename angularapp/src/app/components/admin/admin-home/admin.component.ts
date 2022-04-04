@@ -28,7 +28,7 @@ export class AdminComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {});
   }
   edit(empl: any) {
-    const dialogRef = this.dialog.open(EditEmployeeComponent, { data: empl });
+    const dialogRef = this.dialog.open(EditEmployeeComponent, { maxWidth: '120vh', maxHeight: '100vh', data: empl });
     dialogRef.afterClosed().subscribe(result => {
       if(result)
       this.refresh();
