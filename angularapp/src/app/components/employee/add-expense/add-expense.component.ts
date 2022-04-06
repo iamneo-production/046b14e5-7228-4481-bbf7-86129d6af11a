@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
   templateUrl: './add-expense.component.html',
   styleUrls: ['./add-expense.component.css']
 })
+
 export class AddExpenseComponent implements OnInit {
 
   status: boolean;
@@ -28,10 +29,11 @@ export class AddExpenseComponent implements OnInit {
     expenseId: null,
     billNumber: null,
     billCost: null,
+    description:null,
     datedOn: null,
-    remark: null,
     claimedBy: null
   }
+
   constructor(private snack: MatSnackBar, public expenseService: ExpenseService, private empService: EmployeeService) { }
 
   ngOnInit(): void {
@@ -40,6 +42,7 @@ export class AddExpenseComponent implements OnInit {
     this.setEmployees();
     this.setLimit();
   }
+
   submit() {
     if (this.date.value == null || this.expense.billCost <= 0 || this.expense.billCost == null)
       this.snack.open('Price or Date Cannot be Empty!!', 'Ok');
@@ -56,6 +59,7 @@ export class AddExpenseComponent implements OnInit {
         }
       });
     }
+
     else {
       this.expense.billNumber = this.getRandomInt(this.date.value.getSeconds(), 2000);
       this.expense.expenseId = "exp_" + this.date.value.getTime();
@@ -76,10 +80,12 @@ export class AddExpenseComponent implements OnInit {
         }
       );
     }
+
   }
   setEmployees() {
     this.emp = this.empService.getEmployee();
   }
+
   setLimit() {
     this.expenseService.setLimit(this.emp.email).subscribe(
       (data: number) => {
@@ -104,6 +110,7 @@ export class AddExpenseComponent implements OnInit {
     const file = event.target.files[0];
     this.receipt = file;
   }
+  
   getRandomInt(min: number, max: number): number {
     min = Math.ceil(min);
     max = Math.floor(max);

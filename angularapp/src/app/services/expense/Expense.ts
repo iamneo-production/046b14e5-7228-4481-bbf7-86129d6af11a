@@ -9,5 +9,6 @@ export interface Expense{
     remark:string,
     status:string,
     billImage:any,
-    claimedBy:Employee
+    claimedBy:Employee,
+    description :string
 }

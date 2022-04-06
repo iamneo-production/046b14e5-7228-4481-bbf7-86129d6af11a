@@ -12,6 +12,7 @@
                         <div *ngIf="limit==0" style="color: rgb(236, 95, 95); font-size: 20px; margin-bottom: 20px;">
                             Maximum Amount Claimed this Month</div>
                     </div>
+
                     <form #addExpense="ngForm" (ngSubmit)="submit()">
                         <mat-form-field class="w100" appearance="outline">
                             <mat-label>Price</mat-label>
@@ -21,7 +22,7 @@
                         </mat-form-field>
                         <mat-form-field class="w100" appearance="outline">
                             <mat-label>Description</mat-label>
-                            <input name="remark" [(ngModel)]="expense.remark" type="text" matInput
+                            <input name="description" [(ngModel)]="expense.description" type="text" matInput
                                 placeholder="Enter Description">
                             <mat-icon matSuffix>description</mat-icon>
                         </mat-form-field>
@@ -47,6 +48,7 @@
                             <button [disabled]="!status" class="full-w" type="submit" mat-raised-button color="primary">Add</button>
                         </div>
                     </form>
+                    
                 </div>
             </div>
         </div>
