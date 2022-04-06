@@ -19,7 +19,9 @@ public class ExpenseModel {
     private int billCost;
     private Date datedOn;
     private String remark;
+    private String description;
     private String status = "pending";
+
     @OneToOne
     @JoinColumn(name = "id")
     private UserModel claimedBy;
@@ -101,6 +103,14 @@ public class ExpenseModel {
 
     public void setClaimedBy(UserModel claimedBy) {
         this.claimedBy = claimedBy;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

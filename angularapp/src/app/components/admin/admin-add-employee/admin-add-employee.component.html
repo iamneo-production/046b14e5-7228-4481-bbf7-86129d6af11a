@@ -60,7 +60,7 @@
               </mat-select>
             </mat-form-field>
             <div class="container text-center" style="margin-top: 20px; margin-bottom: 20px;">
-              <button id="addButton" [disabled]="signupForm.invalid" class="full-w" type="submit" mat-raised-button
+              <button id="addButton" [disabled]="signupForm.invalid||email.invalid" class="full-w" type="submit" mat-raised-button
                 color="primary">ADD</button>
             </div>
           </form>

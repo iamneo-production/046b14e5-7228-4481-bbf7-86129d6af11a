@@ -12,6 +12,7 @@ import { ViewFileComponent } from '../view-file/view-file.component';
   templateUrl: './userexpenses.component.html',
   styleUrls: ['./userexpenses.component.css']
 })
+
 export class UserexpensesComponent implements OnInit {
 
   constructor(public dialog: MatDialog, public expenseService: ExpenseService, private empService: EmployeeService, private snack: MatSnackBar) { }
@@ -29,20 +30,24 @@ export class UserexpensesComponent implements OnInit {
     role: null,
     username: null,
   };
+
   ngOnInit(): void {
     this.email = sessionStorage.getItem("email");
     this.setEmployee();
     this.setExpenses();
   }
+
   view(exp: any) {
     const dialogRef = this.dialog.open(ViewFileComponent, { maxWidth: '120vh', maxHeight: '100vh', data: 'data:image/jpeg;base64,' + exp.billImage });
     dialogRef.afterClosed().subscribe(result => { });
   }
+
   setExpenses() {
     this.expenses = this.expenseService.getExpenses();
     this.setDate(this.expenses);
     this.seperate();
   }
+
   refresh() {
     this.expenseService.setExpense(this.emp.email).subscribe(
       (data: Expense[]) => {
@@ -56,17 +61,25 @@ export class UserexpensesComponent implements OnInit {
       }
     );
   }
+
   setEmployee() {
     this.emp = this.empService.getEmployee();
   }
+
   setDate(exp: Expense[]) {
     for (let i = 0; i < exp.length; i++) {
-      exp[i].datedOn = new Date(exp[i].datedOn);;
+      if(exp[i].remark == '' || exp[i].remark == null)
+      exp[i].remark = 'Processing';
+      exp[i].datedOn = new Date(exp[i].datedOn);
       this.receipt[i] = 'data:image/jpeg;base64,' + exp[i].billImage;
     }
   }
+  
   seperate()
   {
+    this.approved=[];
+    this.pending=[];
+    this.declined=[];
     for(let exp of this.expenses)
     {
       if(exp.status=="approved")
