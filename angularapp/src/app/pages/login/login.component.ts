@@ -10,6 +10,8 @@ import { LoginService } from 'src/app/services/login/login.service';
 })
 export class LoginComponent implements OnInit {
 
+ hide = true;
+  hide_cf = true;
   public login = {
     email: '',
     password: '',

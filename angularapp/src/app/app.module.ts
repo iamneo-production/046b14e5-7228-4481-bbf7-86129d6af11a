@@ -38,6 +38,7 @@ import { AdminComponent } from './components/admin/admin-home/admin.component';
 import { EmployeeDashboardComponent } from './components/dashboard/employee-dashboard.component';
 import { AdminAddEmployeeComponent } from './components/admin/admin-add-employee/admin-add-employee.component';
 import { AdminAuthorizeComponent } from './components/admin/admin-authorize/admin-authorize.component';
+import { ManagerDeclineComponent } from './components/manager/manager-decline/manager-decline.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { AdminAuthorizeComponent } from './components/admin/admin-authorize/admi
     EmployeeDashboardComponent,
     ViewFileComponent,
     AdminAddEmployeeComponent,
-    AdminAuthorizeComponent
+    AdminAuthorizeComponent,
+    ManagerDeclineComponent
   ],
   imports: [
     BrowserModule,

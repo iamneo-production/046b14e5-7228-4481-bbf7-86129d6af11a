@@ -23,16 +23,6 @@ export class DeleteEmployeeComponent implements OnInit {
     this.diag.close(false);
   }
   delete() {
-    Swal.fire({
-      title: 'Are you sure you want to delete?',
-      text: "Changes cannot be modified !",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Delete'
-    }).then((result) => {
-      if (result.isConfirmed) {
         this.adminService.deleteEmployees(this.emp.email)
           .subscribe(
             (data) => {
@@ -45,8 +35,6 @@ export class DeleteEmployeeComponent implements OnInit {
               console.log(error);
               (error)
             });
-      }
-    });
-  }
+    }
 
 }
