@@ -67,8 +67,8 @@ export class AddExpenseComponent implements OnInit {
       this.expenseService.saveExpense(formData).subscribe(
         (data: any) => {
           this.snack.open("Expense Added Sucessfully", "OK", { duration: 2000 });
-          this.expenseService.setLimit(this.emp.email);
           this.expenseService.storeEmpExpenseByEmail(this.emp.email);
+          this.expenseService.setLimit(this.emp.email);
         },
         (error) => {
           console.log(error);
