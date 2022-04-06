@@ -73,6 +73,7 @@ export class AddExpenseComponent implements OnInit {
           this.snack.open("Expense Added Sucessfully", "OK", { duration: 2000 });
           this.expenseService.setLimit(this.emp.email);
           this.expenseService.storeEmpExpenseByEmail(this.emp.email);
+          this.setLimit();
         },
         (error) => {
           console.log(error);
@@ -90,6 +91,8 @@ export class AddExpenseComponent implements OnInit {
     this.expenseService.setLimit(this.emp.email).subscribe(
       (data: number) => {
         this.curr_mon = data;
+        console.log(data);
+        
         if (this.curr_mon > 5000) { this.limit = 0; }
         else { this.limit = 5000 - this.curr_mon; }
         if (this.limit == 0)
@@ -110,7 +113,7 @@ export class AddExpenseComponent implements OnInit {
     const file = event.target.files[0];
     this.receipt = file;
   }
-  
+
   getRandomInt(min: number, max: number): number {
     min = Math.ceil(min);
     max = Math.floor(max);

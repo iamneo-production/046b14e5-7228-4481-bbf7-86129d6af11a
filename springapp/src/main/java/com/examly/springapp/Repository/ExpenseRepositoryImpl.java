@@ -16,7 +16,7 @@ public class ExpenseRepositoryImpl {
 
     @SuppressWarnings("unused")
     public Long findCurrentMonthExpenses(UserModel user) {
-        String hql = "select sum(e.billCost) from ExpenseModel e where month(e.datedOn)=month(current_timestamp) and e.claimedBy=:user and e.status!='declined'";
+        String hql = "select sum(e.billCost) from ExpenseModel e where month(e.datedOn)=month(current_timestamp) and e.claimedBy=:user and e.status='approved'";
         TypedQuery<Long> query = entityManager.createQuery(hql,Long.class);
         query.setParameter("user", user);
         return query.getSingleResult();
