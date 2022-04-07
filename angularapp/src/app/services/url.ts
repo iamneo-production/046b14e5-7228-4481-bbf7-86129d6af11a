@@ -1,2 +1,2 @@
-let baseUrl="https://8080-bbccedbcaeeebbfbafbebbcbafcbafea.examlyiopb.examly.io"
+let baseUrl="https://8080-aceaccebaadcaeeebbfbafbebbcbafcbafea.examlyiopb.examly.io"
 export default baseUrl;
