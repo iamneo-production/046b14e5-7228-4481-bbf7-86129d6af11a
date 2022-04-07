@@ -13,7 +13,7 @@
           <div mat-line>Name:&nbsp;{{e.username}}</div>
           <div mat-line>E-mail:&nbsp;{{e.email}}</div>
           <mat-divider></mat-divider>
-          <mat-radio-group [(ngModel)]="role">
+          <mat-radio-group [(ngModel)]="e.role">
             <mat-radio-button value="employee">Employee</mat-radio-button>
             <mat-radio-button value="manager">Manager</mat-radio-button>
           </mat-radio-group>

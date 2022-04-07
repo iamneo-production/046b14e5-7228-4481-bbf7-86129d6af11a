@@ -37,7 +37,7 @@ export class ManagerApproveComponent implements OnInit {
 
   public approveExpense(exp: Expense) {
     exp.status = 'approved';
-    exp.remark = 'paid';
+    exp.remark = 'PAID';
     this.managerService.updateExpense(exp).subscribe(
       (data: any) => {
         this.snack.open('Expense Approved', 'ok', { duration: 3000 });

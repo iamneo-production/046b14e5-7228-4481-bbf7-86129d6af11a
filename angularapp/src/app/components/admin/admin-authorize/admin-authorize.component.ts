@@ -12,8 +12,6 @@ import { ViewemployeeComponent } from '../viewemployee/viewemployee.component';
   styleUrls: ['./admin-authorize.component.css']
 })
 export class AdminAuthorizeComponent implements OnInit {
-
-  role="employee";
   empList: Employee[] = [];
   notAuth: Employee[] = [];
   constructor(private adminService: AdminService, private snack: MatSnackBar, public dialog: MatDialog) { }
@@ -36,11 +34,8 @@ export class AdminAuthorizeComponent implements OnInit {
   }
 
   auth(emp: Employee, status: string) {
-    let action: string;
     if (status == "true") {
-      emp.role=this.role;
       emp.active = true;
-      action = "Authorized";
     }
     else {
       this.delete(emp);
@@ -53,7 +48,7 @@ export class AdminAuthorizeComponent implements OnInit {
             this.empList = data;
             this.setNotAuth();
             sessionStorage.setItem("adminAllEmp", JSON.stringify(data));
-            this.snack.open("Employee " + action, "OK", {
+            this.snack.open("Employee Authorized", "OK", {
               duration: 3000
             });
           },
